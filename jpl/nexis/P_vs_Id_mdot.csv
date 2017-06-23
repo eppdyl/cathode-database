@@ -1,6 +1,7 @@
 ############################
 ### DOCUMENT
-# K. K. Jameson, D. M. Goebel, and R. M. Watkins, “Hollow Cathode and Thruster Discharge Chamber Plasma Measurements Using High-Speed Scanning Probes,” 29th Int. Electr. Propuls. Conf., 2005.
+# K. K. Jameson, D. M. Goebel, and R. M. Watkins, “Hollow Cathode and Thruster Discharge Chamber Plasma Measurements Using High-Speed Scanning Probes,” 29th International Electric Propulsion Conference, 2005.
+# D. Goebel, K. K. Jameson, R. M. Watkins, and I. Katz, "Hollow Cathode and Keeper-Region Plasma Measurements Using Ultra-Fast Miniature Scanning Probes," 40th AIAA/ASME/SAE/ASEE Joint Propulsion Conference and Exhibit, 2004.
 ### SOFTWARE
 # Plot digitized using Engauge Digitizer
 ### CAPTION
@@ -23,3 +24,10 @@ Id,mdot,P
 22.0,5.5,1.43977
 22.0,7.0,1.85228
 22.0,10.0,2.75909
+4,5,0.655046
+7,5,0.726606
+12,5,0.80367
+17,5,0.941284
+22,5,1.01284
+27,5,1.11193
+32,5,1.18899

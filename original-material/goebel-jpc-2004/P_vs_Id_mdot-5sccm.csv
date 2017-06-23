@@ -1,0 +1,18 @@
+############################
+### DOCUMENT
+# [1] D. Goebel, K. K. Jameson, R. M. Watkins, and I. Katz, "Hollow Cathode and Keeper-Region Plasma Measurements Using Ultra-Fast Miniature Scanning Probes," 40th AIAA/ASME/SAE/ASEE Joint Propulsion Conference and Exhibit, 2004.
+### SOFTWARE
+# Plot digitized using Engauge Digitizer
+### CAPTION
+# Pressure measured and calculated inside the hollow cathode without plasma (a), and with plasma (b) indicating significant gas heating by the plasma discharge.
+### DATA
+# Id (A), mdot (sccm of Xe), P (Torr)
+############################
+Id,mdot,P
+4,5,0.655046
+7,5,0.726606
+12,5,0.80367
+17,5,0.941284
+22,5,1.01284
+27,5,1.11193
+32,5,1.18899
