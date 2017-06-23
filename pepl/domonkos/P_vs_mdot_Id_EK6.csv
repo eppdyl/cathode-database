@@ -1,0 +1,48 @@
+############################
+### DOCUMENT
+# [1] M. T. Domonkos, "Evaluation of low-current orificed hollow cathodes," University of Michigan, 1999.
+### SOFTWARE
+# Plot digitized using Engauge Digitizer
+### CAPTION
+# Cathode Internal Pressure Under Various Operating Conditions
+### DATA
+# Id (A), mdot (sccm of Xe), P (x10^(-3) Pa)
+### Notes
+# Extracted from the overall plot; this data is for the EK6. Need to multiply pressure by 1e3 to obtain the correct values
+# The mass flow rate values are not exactly the same from one run to the other one, so I kept them as raw data values extracted from the plots.
+############################
+Id,mdot,P
+0.5,2.00064,36.0294
+0.5,2.38519,40.0735
+0.5,2.81553,44.3015
+0.5,3.20009,47.9779
+0.75,1.4234,39.1544
+0.75,1.63848,43.1985
+0.75,2.00466,48.1618
+0.75,2.41208,52.9412
+0.75,2.81032,57.9044
+0.75,3.24973,64.1544
+1.0,0.988325,38.2353
+1.0,1.20339,42.6471
+1.0,1.42306,46.5074
+1.0,1.61066,50.5515
+1.0,1.80743,54.4118
+1.0,1.97203,60.6618
+1.0,2.41156,64.3382
+1.0,2.83269,69.6691
+1.0,3.22631,75.5515
+1.25,0.791379,38.2353
+1.25,0.9973,42.2794
+1.25,1.18946,46.6912
+1.25,1.41373,50.1838
+1.25,1.6105,54.0441
+1.25,1.78897,57.5368
+1.25,1.99952,60.4779
+1.25,2.39771,66.7279
+1.25,2.78667,74.2647
+1.25,3.21696,79.7794
+1.50,0.810937,11.2132
+1.50,1.20012,13.9706
+1.50,1.54811,16.1765
+1.50,2.75236,23.5294
+1.50,3.32931,26.8382
