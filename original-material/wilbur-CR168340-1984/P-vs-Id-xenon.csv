@@ -1,0 +1,21 @@
+############################
+### DOCUMENT
+#  [1] P. J. Wilbur, “Advanced Ion Thruster Research,”  NASA CR-168340, 1984.
+### SOFTWARE
+# Plot digitized using Engauge Digitizer
+### CAPTION
+# Internal pressure/Flow rate correlation for xenon 
+### DATA
+# Id (A), P/(mdot/do^2) (Torr - mm^2 / mA),  [P/(mdot/do^2) (Torr - mm^2 / mA)]_upper, [P/(mdot/do^2) (Torr - mm^2 / mA)]_lower
+### NOTES
+# The correlation varies with flows from 50 mA to 1300 mA and orifice diameters of 0.25 mm to 1.0 mm. The lower and upper bounds are given as corr_up and corr_low 
+# Plot is p.117
+# Proposed correlation fit is P/(mdot/do^2) = 0.0090 + 0.0040 I_D
+############################
+Id,corr,corr_up,corr_low
+0,0.00754275,0.0113516,0.00533326
+0.30,0.0110786,0.0148119,0.00864057
+1.30,0.01565,0.0199922,0.0109257
+2.30,0.0186981,0.0235743,0.0135173
+3.30,0.0227356,0.0295165,0.0164125
+4.30,0.025707,0.0347741,0.0193833

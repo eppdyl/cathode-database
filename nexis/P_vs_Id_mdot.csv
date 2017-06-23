@@ -1,0 +1,25 @@
+############################
+### DOCUMENT
+# K. K. Jameson, D. M. Goebel, and R. M. Watkins, “Hollow Cathode and Thruster Discharge Chamber Plasma Measurements Using High-Speed Scanning Probes,” 29th Int. Electr. Propuls. Conf., 2005.
+### SOFTWARE
+# Plot digitized using Engauge Digitizer
+### CAPTION
+# Internal NEXIS cathode pressure (a) constant flow rate at 5.5 sccm (b) constant discharge current at 22 A.
+### DATA
+# Id (A), mdot (sccm of Xe), P (Torr)
+############################
+Id,mdot,P
+8.0,5.5,1.11388
+10.0,5.5,1.18253
+12.0,5.5,1.29485
+14.0,5.5,1.35413
+16.0,5.5,1.3947
+18.0,5.5,1.42278
+20.0,5.5,1.45398
+22.0,5.5,1.54134
+24.0,5.5,1.60686
+26.0,5.5,1.67863
+22.0,4.0,1.25
+22.0,5.5,1.43977
+22.0,7.0,1.85228
+22.0,10.0,2.75909

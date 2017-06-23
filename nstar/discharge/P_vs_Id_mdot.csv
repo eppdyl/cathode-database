@@ -1,0 +1,19 @@
+############################
+### DOCUMENT
+# [1] K. K. Jameson, D. M. Goebel, and R. M. Watkins, “Hollow Cathode and Keeper-Region Plasma Measurements,” 41st AIAA/ASME/SAE/ASEE Jt. Propuls. Conf. Exhib., 2005.
+### SOFTWARE
+# Plot digitized using Engauge Digitizer
+### CAPTION
+# Pressure vs throttle level
+### DATA
+# Id (A), mdot (sccm of Xe), P (Torr)
+### NOTES
+# The original plot shows pressure vs. throttle level (TH). The throttle level were translated from the following references:
+# TH4, TH8, TH15: V. Rawlin, J. Sovey, J. Anderson, and J. Polk, “NSTAR flight thruster qualification testing,” 34th AIAA/ASME/SAE/ASEE Jt. Propuls. Conf. Exhib., 1998.
+# TH12: W. G. Tighe, K. Chien, D. M. Goebel, and R. T. Longo, “Hollow Cathode Ignition and Life Model,” 41st AIAA/ASME/SAE/ASEE Jt. Propuls. Conf. Exhib., 2005.
+############################
+Id,mdot,P
+5.95,2.47,4.0275
+8.29,2.47,4.6019
+9.9,2.81,5.9054
+13.2,3.70,8.0824

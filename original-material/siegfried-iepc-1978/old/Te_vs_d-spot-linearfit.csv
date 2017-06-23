@@ -1,0 +1,7 @@
+# Linear fit of the temperature, as proposed by Siegfried and Wilbur
+# Te_vs_d(x) = p1*x + p2
+# 95% confidence bounds:
+# p1: (-0.02227,-0.02047)
+# p2: (0.7316,0.7482)
+p1,p2
+-0.02137,0.7399

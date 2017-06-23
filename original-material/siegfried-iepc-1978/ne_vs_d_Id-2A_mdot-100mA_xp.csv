@@ -1,0 +1,20 @@
+############################
+### DOCUMENT
+# [1] D. SIEGFRIED and P. WILBUR, “An investigation of mercury hollow cathode phenomena,” 13th Int. Electr. Propuls. Conf., 1978.
+### SOFTWARE
+# Plot digitized using Engauge Digitizer
+### CAPTION
+# Electron density in plume mode 
+### DATA
+# d,log10(ne xp)
+### NOTES
+# ne in 1/cm3
+############################
+d,ne
+3.9805,14.56897
+6.1101,13.72225
+7.1362,13.33693
+8.1783,13.00903
+10.1201,12.06927
+12.0163,11.28628
+15.173,10.19393

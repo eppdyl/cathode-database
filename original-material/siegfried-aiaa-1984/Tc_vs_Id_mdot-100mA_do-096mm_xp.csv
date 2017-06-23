@@ -1,0 +1,17 @@
+############################
+### DOCUMENT
+# [1] D. Siegfried and P. Wilbur, “A model for mercury orificed hollow cathodes-Theory and experiment,” AIAA J., vol. 22, no. 10, pp. 1405–1412, 1984.
+### SOFTWARE
+# Plot digitized using Engauge Digitizer
+### CAPTION
+# Cathode wall temperature vs. discharge current 
+### DATA
+# Id (A), Tc (degC)
+### NOTES
+# mdot = 100 mA, do = 0.96 mm
+############################
+Id,Tc
+1.28994,964.64
+2.31051,1006.242
+3.32798,1037.847
+4.34247,1068.278

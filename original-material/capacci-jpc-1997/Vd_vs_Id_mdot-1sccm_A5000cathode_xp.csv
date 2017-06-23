@@ -1,0 +1,20 @@
+############################
+### DOCUMENT
+# [1] M. Capacci, M. Minucci, and A. Severi, “Simple numerical model describing discharge parameters in orificed hollow cathode devices,” 33rd Jt. Propuls. Conf. Exhib., 1997.
+### SOFTWARE
+# Plot digitized using Engauge Digitizer
+### CAPTION
+# Discharge voltage vs. discharge current 
+### DATA
+# Id (A), Vd (V) 
+### NOTES
+# The cathode is the A5000. Mass flow rate is 1 sccm. Experimental data.
+############################
+Id,Vd
+0.49148,21.6095
+1.99962,14.3195
+2.52148,14.1354
+3.00499,14.2394
+5.01878,14.9293
+6.0135,15.7793
+8.01667,17.4315

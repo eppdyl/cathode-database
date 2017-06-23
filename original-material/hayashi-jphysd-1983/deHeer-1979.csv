@@ -1,0 +1,27 @@
+############################
+### DOCUMENT
+# [1] M. Hayashi, “Determination of electron-xenon total excitation 100 eV , from experimental sections , from threshold to values of Townsend’s alpha,” J. Phys. D. Appl. Phys., vol. 16, pp. 581–589, 1983.
+### SOFTWARE
+# Plot digitized using Engauge Digitizer
+### CAPTION
+# Total collision cross-sections in xenon
+### DATA
+# Electron Energy (eV), Cross Section (Angstrom^2)
+### NOTES
+# The plotted data is taken from F. J. de Heer, R. H. J. Jansent, and W. van der Kaay, “Total cross sections for electron scattering by Ne and Ar and Kr and Xe,” J. Phys. B At. Mol. Phys., vol. 12, p. 979, 1979.
+# This is a log-log plot, the digitized data is log10 of the actual values.
+############################
+eEnergy,xsec
+1.30145,1.49204
+1.48388,1.47021
+1.77877,1.00914
+2.00206,1.0217
+2.1791,0.98234
+2.3044,0.96901
+2.47963,0.88226
+2.60252,0.84389
+2.70131,0.78817
+2.84614,0.70475
+3.00229,0.60731
+3.29792,0.42378
+3.47546,0.32234

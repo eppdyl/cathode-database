@@ -1,0 +1,21 @@
+############################,,,,,,,,
+### DOCUMENT,,,,,,,,
+#  [1] P. J. Wilbur, “Advanced Ion Thruster Research,”  NASA CR-168340,1984,,,,,
+### SOFTWARE,,,,,,,,
+# Plot digitized using Engauge Digitizer,,,,,,,,
+### CAPTION,,,,,,,,
+# Insert emission length behavior for xenon,,,,,,,,
+# Emission surface temperature behavior for xenon,,,,,,,,
+# Plasma density behavior for xenon,,,,,,,,
+# Behavior of potentials for xenon,,,,,,,,
+### DATA,,,,,,,,
+# Id (A), Lemit (mm), Tc (degC), Vp (V), Vanode (V), Vkeeper (V), ne maximum (x10^(-14) 1/cm3), ne average(x10^(-14) 1/cm3) ,
+### NOTES,,,,,,,,
+# Plots are p.105-108,,"NOTE: INTERPOLATED VALUES FOR Va, Tc at 2.2653 A",,,,,,
+############################,,,,,,,,
+Id,Lemit,Tc,Vp,Va,Vk,ne_max,ne_ave,q_th
+1.2384,7.8823,993.815,11.4499,26.0262,16.8569,0.6125,0.26565,1.1584
+2.2474,7.4189,1096.815,9.8546,24.0963,12.9204,2.22871,0.54124,1.4478
+2.2653,4.4091,1097.976,11.8613,24.0932,13.4499,2.77242,0.90684,1.4515
+3.2596,6.7169,1162.459,10.767,23.9218,11.7424,3.34485,0.98554,1.6568
+4.2375,10.3268,1189.668,12.1255,23.3863,12.4877,2.54231,1.46743,1.7492

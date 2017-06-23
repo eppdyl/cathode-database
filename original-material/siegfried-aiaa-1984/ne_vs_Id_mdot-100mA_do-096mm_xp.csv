@@ -1,0 +1,17 @@
+############################
+### DOCUMENT
+# [1] D. Siegfried and P. Wilbur, “A model for mercury orificed hollow cathodes-Theory and experiment,” AIAA J., vol. 22, no. 10, pp. 1405–1412, 1984.
+### SOFTWARE
+# Plot digitized using Engauge Digitizer
+### CAPTION
+# Electron density vs. discharge current 
+### DATA
+# Id (A), ne*10-20 (1/m3)
+### NOTES
+# mdot = 100 mA, do = 0.96 mm
+############################
+Id,ne
+1.27889,0.79833
+2.29566,1.25275
+3.29174,1.77196
+4.30846,2.27642

@@ -1,0 +1,21 @@
+############################
+### DOCUMENT
+#  [1] P. J. Wilbur, “Advanced Ion Thruster Research,”  NASA CR-168340, 1984.
+### SOFTWARE
+# Plot digitized using Engauge Digitizer
+### CAPTION
+# Internal pressure/Flow rate correlation for argon
+### DATA
+# Id (A), P/(mdot/do^2) (Torr - mm^2 / mA),  [P/(mdot/do^2) (Torr - mm^2 / mA)]_upper, [P/(mdot/do^2) (Torr - mm^2 / mA)]_lower
+### NOTES
+# The correlation varies with flows from 50 mA to 1300 mA and orifice diameters of 0.34 mm to 1.0 mm. The lower and upper bounds are given as corr_up and corr_low 
+# Plot is p.116
+# Proposed correlation fit is P/(mdot/do^2) = 0.0056 + 0.0012 I_D
+############################
+Id,corr,corr_up,corr_low
+0.0,0.00490864,0.00730145,0.00343667
+0.31,0.00610683,0.00825426,0.0044505
+1.30,0.00774725,0.00977199,0.00553881
+2.30,0.0087132,0.0112284,0.00662745
+3.00,0.00958616,0.012163,0.0073167
+4.30,0.010216,0.0131613,0.00794655

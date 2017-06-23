@@ -1,0 +1,18 @@
+# Data reported in Mandell and Katz, 1994. This is obviously not a complete dataset.
+# It is used to back-calculate necessary data for the model.
+# Quantities:
+# - Id: discharge current, A
+# - mdot: mass flow rate, sccm
+# - TeV: electron temperature, eV
+# - ne: electron density, x10^(-21) 1/m3
+Id,mdot,TeV,ne
+4,1,2.6438,0.44028
+4,1,2.66,0.44
+4,6,1.88,1.51
+4,10,1.73,1.94
+6,1,2.77,0.70
+6,6,1.90,2.37
+6,10,1.75,3.03
+8,1,2.95,0.93
+8,6,1.88,3.43
+8,10,1.73,4.37

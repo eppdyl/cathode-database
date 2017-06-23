@@ -1,0 +1,23 @@
+############################
+### DOCUMENT
+# [1] P. J. Wilbur, “Advanced Ion Thruster Research,”  NASA CR-168340, 1984.
+# [2] D. Siegfried and P. Wilbur, “A model for mercury orificed hollow cathodes-Theory and experiment,” AIAA Journal, 22, 10, pp. 1405–1412, 1984. 
+### DATA
+# Id (A), qth (W/mm)
+### NOTES
+# This is the thermal loss of the cathode, as a function of discharge current --- for the particular case of interest! It was computed as follows:
+# 1. Get qth vs. Tc for the model cathode (ref. 2). We used the "best estimate".
+# 2. Get a "power fit" a*x^b + c for qth vs. Tc. This was done using MATLAB cftool toolbox.
+# 3. Using the reported wall temperature as function of discharge current in ref. 1, calculate the corresponding qth using the fit: we now have qth as function of Id
+# 4. One data point was missing for the wall temperature at (Id = 2.27 A), so we performed a linear fit to get it
+# The a,b,c value for the power fit are as follows (with 95% confidence bounds)
+# a =   1.459e-08  (8.342e-09, 2.084e-08)
+# b =       2.612  (2.553, 2.671)
+# c =      0.1734  (0.1552, 0.1916)
+############################
+Id,qth
+1.2384,1.1584
+2.2474,1.4478
+2.2653,1.4515
+3.2596,1.6568
+4.2375,1.7492

@@ -1,0 +1,21 @@
+############################
+### DOCUMENT
+#  [1] P. J. Wilbur, “Advanced Ion Thruster Research,”  NASA CR-168340, 1984.
+### SOFTWARE
+# Plot digitized using Engauge Digitizer
+### CAPTION
+# Insert emission length behavior for argon
+# Emission surface temperature behavior for argon
+# Plasma density behavior for argon
+# Behavior of potentials for argon
+### DATA
+# P (Torr), Lemit (mm), Tc (degC), Vp (V), Vanode (V), Vkeeper (V), ne maximum (x10^(-14) 1/cm3), ne average(x10^(-14) 1/cm3) 
+### NOTES
+# Plots are p.101-104
+############################
+P,Lemit,Tc,Vp,Va,Vk,ne_max,ne_ave
+4.005,8.352,1146.814,15.6031,40.0443,17.2067,0.82874,0.22898
+5.720,5.007,1161.733,15.1552,33.2946,18.555,0.86363,0.38359
+5.792,8.4029,1230.904,15.2079,33.0305,18.8641,0.90967,0.26501
+7.023,8.3555,1171.666,14.9019,32.4185,20.0272,0.87802,0.28055
+8.308,7.8658,1172.217,14.3895,31.8819,19.8951,0.91771,0.31101

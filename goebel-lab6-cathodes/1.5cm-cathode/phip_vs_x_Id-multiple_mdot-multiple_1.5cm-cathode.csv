@@ -1,0 +1,22 @@
+############################
+### DOCUMENT
+# [1] E. Chu and D. M. Goebel, “High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,” IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.
+# [2] D. M. Goebel, R. M. Watkins, and K. K. Jameson, “LaB6 Hollow Cathodes for Ion and Hall Thrusters,” J. Propuls. Power, vol. 23, no. 3, pp. 552–558, 2007.
+### SOFTWARE
+# Plot digitized using Engauge Digitizer
+### CAPTION
+# Plasma potential measured on axis inside two of LaB 6 hollow cathodes relative to the orifice upstream entrance for two discharge conditions.
+### DATA
+# Id (A), mdot (sccm), x (cm), phip (V), phip err- (V), phip err+ (V)
+### NOTES
+# The data for x and Te are in a JSON array format. 
+# Error bounds are reported in err- and err+, when available (phiperrm and phiperrp, respectively)
+############################
+Id,mdot,x,phip,phiperrm,phiperrp
+50,8,["0.3","0.8","0.9","1.5","2","2.9","3.5"],["15.0709","12.9149","12.2969","9.0941","8.8551","8.4055","8.6011"]
+50,10,["0.3","0.7","0.8","1.4","2","2.8","3.5"],["15.2123","11.8091","10.5865","9.2019","8.7137","8.8178","7.1162"],["14.2055","10.8012","9.6062","8.194","7.7184","7.8122","6.1037"],["16.2053","12.8044","11.5864","10.1868","9.6814","9.7912","8.1"]
+50,12,["0.5","0.9","1.5","2","2.7"],["10.9088","10.119","8.6183","8.1138","7.9269"]
+100,8,["0.4","0.8","1.4","2.1","2.8"],["13.5005","12.7062","8.6056","7.4895","7.3118"]
+100,10,["0.4","0.8","1.4","2","2.7"],["13.8261","10.7267","7.9217","7.6049","5.785"],["12.8142","9.695","6.8841","6.6176","4.8035"],["14.803","11.6954","8.9067","8.5888","6.8098"]
+100,12,["0.4","0.8","1.4","2.1","2.8"],["10.2151","8.6072","7.4222","7.0588","5.3323"]
+25,7,["-0.02233","0.05066","0.12367","0.1347","0.25958","0.37604","0.84979"],["11.9594","11.4155","11.3584","11.1028","10.7453","10.9922","10.7791"]
