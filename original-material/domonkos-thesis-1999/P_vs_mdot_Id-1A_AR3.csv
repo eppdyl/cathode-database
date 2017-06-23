@@ -1,0 +1,18 @@
+############################
+### DOCUMENT
+# [1] M. T. Domonkos, "Evaluation of low-current orificed hollow cathodes," University of Michigan, 1999.
+### SOFTWARE
+# Plot digitized using Engauge Digitizer
+### CAPTION
+# Reduction of Cathode Internal Pressure for Spot-Mode Operation
+### DATA
+# Id (A), mdot (sccm of Xe), P (x10^(-3) Pa)
+### Notes
+# Extracted from the overall plot; this data is for the AR3, at Id = 1A. Need to multiply pressure by 1e3 to obtain the correct values
+############################
+Id,mdot,P
+1,1.39925,33.3904
+1,1.60075,33.888
+1,1.79478,37.1229
+1,1.99627,40.2333
+1,2.39925,46.0809
