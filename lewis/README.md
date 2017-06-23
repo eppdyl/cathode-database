@@ -21,3 +21,23 @@ Materials
 - Orifice: 2% thoriated tungsten
 - Insert: BaO-W
 - Tube: Mo-Re
+
+
+### Siegfried's work
+Siegfried graduated from Colorado State University; his grant, however, was on advanced electric thruster research through NASA Lewis.
+A series of contractor reports from his PI P.J. Wilbur can be found online. 
+
+#### References
+[1] D. E. Siegfried and P. J. Wilbur, “Studies on an experimental quartz tube hollow cathode,” 14th Int. Electr. Propuls. Conf., 1979.
+[2] D. Siegfried and P. Wilbur, “A model for mercury orificed hollow cathodes-Theory and experiment,” AIAA J., vol. 22, no. 10, pp. 1405–1412, 1984.
+[3] D. SIEGFRIED and P. WILBUR, “An investigation of mercury hollow cathode phenomena,” 13th Int. Electr. Propuls. Conf., 1978.
+[4] D. E. Siegfried and P. J. Wilbur, “Phenomenological Model Describing Orificed , Hollow Cathode Operation,” AIAA J., vol. 21, no. 1, pp. 5–6, 1983.
+[5] P. J. Wilbur, “Advanced Ion Thruster Research,” NASA CR-168340, 1984.
+[6] P. J. Wilbur, “Ion and advanced electric thruster research,” CR-165253, 1980.
+
+#### Cathode
+Siegfried's cathode operates on mercury, argon, or xenon. The noble gas cathode seems to appear only in a 1984 contractor report. 
+
+| Orifice diameter (mm) | Orifice length (mm) | Insert inner diameter (mm) | Insert outer diameter (mm) | Insert length (mm) | Cathode outer diameter (mm) | 
+|:---------------------:|:-------------------:|:--------------------------:|:--------------------------:|:------------------:|:---------------------------:|
+
