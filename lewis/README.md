@@ -1,5 +1,5 @@
 ## NASA Lewis 
-This folder contains work from NASA Lewis. So far, only Salhi's cathode has been found and digitized.
+This folder contains work from NASA Lewis. 
 
 ### Salhi's work
 Though Salhi graduated from Ohio State University, his testing was done at Lewis. 
@@ -41,3 +41,22 @@ Siegfried's cathode operates on mercury, argon, or xenon. The noble gas cathode 
 | Orifice diameter (mm) | Orifice length (mm) | Insert inner diameter (mm) | Insert outer diameter (mm) | Insert length (mm) | Cathode outer diameter (mm) | 
 |:---------------------:|:-------------------:|:--------------------------:|:--------------------------:|:------------------:|:---------------------------:|
 
+
+### Friedly's work
+Friedly graduated from Colorado State University; his grant, however, was on advanced electric thruster research through NASA Lewis. His work is after Siegfried's
+
+#### References
+[1] P. J. Wilbur, “Advanced Electric Propulsion Research,” CR-182130, 1988.
+[2] V. J. Friedly, "Hollow cathode operation at high discharge currents," M. Sc. thesis, NASA CR-185238, 1990
+
+#### Cathode
+The cathode operates only on xenon. Measurements in [1] show that the pressure measurements are accurate to +- 1 Torr
+
+| Orifice diameter (mm) | Orifice length (mm) | Insert inner diameter (mm) | Insert outer diameter (mm) | Insert length (mm) | Cathode outer diameter (mm) | 
+|:---------------------:|:-------------------:|:--------------------------:|:--------------------------:|:------------------:|:---------------------------:|
+| 0.74 - 1.70 | - | 4.7 or 6.4 | - | 13.0 | 6.4 or 12.8 | 
+
+Materials
+- Orifice: thoriated tungsten
+- Insert: R-500
+- Tube: tantalum
