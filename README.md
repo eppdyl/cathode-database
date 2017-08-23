@@ -3,18 +3,27 @@ This repository contains digitized data of hollow cathodes, and other useful dat
 
 The list of cathodes will grow in time. Orifice hollow cathodes currently considered:
 - JPL
+
 ..* NSTAR
 ..* NEXIS
 ..* LaB6 cathodes
+
 - Lewis
+
 ..* Siegfried and Wilbur Hg, Ar, and Xe cathodes 
 ..* Salhi's Ar and Xe cathode
 ..* Friedly's Ar and Xe cathode
+
 - PEPL
+
 ..* Domonkos's Ar and Xe cathode
+
 - RAE
+
 ..* T6 cathode 
+
 - SITAEL
+
 ..* HC1
 ..* HC3
 ..* HC20
