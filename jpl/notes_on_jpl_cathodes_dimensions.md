@@ -10,6 +10,8 @@ The NSTAR ion engine features TWO different hollow cathodes:
 Their dimensions are different! It is also difficult to find any good information about the size of these cathodes.
 Nonetheless, here are some references that set some values of these dimensions...
 
+Goebel also built several LaB6 cathodes, with various insert diameters.
+
 ---
 
 ## Literature review of measurements
