@@ -1,0 +1,34 @@
+############################
+### DOCUMENT
+# [1] I. G. Mikellides, “Effects of viscosity in a partially ionized channel flow with thermionic emission,” Phys. Plasmas, vol. 16, no. 1, 2009.
+### SOFTWARE
+# Plot digitized using Engauge Digitizer
+### CAPTION
+# Comparisons between measured and computed val- ues of the cathode gas pressure
+### DATA
+# Id (A), mdot (mg/s), P (kg/cm/s2)
+### Notes
+# NSTAR discharge cathode operating on Xe
+############################
+Id,mdot,P
+12,0.292624,8.6712
+12,0.317283,9.4182
+12,0.341009,10.0786
+12,0.365857,9.9269
+12,0.389956,10.5332
+12,0.414802,11.2695
+12,0.439089,11.5725
+12,0.463562,12.0597
+12,0.487662,12.5686
+13,0.361186,10.2193
+13,0.365856,10.2518
+13,0.389955,10.9014
+13,0.397428,10.9447
+13,0.433671,11.5942
+13,0.439088,11.8866
+13,0.452165,12.2438
+13,0.463561,12.6011
+13,0.469352,12.796
+13,0.48766,13.0883
+13,0.505594,13.6188
+13,0.512506,13.8895
