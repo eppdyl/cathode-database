@@ -2,7 +2,7 @@
 ### DOCUMENT
 # [1] P. J. Wilbur, “Ion and advanced electric thruster research,” CR-165253, 1980.
 ### DATA
-# Id (A), mdot (mA), P (Torr), Propellant mass (amu), do (mm), Tw (K)
+# Id (A), mdot (mA), P (Torr), Propellant mass (amu), do (mm), Tw (K), Lo (mm)
 ### Notes
 # Mercury cathode with a 0.76mm diameter orifice
 # Table p. 14
