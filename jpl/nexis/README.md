@@ -10,3 +10,4 @@
 
 ### Usage
 - Jameson 2005 IEPC: pressure vs. Id at mdot = 5.5 sccm, pressure vs mdot at Id = 22 A
+- Jameson 2005 IEPC: ne vs x for Id = 25 A at mdot = 5 sccm and 10 sccm
