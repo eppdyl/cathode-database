@@ -14,7 +14,7 @@ Goebel also built several LaB6 cathodes, with various insert diameters.
 
 ---
 
-## Literature review of measurements
+## Literature review of dimensions 
 
 ### Mikellides et al. (2008)
 - I. G. Mikellides, I. Katz, D. M. Goebel, K. K. Jameson, and J. E. Polk, ''Wear Mechanisms in Electron Sources for Ion Propulsion, I: Neutralizer Hollow Cathode,'' Journal of Propulsion and Power, vol. 24, no. 4, pp. 855–865, 2008.
@@ -160,6 +160,7 @@ Thickness of Mo tube is deduced (ignoring graphite sleeves): 0.08 cm
 | Reference | Orifice diameter (mm) | Orifice length (mm) | Insert inner diameter (cm) | Insert outer diameter (cm) | Insert thickness (cm) | Insert length (cm) | Cathode outer diameter (cm) | 
 |:---------:|:---------------------:|:-------------------:|:--------------------------:|:--------------------------:|:---------------------:|:------------------:|:---------------------------:|
 Goebel et al. (JPP 2007) | 3.8 |  |  0.7  | 1.3 | 0.3 | 2.5 | 1.5 |
+Goebel et al. (Rev. Sci. 2010) | 3.8 | | 0.7 |  | | 2.5 | 1.5 |
 
 Thickness of cathode wall is 0.1 cm
 
@@ -167,5 +168,6 @@ Thickness of cathode wall is 0.1 cm
 | Reference | Orifice diameter (mm) | Orifice length (mm) | Insert inner diameter (cm) | Insert outer diameter (cm) | Insert thickness (cm) | Insert length (cm) | Cathode outer diameter (cm) | 
 |:---------:|:---------------------:|:-------------------:|:--------------------------:|:--------------------------:|:---------------------:|:------------------:|:---------------------------:|
 Goebel et al. (JPP 2007) | 3.8 |  |  1.2  | 1.8 | 0.3 | 2.5 | 2.0 |
+Goebel et al. (Rev. Sci. 2010) | 3.8 | | 1.2 | 0.64 | | 2.5 | 2.0 |
 
 Thickness of cathode wall is 0.1 cm
