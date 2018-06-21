@@ -149,7 +149,7 @@ Goebel and Katz (2008)       | 2.8  |      | 12.7 |     |       |      |        
 ##### 0.8 cm
 | Reference | Orifice diameter (mm) | Orifice length (mm) | Insert inner diameter (cm) | Insert outer diameter (cm) | Insert thickness (cm) | Insert length (cm) | Cathode outer diameter (cm) | 
 |:---------:|:---------------------:|:-------------------:|:--------------------------:|:--------------------------:|:---------------------:|:------------------:|:---------------------------:|
-Goebel et al. (JPP 2007) | 3.8 |  |  0.38  |  |  | | 0.8 |
+Goebel et al. (JPP 2007) | 3.8 |  |  0.38  | 0.64  |  |2.5  | 0.8 |
 Goebel et al. (Rev. Sci. 2010) | 3.8 |  |  0.38  | 0.64 | 0.13 | 2.5 | 0.8 |
 
 Thickness of Mo tube is deduced (ignoring graphite sleeves): 0.08 cm 
