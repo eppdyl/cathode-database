@@ -15,6 +15,8 @@ There a few different cathodes that have been developed over the years: T1, T2, 
 |:---------------------:|:-------------------:|:--------------------------:|:--------------------------:|:------------------:|:---------------------------:|
 | 0.75, 1.0, 1.3, 1.6 | 2.0 | 2.0 | 5.0 | 20.0 | 7 |
 
+The orifice has a chamfer at L = 1.0 mm
+
 Materials:
 - Tube: tantalum
 - Emitter: barium calcium aluminate (4:1:1) porous tungsten dispenser
