@@ -34,12 +34,31 @@ A series of contractor reports from his PI P.J. Wilbur can be found online.
 [4] D. E. Siegfried and P. J. Wilbur, “Phenomenological Model Describing Orificed , Hollow Cathode Operation,” AIAA J., vol. 21, no. 1, pp. 5–6, 1983.
 [5] P. J. Wilbur, “Advanced Ion Thruster Research,” NASA CR-168340, 1984.
 [6] P. J. Wilbur, “Ion and advanced electric thruster research,” CR-165253, 1980.
+[7] D. Siegfried and P. Wilbur, "A Phenomenological Model Describing Orificed, Hollow Cathode Operation," 15th IEPC, 1981 (AIAA 81-0846)
+[8] D. Siegfried, "A Phenomenological Model for Orificed Hollow Cathodes", Ph.D. Thesis, 1982
 
 #### Cathode
 Siegfried's cathode operates on mercury, argon, or xenon. The noble gas cathode seems to appear only in a 1984 contractor report. 
+Ref. [3] suggests a 1.9 mm diameter cylindrical porous tungsten insert, impregnated with Semicon Type 84-S
+The pressure data from Ref.[6] is for a 3.9 mm diameter cylindrical insert. The insert is tantalum foil coated with R-500, p.11 
+Ref. [4] has no data on dimensions.
+Different cathode tests have been used. The insert length may be 2.2 mm for the "current accounting tests", but other tests include longer inserts.
+In Ref. [8], the segment insert has a total length of 15 mm.
 
-| Orifice diameter (mm) | Orifice length (mm) | Insert inner diameter (mm) | Insert outer diameter (mm) | Insert length (mm) | Cathode outer diameter (mm) | 
-|:---------------------:|:-------------------:|:--------------------------:|:--------------------------:|:------------------:|:---------------------------:|
+| Reference | Orifice diameter (mm) | Orifice length (mm) | Insert inner diameter (mm) | Insert outer diameter (mm) | Insert length (mm) | Cathode outer diameter (mm) | 
+|:---------:|:---------------------:|:-------------------:|:--------------------------:|:--------------------------:|:------------------:|:---------------------------:|
+| [1]       | 0.51, 0.79, 1.00     | -    	 | 3.9      | 4.0 | -   | 6.3  |   
+| [2]       | 0.96                 | -    	 | 3.9      | 4.0 | 2.2 | -    |
+| [3]       | 0.75                 | 1.22 	 | 1.9, 3.9 | 4.0 | -   | 6.35 |
+| [5] Ar, Xe| 0.51, 0.76	   | -    	 | 3.8      | -   | 15-20 | -  | 
+| [6]       | 0.76                 | -    	 | 3.9      | 4.0 | 2.2 | -    |
+| [7]       | 0.76                 | -    	 | 3.9      | -   | 2.2 | -    |
+| [8]       | 0.96 		   | 1.8 (p.130) | 3.9      | 4.0 | 2.2 | 6.3 | 
+
+Materials
+- Orifice: quartz, 2% thoriated tungsten (Ref. [3])
+- Insert: tantalum coated with R-500 ( Ba/Sr CO3 ) or porous tungsten insert impregnated with Semicon Type 84-S
+- Tube: quartz
 
 
 ### Friedly's work
