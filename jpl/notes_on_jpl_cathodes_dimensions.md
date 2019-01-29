@@ -95,6 +95,19 @@ The plots seem to suggest the following dimensions
 |NSTAR| 1.9 | 0.22 |
 |NEXIS| 6.0 | 0.52 |
 
+### Goebel, Katz, et al. (2004)
+- D. M. Goebel, I. Katz, J. E. Polk, I. G. Mikellides, K. K. Jameson, T. Liu, and R. Dougherty, “Extending Hollow Cathode Life for Electric Propulsion in Long-Term Missions,” Sp. 2004 Conf. Exhib., 2004.
+
+Figure 5 shows the dimensions of cathode. It has an insert diameter of 1.2 cm, emitter length of 2.5 cm, and orifice diameter of 0.15 cm. The figure is referenced after Mikelldies et al, 2004 ("Theoretical model..."
+
+### Goebel, Jameson, et al. (2004)
+- D. Goebel, K. K. Jameson, R. M. Watkins, and I. Katz, “Hollow Cathode and Keeper-Region Plasma Measurements Using Ultra-Fast Miniature Scanning Probes,” 40th AIAA/ASME/SAE/ASEE Jt. Propuls. Conf. Exhib., 2004.
+
+p.3 last paragraph: the orifice diameter is 2.75 mm.
+
+
+
+
 ---
 ## Average cathodes
 
@@ -137,6 +150,8 @@ OD = ID + 2*IThickness + 2*gap = 3.8 + 2*0.76 + 2*0.1 = 5.5 mm
 #### NEXIS cathode
 | Reference | Orifice diameter (mm) | Orifice length (mm) | Insert inner diameter (mm) | Insert outer diameter (mm) | Insert thickness (mm) | Insert length (mm) | Cathode outer diameter (mm) | 
 |:---------:|:---------------------:|:-------------------:|:--------------------------:|:--------------------------:|:---------------------:|:------------------:|:---------------------------:|
+Goebel, Katz et al (2004)    | 1.5  |      | 12.0 |     |       | 25.0 |        |
+Goebel, Jameson et al (2004) | 2.75 |      |      |     |       |      |        |
 Mikellides et al (2004)      | 1.5  |      | 11.0 | 12.0|       | 25.0 |  15.0  |
 Mikellides et al (2005)      | 1.5  |      | 12.0 |     | 0.22  | 25.4 |  15.0  |
 Goebel et al (JAP 2005)      | 2.0  |      |      |     |       |      |  15.0  |
