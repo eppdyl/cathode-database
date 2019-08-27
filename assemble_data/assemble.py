@@ -149,3 +149,8 @@ for idx in pdf.index:
         
         alldata = alldata.append(tmp,ignore_index=True)
 
+### Populate references
+alldata.loc[0:4,'reference'] = 'K. K. Jameson, D. M. Goebel, and R. M. Watkins, "Hollow Cathode and Keeper-Region Plasma Measurements," 41st AIAA/ASME/SAE/ASEE Joint Propulsion Conference and Exhibit, 2005.'
+alldata.loc[0:4,'note'] = 'Figure 3 - Pressure measured inside the 1/4" hollow cathode for various NSTAR throttle levels. The throttle levels TH4, TH8, TH15 are from: V. Rawlin, J. Sovey, J. Anderson, and J. Polk, "NSTAR flight thruster qualification testing," 34th AIAA/ASME/SAE/ASEE JPC, 1998.TH12: W. G. Tighe, K. Chien, D. M. Goebel, and R. T. Longo, “Hollow Cathode Ignition and Life Model,” 41st AIAA/ASME/SAE/ASEE Jt. Propuls. Conf. Exhib., 2005.
+
+
