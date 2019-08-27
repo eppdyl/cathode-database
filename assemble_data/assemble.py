@@ -3,6 +3,7 @@ import numpy as np
 
 from cathode.experimental.load_data import load_all_data
 
+
 def assign_geometry(idx):
     if idx == 'NSTAR':
         # Length before actual pressure measurement and emitter length
