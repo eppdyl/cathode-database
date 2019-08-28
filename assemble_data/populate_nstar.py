@@ -19,7 +19,7 @@ def populate_th8(alldata,root,cat_root):
     Te_data = data[~np.isnan(data[:,2])][:,[0,2]]
     phip_data = data[~np.isnan(data[:,1])][:,[0,1]]    
     
-    bcond = (alldata.cathode=='NSTAR') & (alldata.dischargeCurrent == 8.24) & (alldata.massFlowRate == 3.7*cc.sccm2eqA)
+    bcond = (alldata.cathode=='NSTAR') & (alldata.dischargeCurrent == 8.24) & (alldata.massFlowRate == 2.47*cc.sccm2eqA)
     alldata.loc[bcond,'electronDensity'] = alldata.loc[bcond,'electronDensity'].apply(lambda x: np.copy(ne_data))
     alldata.loc[bcond,'electronTemperature'] = alldata.loc[bcond,'electronTemperature'].apply(lambda x: np.copy(Te_data))
     alldata.loc[bcond,'plasmaPotential'] = alldata.loc[bcond,'plasmaPotential'].apply(lambda x: np.copy(phip_data))
