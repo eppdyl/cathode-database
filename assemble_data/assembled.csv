@@ -701,7 +701,7 @@
 363,T6,15.0,0.5074641700650496,Xe,1.0,2.0,2.0,25.4,,,521.212,,28.604,,,,,,"[1] S. W. Patterson, D. G. Fearn, ""The generation of high energy ions in hollow cathode discharges"", IEPC, 1999; [2] D. G. Fearn, S. W. Patterson, ""Characterisation of the high current hollow cathode for the T6 thruster"", 34th JPC, 1998","[1] Fig 15 Measured pressure as mdot is varied; [2] Fig 16 The influence of orifice diameter and flow rate on temperature at 15 A; Extracted from Fig. 15. Gas is xenon. Mass flow rate error: 1 to 2%. The orifice diameter is probably 1 mm as Ref. [1] refers to Ref. [2], which uses 1 mm in Figs 6 and 12. [2] Fig 16 The wall temperature is the exterior casing temperature, NOT the insert temperature."
 364,T6,15.0,0.559021607901932,Xe,1.0,2.0,2.0,25.4,,,522.049,,30.0043,,,,,,"[1] S. W. Patterson, D. G. Fearn, ""The generation of high energy ions in hollow cathode discharges"", IEPC, 1999; [2] D. G. Fearn, S. W. Patterson, ""Characterisation of the high current hollow cathode for the T6 thruster"", 34th JPC, 1998","[1] Fig 15 Measured pressure as mdot is varied; [2] Fig 16 The influence of orifice diameter and flow rate on temperature at 15 A; Extracted from Fig. 15. Gas is xenon. Mass flow rate error: 1 to 2%. The orifice diameter is probably 1 mm as Ref. [1] refers to Ref. [2], which uses 1 mm in Figs 6 and 12. [2] Fig 16 The wall temperature is the exterior casing temperature, NOT the insert temperature."
 365,T6,15.0,0.7532491916146998,Xe,1.0,2.0,2.0,25.4,,,522.0,,41.0558,,,,,,"[1] S. W. Patterson, D. G. Fearn, ""The generation of high energy ions in hollow cathode discharges"", IEPC, 1999; [2] D. G. Fearn, S. W. Patterson, ""Characterisation of the high current hollow cathode for the T6 thruster"", 34th JPC, 1998","[1] Fig 15 Measured pressure as mdot is varied; [2] Fig 16 The influence of orifice diameter and flow rate on temperature at 15 A; Extracted from Fig. 15. Gas is xenon. Mass flow rate error: 1 to 2%. The orifice diameter is probably 1 mm as Ref. [1] refers to Ref. [2], which uses 1 mm in Figs 6 and 12. [2] Fig 16 The wall temperature is the exterior casing temperature, NOT the insert temperature."
-366,NEXIS,25.0,0.39459729621915485,Xe,[2.],[0.74],[12.7],[25.4],[120.],,,,,,,"[[-3.72420e+00  3.60070e+19]
+366,NEXIS,25.0,0.39459729621915485,Xe,2.0,0.74,12.7,25.4,120.0,,,,,,,"[[-3.72420e+00  3.60070e+19]
  [-3.44350e+00  3.96040e+19]
  [-3.05520e+00  4.31980e+19]
  [-2.68820e+00  4.75130e+19]
@@ -825,7 +825,7 @@
  [21.6184  8.5191]
  [25.9839  7.5679]
  [28.1865  6.9808]]","I. G. Mikellides, I. Katz, D. M. Goebel, and J. E. Polk, ""Hollow cathode theory and experiment. II. A two-dimensional theoretical model of the emitter region,"" J. Appl. Phys., vol. 98, no. 2005, pp. 0–14, 2005.",Fig. 5
-367,NEXIS,25.0,0.7174496294893724,Xe,[2.0],[0.74],[12.7],[25.4],[120.0],,,,,,,"[[         nan          nan]
+367,NEXIS,25.0,0.7174496294893724,Xe,2.0,0.74,12.7,25.4,120.0,,,,,,,"[[         nan          nan]
  [-3.47380e+00  8.70350e+19]
  [-3.15440e+00  9.63430e+19]
  [-2.87050e+00  1.07048e+20]
@@ -3901,7 +3901,7 @@
  [3.50091000e+01 3.52663083e+18]
  [3.53875000e+01 3.00981637e+18]
  [3.59028000e+01 2.56873912e+18]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
-395,JPL-1.5cm-3mm,25.0,0.753322110963841,Xe,3,1.0,7.0,25.4,13.0,,,,,,,"[[-1.78000000e-02  1.74485764e+20]
+395,JPL-1.5cm-3mm,25.0,0.753322110963841,Xe,3.0,1.0,7.0,25.4,13.0,,,,,,,"[[-1.78000000e-02  1.74485764e+20]
  [ 6.41100000e-01  2.97680235e+20]
  [ 1.40060000e+00  4.53837105e+20]
  [ 2.51330000e+00  6.54078690e+20]
@@ -3931,7 +3931,7 @@
  [ 4.00115000e+01  1.36624945e+18]
  [ 4.17281000e+01  1.20389885e+18]
  [ 4.45054000e+01  1.09106343e+18]]",,,"G. Becatti, D. M. Goebel, J. E. Polk, and P. Guerrero, ""Life Evaluation of a Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thruster,"" J. Propuls. Power, vol. 34, no. 4, pp. 893–900, 2017.",Fig. 6b
-396,JPL-1.5cm-3mm,25.0,0.9398590146310779,Xe,3,1.0,7.0,25.4,13.0,,,,,,,"[[1.34200000e-01 1.92526271e+20]
+396,JPL-1.5cm-3mm,25.0,0.9398590146310779,Xe,3.0,1.0,7.0,25.4,13.0,,,,,,,"[[1.34200000e-01 1.92526271e+20]
  [7.93500000e-01 3.57363341e+20]
  [1.50260000e+00 5.76341643e+20]
  [2.56470000e+00 8.07606861e+20]
@@ -3958,7 +3958,7 @@
  [3.57203000e+01 2.02520971e+18]
  [3.69820000e+01 1.64021206e+18]
  [3.88495000e+01 1.27353240e+18]]",,,"G. Becatti, D. M. Goebel, J. E. Polk, and P. Guerrero, ""Life Evaluation of a Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thruster,"" J. Propuls. Power, vol. 34, no. 4, pp. 893–900, 2017.",Fig. 6b
-397,JPL-1.5cm-3mm,25.0,1.068999947939165,Xe,3,1.0,7.0,25.4,13.0,,,,,,,"[[3.42000000e-02 2.44500640e+20]
+397,JPL-1.5cm-3mm,25.0,1.068999947939165,Xe,3.0,1.0,7.0,25.4,13.0,,,,,,,"[[3.42000000e-02 2.44500640e+20]
  [7.94200000e-01 4.23028863e+20]
  [1.55410000e+00 7.21705475e+20]
  [2.86840000e+00 9.29501297e+20]
@@ -3989,7 +3989,7 @@
  [3.59718000e+01 1.61729782e+18]
  [3.78900000e+01 1.29154636e+18]
  [4.31404000e+01 7.89659746e+17]]",,,"G. Becatti, D. M. Goebel, J. E. Polk, and P. Guerrero, ""Life Evaluation of a Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thruster,"" J. Propuls. Power, vol. 34, no. 4, pp. 893–900, 2017.",Fig. 6b
-398,JPL-1.5cm-3mm,25.0,1.4205502663889575,Xe,3,1.0,7.0,25.4,13.0,,,,,,,"[[3.53000000e-02 3.14898071e+20]
+398,JPL-1.5cm-3mm,25.0,1.4205502663889575,Xe,3.0,1.0,7.0,25.4,13.0,,,,,,,"[[3.53000000e-02 3.14898071e+20]
  [7.44800000e-01 5.44828729e+20]
  [1.20130000e+00 8.42403185e+20]
  [2.11130000e+00 1.04013569e+21]
@@ -4026,7 +4026,7 @@
  [4.08179000e+01 9.47981801e+17]
  [4.25352000e+01 9.61413022e+17]
  [4.37471000e+01 9.21700875e+17]]",,,"G. Becatti, D. M. Goebel, J. E. Polk, and P. Guerrero, ""Life Evaluation of a Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thruster,"" J. Propuls. Power, vol. 34, no. 4, pp. 893–900, 2017.",Fig. 6b
-399,JPL-1.5cm-5mm,25.0,0.753322110963841,Xe,5,1.0,7.0,25.4,13.0,,,,,,,"[[8.03000000e-02 9.00036247e+19]
+399,JPL-1.5cm-5mm,25.0,0.753322110963841,Xe,5.0,1.0,7.0,25.4,13.0,,,,,,,"[[8.03000000e-02 9.00036247e+19]
  [1.04010000e+00 1.18708003e+20]
  [2.20190000e+00 1.60957049e+20]
  [3.51510000e+00 2.24367526e+20]
@@ -4063,7 +4063,7 @@
  [4.66830000e+01 1.94088588e+18]
  [4.78928000e+01 1.51202858e+18]
  [4.88002000e+01 1.24511653e+18]]",,,"G. Becatti, D. M. Goebel, J. E. Polk, and P. Guerrero, ""Life Evaluation of a Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thruster,"" J. Propuls. Power, vol. 34, no. 4, pp. 893–900, 2017.",Fig. 6a
-400,JPL-1.5cm-5mm,25.0,0.9398590146310779,Xe,5,1.0,7.0,25.4,13.0,,,,,,,"[[1.81600000e-01 9.91676450e+19]
+400,JPL-1.5cm-5mm,25.0,0.9398590146310779,Xe,5.0,1.0,7.0,25.4,13.0,,,,,,,"[[1.81600000e-01 9.91676450e+19]
  [1.14180000e+00 1.42131389e+20]
  [2.30380000e+00 2.03699517e+20]
  [3.66740000e+00 2.72383001e+20]
@@ -4110,7 +4110,7 @@
  [4.66800000e+01 9.70867582e+17]
  [4.73860000e+01 8.93264346e+17]
  [4.85461000e+01 8.33201417e+17]]",,,"G. Becatti, D. M. Goebel, J. E. Polk, and P. Guerrero, ""Life Evaluation of a Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thruster,"" J. Propuls. Power, vol. 34, no. 4, pp. 893–900, 2017.",Fig. 6a
-401,JPL-1.5cm-5mm,25.0,1.068999947939165,Xe,5,1.0,7.0,25.4,13.0,,,,,,,"[[3.09000000e-02 1.15496813e+20]
+401,JPL-1.5cm-5mm,25.0,1.068999947939165,Xe,5.0,1.0,7.0,25.4,13.0,,,,,,,"[[3.09000000e-02 1.15496813e+20]
  [8.39500000e-01 1.56617396e+20]
  [1.74920000e+00 2.21391019e+20]
  [2.60810000e+00 2.92004806e+20]
@@ -4151,7 +4151,7 @@
  [4.28484000e+01 1.88986160e+18]
  [4.37053000e+01 1.55628811e+18]
  [4.44614000e+01 1.33604166e+18]]",,,"G. Becatti, D. M. Goebel, J. E. Polk, and P. Guerrero, ""Life Evaluation of a Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thruster,"" J. Propuls. Power, vol. 34, no. 4, pp. 893–900, 2017.",Fig. 6a
-402,JPL-1.5cm-5mm,25.0,1.4205502663889575,Xe,5,1.0,7.0,25.4,13.0,,,,,,,"[[-1.19200000e-01  1.54504097e+20]
+402,JPL-1.5cm-5mm,25.0,1.4205502663889575,Xe,5.0,1.0,7.0,25.4,13.0,,,,,,,"[[-1.19200000e-01  1.54504097e+20]
  [ 5.88500000e-01  2.09522178e+20]
  [ 1.49830000e+00  3.00303228e+20]
  [ 2.45810000e+00  3.96077343e+20]
@@ -4191,7 +4191,7 @@
  [ 4.54174000e+01  7.26039084e+17]
  [ 4.67289000e+01  6.77204757e+17]
  [ 4.82929000e+01  6.76908550e+17]]",,,"G. Becatti, D. M. Goebel, J. E. Polk, and P. Guerrero, ""Life Evaluation of a Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thruster,"" J. Propuls. Power, vol. 34, no. 4, pp. 893–900, 2017.",Fig. 6a
-403,JPL-1.5cm-3mm,8.9,0.9326845183361842,Xe,3,1.0,7.0,25.4,13.0,,,,,,,"[[1.95390000e+00 4.41651795e+20]
+403,JPL-1.5cm-3mm,8.9,0.9326845183361842,Xe,3.0,1.0,7.0,25.4,13.0,,,,,,,"[[1.95390000e+00 4.41651795e+20]
  [3.00600000e+00 5.21230715e+20]
  [4.35870000e+00 5.43262840e+20]
  [5.46090000e+00 5.43262840e+20]
@@ -4220,7 +4220,7 @@
  [3.27655000e+01 1.67116757e+18]
  [3.38677000e+01 1.33998519e+18]
  [3.65731000e+01 8.26551655e+17]]",,,"G. Becatti, D. M. Goebel, J. E. Polk, and P. Guerrero, ""Life Evaluation of a Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thruster,"" J. Propuls. Power, vol. 34, no. 4, pp. 893–900, 2017.",Fig. 7b
-404,JPL-1.5cm-3mm,15.6,0.9326845183361842,Xe,3,1.0,7.0,25.4,13.0,,,,,,,"[[1.00200000e-01 1.82553431e+20]
+404,JPL-1.5cm-3mm,15.6,0.9326845183361842,Xe,3.0,1.0,7.0,25.4,13.0,,,,,,,"[[1.00200000e-01 1.82553431e+20]
  [8.51700000e-01 3.44484749e+20]
  [1.85370000e+00 5.14079162e+20]
  [3.30660000e+00 6.23677390e+20]
@@ -4242,7 +4242,7 @@
  [3.13126000e+01 4.45327998e+18]
  [3.22144000e+01 3.02565914e+18]
  [3.35170000e+01 1.89225648e+18]]",,,"G. Becatti, D. M. Goebel, J. E. Polk, and P. Guerrero, ""Life Evaluation of a Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thruster,"" J. Propuls. Power, vol. 34, no. 4, pp. 893–900, 2017.",Fig. 7b
-405,JPL-1.5cm-3mm,25.1,0.9326845183361842,Xe,3,1.0,7.0,25.4,13.0,,,,,,,"[[5.01000000e-02 1.98317026e+20]
+405,JPL-1.5cm-3mm,25.1,0.9326845183361842,Xe,3.0,1.0,7.0,25.4,13.0,,,,,,,"[[5.01000000e-02 1.98317026e+20]
  [5.51100000e-01 3.12751931e+20]
  [1.05210000e+00 4.93230586e+20]
  [2.20440000e+00 7.56658648e+20]
@@ -4269,7 +4269,7 @@
  [3.84770000e+01 1.30349689e+18]
  [4.04309000e+01 1.08935643e+18]
  [4.47896000e+01 9.23060145e+17]]",,,"G. Becatti, D. M. Goebel, J. E. Polk, and P. Guerrero, ""Life Evaluation of a Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thruster,"" J. Propuls. Power, vol. 34, no. 4, pp. 893–900, 2017.",Fig. 7b
-406,JPL-1.5cm-3mm,31.3,0.9326845183361842,Xe,3,1.0,7.0,25.4,13.0,,,,,,,"[[1.77636000e-15 3.04235578e+20]
+406,JPL-1.5cm-3mm,31.3,0.9326845183361842,Xe,3.0,1.0,7.0,25.4,13.0,,,,,,,"[[1.77636000e-15 3.04235578e+20]
  [5.01000000e-01 4.73216632e+20]
  [1.05210000e+00 6.96514240e+20]
  [1.90380000e+00 9.70085471e+20]
@@ -4298,7 +4298,7 @@
  [4.07315000e+01 1.25060454e+18]
  [4.24850000e+01 1.15119793e+18]
  [4.44890000e+01 1.15119793e+18]]",,,"G. Becatti, D. M. Goebel, J. E. Polk, and P. Guerrero, ""Life Evaluation of a Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thruster,"" J. Propuls. Power, vol. 34, no. 4, pp. 893–900, 2017.",Fig. 7b
-407,JPL-1.5cm-5mm,8.9,0.9326845183361842,Xe,5,1.0,7.0,25.4,13.0,,,,,,,"[[3.66830000e+00 1.18880329e+20]
+407,JPL-1.5cm-5mm,8.9,0.9326845183361842,Xe,5.0,1.0,7.0,25.4,13.0,,,,,,,"[[3.66830000e+00 1.18880329e+20]
  [5.17590000e+00 1.42282013e+20]
  [7.13570000e+00 1.70251129e+20]
  [8.89450000e+00 1.84863001e+20]
@@ -4323,7 +4323,7 @@
  [4.64824000e+01 2.31174539e+18]
  [4.81910000e+01 2.01006453e+18]
  [4.93970000e+01 1.87395863e+18]]",,,"G. Becatti, D. M. Goebel, J. E. Polk, and P. Guerrero, ""Life Evaluation of a Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thruster,"" J. Propuls. Power, vol. 34, no. 4, pp. 893–900, 2017.",Fig. 7b
-408,JPL-1.5cm-5mm,15.6,0.9326845183361842,Xe,5,1.0,7.0,25.4,13.0,,,,,,,"[[2.51300000e-01 7.96214349e+19]
+408,JPL-1.5cm-5mm,15.6,0.9326845183361842,Xe,5.0,1.0,7.0,25.4,13.0,,,,,,,"[[2.51300000e-01 7.96214349e+19]
  [1.40700000e+00 1.17386999e+20]
  [2.76380000e+00 1.73053346e+20]
  [4.57290000e+00 2.31419526e+20]
@@ -4348,7 +4348,7 @@
  [4.52261000e+01 1.48333758e+18]
  [4.67839000e+01 1.18675208e+18]
  [4.84422000e+01 1.07582096e+18]]",,,"G. Becatti, D. M. Goebel, J. E. Polk, and P. Guerrero, ""Life Evaluation of a Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thruster,"" J. Propuls. Power, vol. 34, no. 4, pp. 893–900, 2017.",Fig. 7b
-409,JPL-1.5cm-5mm,25.1,0.9326845183361842,Xe,5,1.0,7.0,25.4,13.0,,,,,,,"[[2.51300000e-01 1.06581051e+20]
+409,JPL-1.5cm-5mm,25.1,0.9326845183361842,Xe,5.0,1.0,7.0,25.4,13.0,,,,,,,"[[2.51300000e-01 1.06581051e+20]
  [1.25630000e+00 1.48658587e+20]
  [2.51260000e+00 2.31680776e+20]
  [3.61810000e+00 2.85167481e+20]
@@ -4383,7 +4383,7 @@
  [4.56281000e+01 1.25533605e+18]
  [4.71357000e+01 1.01842722e+18]
  [4.81407000e+01 8.98255738e+17]]",,,"G. Becatti, D. M. Goebel, J. E. Polk, and P. Guerrero, ""Life Evaluation of a Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thruster,"" J. Propuls. Power, vol. 34, no. 4, pp. 893–900, 2017.",Fig. 7b
-410,JPL-1.5cm-5mm,35.1,0.9326845183361842,Xe,5,1.0,7.0,25.4,13.0,,,,,,,"[[1.50800000e-01 1.40714872e+20]
+410,JPL-1.5cm-5mm,35.1,0.9326845183361842,Xe,5.0,1.0,7.0,25.4,13.0,,,,,,,"[[1.50800000e-01 1.40714872e+20]
  [7.03500000e-01 1.93606529e+20]
  [1.35680000e+00 2.81585314e+20]
  [2.71360000e+00 3.76651759e+20]
