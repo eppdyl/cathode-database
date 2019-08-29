@@ -1333,7 +1333,7 @@
  [3.71145000e+01 1.43631601e+19]
  [3.84305000e+01 1.02131568e+19]
  [3.92409000e+01 7.85036772e+18]
- [3.99471000e+01 6.53672177e+18]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.99471000e+01 6.53672177e+18]]",2.26648,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 369,JPL-1.5cm,30.0,0.573959703591498,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[3.95490000e+00 1.79312266e+20]
  [4.26800000e+00 1.87810557e+20]
  [4.52500000e+00 1.93018973e+20]
@@ -1426,7 +1426,7 @@
  [3.88156000e+01 8.81393818e+18]
  [3.91607000e+01 8.01733443e+18]
  [3.94737000e+01 7.51086576e+18]
- [3.98589000e+01 6.87543214e+18]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.98589000e+01 6.87543214e+18]]",2.25549,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 370,JPL-1.5cm,40.0,0.573959703591498,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[4.89470000e+00 2.50576305e+20]
  [5.26410000e+00 2.56980400e+20]
  [5.60130000e+00 2.68027898e+20]
@@ -1507,7 +1507,7 @@
  [3.75345000e+01 5.93389695e+19]
  [3.78154000e+01 5.64157024e+19]
  [3.80079000e+01 5.30749997e+19]
- [3.81604000e+01 5.02481411e+19]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.81604000e+01 5.02481411e+19]]",2.2033,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 371,JPL-1.5cm,50.0,0.573959703591498,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[4.69430000e+00 2.92193130e+20]
  [5.10780000e+00 3.02830769e+20]
  [5.36480000e+00 3.12543161e+20]
@@ -1623,7 +1623,17 @@
  [3.76062000e+01 4.34560252e+19]
  [3.78069000e+01 4.35471763e+19]
  [3.80476000e+01 4.07971664e+19]
- [3.82723000e+01 3.96122946e+19]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.82723000e+01 3.96122946e+19]]","[[ 3.0047  2.3191]
+ [ 8.0215  2.392 ]
+ [ 9.0141  2.4066]
+ [15.0235  1.969 ]
+ [20.0134  1.6481]
+ [29.0543  1.2835]
+ [35.0101  1.2252]]","[[ 7.9946 12.9225]
+ [ 9.0677 12.2954]
+ [14.9966  9.0866]
+ [29.0007  8.4011]
+ [35.0101  8.5907]]","E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 372,JPL-1.5cm,60.0,0.573959703591498,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[4.74270000e+00 3.37155307e+20]
  [4.90330000e+00 3.44318216e+20]
  [5.20040000e+00 3.52387099e+20]
@@ -1688,7 +1698,7 @@
  [3.59769000e+01 5.64183005e+19]
  [3.64584000e+01 4.88933731e+19]
  [3.71485000e+01 4.06265553e+19]
- [3.82718000e+01 2.90094837e+19]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.82718000e+01 2.90094837e+19]]",2.1978,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 373,JPL-1.5cm,70.0,0.573959703591498,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[5.24880000e+00 3.99815844e+20]
  [5.60210000e+00 4.11765542e+20]
  [5.97140000e+00 4.22298948e+20]
@@ -1739,7 +1749,7 @@
  [3.64899000e+01 3.50614603e+19]
  [3.71158000e+01 2.91326506e+19]
  [3.75169000e+01 2.55687796e+19]
- [3.82390000e+01 1.96119149e+19]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.82390000e+01 1.96119149e+19]]",2.17033,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 374,JPL-1.5cm,80.0,0.573959703591498,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[5.32120000e+00 4.38611486e+20]
  [5.72670000e+00 4.58912619e+20]
  [6.12810000e+00 4.71140024e+20]
@@ -1777,7 +1787,7 @@
  [3.48203000e+01 4.07999847e+19]
  [3.57832000e+01 3.10327312e+19]
  [3.69706000e+01 2.03699517e+19]
- [3.82704000e+01 1.26590175e+19]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.82704000e+01 1.26590175e+19]]",2.09615,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 375,JPL-1.5cm,100.0,0.573959703591498,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[5.28130000e+00 5.19039010e+20]
  [5.81130000e+00 5.34564359e+20]
  [6.35720000e+00 5.50541422e+20]
@@ -1888,7 +1898,16 @@
  [3.76591000e+01 6.59234610e+18]
  [3.78195000e+01 5.93376032e+18]
  [3.79800000e+01 5.76142616e+18]
- [3.80761000e+01 5.22985924e+18]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.80761000e+01 5.22985924e+18]]","[[ 3.9703  3.1733]
+ [ 7.9619  3.0133]
+ [14.0026  2.3363]
+ [21.0141  1.5859]
+ [27.9996  1.3541]
+ [35.0122  1.2259]]","[[ 4.0417 13.5289]
+ [ 7.9783 12.7022]
+ [14.0132  8.603 ]
+ [21.0511  7.5119]
+ [27.9827  7.3096]]","E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 376,JPL-1.5cm,90.0,0.573959703591498,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[5.61840000e+00 4.83192295e+20]
  [6.96740000e+00 5.54013057e+20]
  [7.81850000e+00 5.93854429e+20]
@@ -1912,7 +1931,7 @@
  [3.46753000e+01 3.09036659e+19]
  [3.59750000e+01 1.90436416e+19]
  [3.71785000e+01 1.26593090e+19]
- [3.82375000e+01 8.27465699e+18]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.82375000e+01 8.27465699e+18]]",2.13736,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 377,JPL-1.5cm,20.0,0.7174496294893724,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[2.36610000e+00 1.45124254e+20]
  [2.51950000e+00 1.46382783e+20]
  [2.67300000e+00 1.48929249e+20]
@@ -2149,7 +2168,7 @@
  [3.86021000e+01 5.12141536e+18]
  [3.90720000e+01 4.90501116e+18]
  [3.94171000e+01 4.53826655e+18]
- [3.96951000e+01 4.19005767e+18]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.96951000e+01 4.19005767e+18]]",2.18956,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 378,JPL-1.5cm,30.0,0.7174496294893724,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[2.21300000e+00 1.91289001e+20]
  [2.40480000e+00 1.91289001e+20]
  [2.59660000e+00 1.94616653e+20]
@@ -2354,7 +2373,7 @@
  [3.93212000e+01 4.67745911e+18]
  [3.95321000e+01 4.39369595e+18]
  [3.98198000e+01 4.24453384e+18]
- [3.98485000e+01 4.03905717e+18]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.98485000e+01 4.03905717e+18]]",2.15659,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 379,JPL-1.5cm,40.0,0.7174496294893724,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[4.13160000e+00 2.84491962e+20]
  [4.28500000e+00 2.86952492e+20]
  [4.47680000e+00 2.86952492e+20]
@@ -2560,7 +2579,7 @@
  [3.78086000e+01 2.93420194e+19]
  [3.79236000e+01 2.83458836e+19]
  [3.80386000e+01 2.73841963e+19]
- [3.81919000e+01 2.49034777e+19]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.81919000e+01 2.49034777e+19]]",2.15934,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 380,JPL-1.5cm,50.0,0.7174496294893724,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[3.70980000e+00 3.38095975e+20]
  [3.90160000e+00 3.35189187e+20]
  [4.05510000e+00 3.43977472e+20]
@@ -2754,7 +2773,19 @@
  [3.80382000e+01 2.02446373e+19]
  [3.81149000e+01 1.95573496e+19]
  [3.82299000e+01 1.90576787e+19]
- [3.83834000e+01 1.87313897e+19]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.83834000e+01 1.87313897e+19]]","[[ 2.9779  2.4795]
+ [ 7.002   2.2315]
+ [ 7.9678  2.2461]
+ [13.9504  1.8523]
+ [20.0134  1.4731]
+ [27.9812  1.196 ]
+ [34.9832  1.2106]]","[[ 2.9779 15.2124]
+ [ 7.002  11.814 ]
+ [ 7.9946 10.618 ]
+ [14.004   9.2325]
+ [20.0134  8.722 ]
+ [28.008   8.7949]
+ [34.9832  7.0884]]","E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 381,JPL-1.5cm,60.0,0.7174496294893724,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[3.78680000e+00 3.91525452e+20]
  [3.97860000e+00 3.98336405e+20]
  [4.13200000e+00 4.05265841e+20]
@@ -2973,7 +3004,7 @@
  [3.79994000e+01 1.40889945e+19]
  [3.80760000e+01 1.36109989e+19]
  [3.82294000e+01 1.31489175e+19]
- [3.83828000e+01 1.29237932e+19]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.83828000e+01 1.29237932e+19]]",1.98077,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 382,JPL-1.5cm,70.0,0.7174496294893724,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[3.59510000e+00 4.30516697e+20]
  [3.78690000e+00 4.34250173e+20]
  [3.94040000e+00 4.38005940e+20]
@@ -3194,7 +3225,7 @@
  [3.78838000e+01 9.80528000e+18]
  [3.79988000e+01 9.47239936e+18]
  [3.81139000e+01 9.23038891e+18]
- [3.81905000e+01 8.91702532e+18]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.81905000e+01 8.91702532e+18]]",1.98626,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 383,JPL-1.5cm,80.0,0.7174496294893724,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[4.24270000e+00 5.11057775e+20]
  [5.19220000e+00 5.58907580e+20]
  [5.82040000e+00 5.87327046e+20]
@@ -3364,7 +3395,7 @@
  [3.74999000e+01 8.00552835e+18]
  [3.76341000e+01 7.47136580e+18]
  [3.79216000e+01 6.76519003e+18]
- [3.80941000e+01 6.28666039e+18]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.80941000e+01 6.28666039e+18]]",1.91484,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 384,JPL-1.5cm,90.0,0.7174496294893724,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[4.32430000e+00 5.54127878e+20]
  [4.66960000e+00 5.67427004e+20]
  [5.40810000e+00 6.14568080e+20]
@@ -3515,7 +3546,7 @@
  [3.73267000e+01 5.31312459e+18]
  [3.75759000e+01 4.70836367e+18]
  [3.78059000e+01 4.30031234e+18]
- [3.80551000e+01 3.79446018e+18]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.80551000e+01 3.79446018e+18]]",1.91758,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 385,JPL-1.5cm,100.0,0.7174496294893724,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[4.70800000e+00 6.23935936e+20]
  [4.89980000e+00 6.23935936e+20]
  [5.05330000e+00 6.29332268e+20]
@@ -3664,7 +3695,15 @@
  [3.61471000e+01 5.33641996e+18]
  [3.67414000e+01 4.39440419e+18]
  [3.73070000e+01 3.75387667e+18]
- [3.81410000e+01 2.95426875e+18]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.81410000e+01 2.95426875e+18]]","[[ 3.9706  3.3511]
+ [ 7.9616  2.8207]
+ [14.0021  2.0548]
+ [19.9891  1.5407]
+ [26.9747  1.3978]]","[[ 4.0421 13.766 ]
+ [ 7.9479 10.717 ]
+ [13.985   7.9215]
+ [19.9993  7.5852]
+ [26.9822  5.8126]]","E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 386,JPL-1.5cm,20.0,0.860939555387247,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[4.57320000e+00 2.68404628e+20]
  [4.99190000e+00 2.84367526e+20]
  [5.36640000e+00 2.98868401e+20]
@@ -3749,7 +3788,7 @@
  [3.45659000e+01 1.73057330e+18]
  [3.50812000e+01 1.52946661e+18]
  [3.55321000e+01 1.31592155e+18]
- [3.57978000e+01 1.19464811e+18]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.57978000e+01 1.19464811e+18]]",1.73626,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 387,JPL-1.5cm,30.0,0.860939555387247,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[4.09420000e+00 3.55852483e+20]
  [4.49680000e+00 3.78033250e+20]
  [4.77870000e+00 3.90948904e+20]
@@ -3832,7 +3871,7 @@
  [3.44293000e+01 3.00151142e+18]
  [3.57817000e+01 1.39604687e+18]
  [3.66352000e+01 1.08457603e+18]
- [3.74402000e+01 7.60851673e+17]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.74402000e+01 7.60851673e+17]]",1.79121,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 388,JPL-1.5cm,40.0,0.860939555387247,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[3.60700000e+00 3.96734529e+20]
  [4.07410000e+00 4.10846886e+20]
  [4.43650000e+00 4.19778315e+20]
@@ -3905,7 +3944,7 @@
  [3.76345000e+01 7.79076312e+18]
  [3.78036000e+01 7.07277757e+18]
  [3.79646000e+01 6.28434472e+18]
- [3.82061000e+01 5.59899397e+18]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.82061000e+01 5.59899397e+18]]",1.68132,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 389,JPL-1.5cm,50.0,0.860939555387247,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[3.76010000e+00 4.91846970e+20]
  [4.38820000e+00 5.21819134e+20]
  [5.12100000e+00 5.55098431e+20]
@@ -3953,7 +3992,15 @@
  [3.40678000e+01 2.12711025e+19]
  [3.52030000e+01 1.41416473e+19]
  [3.61610000e+01 9.40156169e+18]
- [3.81013000e+01 4.18899652e+18]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.81013000e+01 4.18899652e+18]]","[[ 4.9899  2.1732]
+ [ 8.9873  2.1003]
+ [14.9966  1.5169]
+ [19.9866  1.1814]
+ [27.0154  1.0793]]","[[ 4.9899 10.8952]
+ [ 9.0141 10.1222]
+ [14.9966  8.6199]
+ [19.9866  8.1094]
+ [26.9886  7.9198]]","E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 390,JPL-1.5cm,90.0,0.860939555387247,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[4.90380000e+00 9.02651275e+20]
  [5.58020000e+00 9.22295310e+20]
  [6.17610000e+00 9.37324567e+20]
@@ -4019,7 +4066,7 @@
  [3.57576000e+01 1.67583015e+18]
  [3.63293000e+01 1.51324762e+18]
  [3.70781000e+01 1.35915817e+18]
- [3.77948000e+01 1.31259275e+18]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.77948000e+01 1.31259275e+18]]",1.57418,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 391,JPL-1.5cm,60.0,0.860939555387247,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[3.88900000e+00 5.80991796e+20]
  [4.58960000e+00 6.13084025e+20]
  [5.00840000e+00 6.28101745e+20]
@@ -4054,7 +4101,7 @@
  [3.42126000e+01 1.54514770e+19]
  [3.54766000e+01 9.15208405e+18]
  [3.66037000e+01 5.46462041e+18]
- [3.80689000e+01 3.10063039e+18]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.80689000e+01 3.10063039e+18]]",1.45055,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 392,JPL-1.5cm,70.0,0.860939555387247,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[4.21930000e+00 6.91846901e+20]
  [4.76680000e+00 7.18372998e+20]
  [5.60430000e+00 7.47962802e+20]
@@ -4102,7 +4149,7 @@
  [3.65472000e+01 4.08855647e+18]
  [3.69497000e+01 3.48000606e+18]
  [3.72074000e+01 3.23660723e+18]
- [3.76985000e+01 2.78464604e+18]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.76985000e+01 2.78464604e+18]]",1.6978,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 393,JPL-1.5cm,80.0,0.860939555387247,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[4.44480000e+00 7.59031850e+20]
  [4.94400000e+00 7.88152033e+20]
  [5.51580000e+00 8.17278360e+20]
@@ -4148,7 +4195,7 @@
  [3.53474000e+01 4.76463899e+18]
  [3.59915000e+01 3.66201400e+18]
  [3.65873000e+01 2.87567631e+18]
- [3.73038000e+01 2.28875866e+18]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.73038000e+01 2.28875866e+18]]",1.60989,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 394,JPL-1.5cm,100.0,0.860939555387247,Xe,3.8,1.0,7.0,25.4,13.0,,,,,,,"[[4.67830000e+00 8.26075991e+20]
  [5.15340000e+00 8.46311028e+20]
  [5.68490000e+00 8.62402486e+20]
@@ -4195,7 +4242,15 @@
  [3.44858000e+01 4.51512731e+18]
  [3.50091000e+01 3.52663083e+18]
  [3.53875000e+01 3.00981637e+18]
- [3.59028000e+01 2.56873912e+18]]",,,"E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
+ [3.59028000e+01 2.56873912e+18]]","[[ 3.9427  2.8029]
+ [ 7.9876  2.2578]
+ [13.9745  1.6696]
+ [21.0135  1.2304]
+ [28.0263  1.2059]]","[[ 4.0091 10.2104]
+ [ 7.9714  8.6133]
+ [13.9572  7.4029]
+ [21.0233  7.023 ]
+ [28.0063  5.3244]]","E. Chu and D. M. Goebel, ""High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,"" IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.",Fig. 9
 395,JPL-1.5cm-3mm,25.0,0.753322110963841,Xe,3.0,1.0,7.0,25.4,13.0,,,,,,,"[[-1.78000000e-02  1.74485764e+20]
  [ 6.41100000e-01  2.97680235e+20]
  [ 1.40060000e+00  4.53837105e+20]
