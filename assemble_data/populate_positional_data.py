@@ -23,7 +23,7 @@ def populate_NSTAR(alldata):
 
 
 def populate_JPL_lab6(alldata):
-    jpl_lab6_root = '/jpl/goebel-lab6-cathodes/1.5cm-cathode/staging/'
+    jpl_lab6_root = '/original-material/chu-ieee-2012/csv/'
     
     alldata = populate_chu_2012(alldata,root,jpl_lab6_root)
     
