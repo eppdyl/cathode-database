@@ -3,8 +3,8 @@ import numpy as np
 
 from cathode.experimental.load_data import load_all_data
 
+from import_db import dtypes
 from populate_positional_data import populate_NEXIS, populate_NSTAR, populate_JPL_lab6
-
 
 def assign_geometry(idx):
     if idx == 'NSTAR':
@@ -37,29 +37,6 @@ def assign_geometry(idx):
         
 # Load all of the data
 pdf = load_all_data()
-
-### Columns
-dtypes = np.dtype([
-        ('cathode',str), # Cathode name
-       ('dischargeCurrent',float), # Discharge current , A
-       ('massFlowRate',float), # Mass flow rate, eqA
-       ('gas',str), # Gas used (periodic table shortcut)
-       ('orificeDiameter',float), # Orifice diam, mm
-       ('orificeLength',float), # Orifice length, mm
-       ('insertDiameter',float), # Insert diameter, mm
-       ('insertLength',float), # Insert length, mm
-       ('upstreamPressurePoint',float), # Distance upstream of the emitter where the pressure is measured, mm
-       ('orificeTemperature',float), # Orifice temperature, degC
-       ('insertTemperatureAverage',float), # Average insert temperature, degC
-       ('insertTemperature',np.ndarray), # Insert temperature vs. position, degC
-       ('totalPressure',float), # Total pressure, Torr
-       ('totalPressureError_p',float), # Total pressure error (+)
-       ('totalPressureError_m',float), # Total pressure error (-) 
-       ('electronDensity',np.ndarray), # Density vs. position, 1/m3
-       ('electronTemperature',np.ndarray), # Electron temp. vs position, eV
-       ('plasmaPotential',np.ndarray), # Plasma potential vs position, V
-       ('reference',str), # Literature reference
-        ('note',str)]) # Any noteworthy comment
 
 # Empty dataframe
 data = np.empty(0, dtype=dtypes)
