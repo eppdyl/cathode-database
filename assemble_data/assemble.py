@@ -4,7 +4,7 @@ import numpy as np
 from cathode.experimental.load_data import load_all_data
 
 from import_db import dtypes
-from populate_positional_data import populate_NEXIS, populate_NSTAR, populate_JPL_lab6
+from populate_positional_data import populate_NEXIS, populate_NSTAR, populate_JPL_lab6, populate_Salhi
 
 def assign_geometry(idx):
     if idx == 'NSTAR':
@@ -294,8 +294,8 @@ t6_notes = ("[1] Fig 15 Measured pressure as mdot is varied; "
 alldata.loc[alldata.cathode=='T6','reference'] = t6_ref
 alldata.loc[alldata.cathode=='T6','note'] = t6_notes
 
-### DENSITY DATA
+### DENSITY AND TEMPERATURE DATA
 alldata = populate_NSTAR(alldata)
 alldata = populate_NEXIS(alldata)
 alldata = populate_JPL_lab6(alldata)
-
+alldata = populate_Salhi(alldata)
