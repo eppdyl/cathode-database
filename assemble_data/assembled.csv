@@ -697,10 +697,24 @@
 64,Salhi-Xe,1.0,0.5,Xe,1.21,1.24,3.81,25.4,130.0,,,,6.4821,,,,,,"A. Salhi, ""Theoretical and experimental studies of orificed, hollow cathode operation,"" The Ohio State University, 1993","Xe, mdot = 0.5 A, T vs Id for 1.21 mm: Fig 5.68"
 65,Salhi-Xe,4.0,0.5,Xe,1.21,1.24,3.81,25.4,130.0,,,,7.4156,,,,,,"A. Salhi, ""Theoretical and experimental studies of orificed, hollow cathode operation,"" The Ohio State University, 1993","Xe, mdot = 0.5 A, T vs Id for 1.21 mm: Fig 5.68"
 66,Salhi-Xe,7.0,0.5,Xe,1.21,1.24,3.81,25.4,130.0,,958.632,,7.9451,,,,,,"A. Salhi, ""Theoretical and experimental studies of orificed, hollow cathode operation,"" The Ohio State University, 1993","Xe, mdot = 0.5 A, T vs Id for 1.21 mm: Fig 5.68"
-67,Salhi-Xe,10.0,0.5,Xe,1.21,1.24,3.81,25.4,130.0,,1019.369,,8.506,,,,,,"A. Salhi, ""Theoretical and experimental studies of orificed, hollow cathode operation,"" The Ohio State University, 1993","Xe, mdot = 0.5 A, T vs Id for 1.21 mm: Fig 5.68"
+67,Salhi-Xe,10.0,0.5,Xe,1.21,1.24,3.81,25.4,130.0,,1019.369,,8.506,,,,0.98,,"A. Salhi, ""Theoretical and experimental studies of orificed, hollow cathode operation,"" The Ohio State University, 1993","Xe, mdot = 0.5 A, T vs Id for 1.21 mm: Fig 5.68"
 68,Salhi-Xe,13.0,0.5,Xe,1.21,1.24,3.81,25.4,130.0,,1050.826,,9.0565,,,,,,"A. Salhi, ""Theoretical and experimental studies of orificed, hollow cathode operation,"" The Ohio State University, 1993","Xe, mdot = 0.5 A, T vs Id for 1.21 mm: Fig 5.68"
-69,Salhi-Xe,15.0,0.5,Xe,1.21,1.24,3.81,25.4,130.0,,1084.142,,9.5774,,,,,,"A. Salhi, ""Theoretical and experimental studies of orificed, hollow cathode operation,"" The Ohio State University, 1993","Xe, mdot = 0.5 A, T vs Id for 1.21 mm: Fig 5.68"
-70,Salhi-Xe,20.0,0.5,Xe,1.21,1.24,3.81,25.4,130.0,,,,10.6381,,,,,,"A. Salhi, ""Theoretical and experimental studies of orificed, hollow cathode operation,"" The Ohio State University, 1993","Xe, mdot = 0.5 A, T vs Id for 1.21 mm: Fig 5.68"
+69,Salhi-Xe,15.0,0.5,Xe,1.21,1.24,3.81,25.4,130.0,,1084.142,,9.5774,,,"[[1.00032000e+00 9.29822391e+20]
+ [2.00219000e+00 5.71834034e+20]
+ [3.00410000e+00 3.88347041e+20]
+ [4.00082000e+00 2.30112388e+20]
+ [4.99223000e+00 8.51118440e+19]
+ [5.98907000e+00 6.96209588e+19]
+ [6.98560000e+00 2.42024872e+19]
+ [7.97717000e+00 1.38171986e+19]]","[[0.9992  1.2714 ]
+ [1.9961  1.17075]
+ [3.0102  1.08082]
+ [4.0072  1.04451]
+ [5.0041  0.94744]
+ [6.001   0.82535]
+ [6.998   0.73543]
+ [7.9949  0.64551]]",,"A. Salhi, ""Theoretical and experimental studies of orificed, hollow cathode operation,"" The Ohio State University, 1993","Xe, mdot = 0.5 A, T vs Id for 1.21 mm: Fig 5.68"
+70,Salhi-Xe,20.0,0.5,Xe,1.21,1.24,3.81,25.4,130.0,,,,10.6381,,,,1.07,,"A. Salhi, ""Theoretical and experimental studies of orificed, hollow cathode operation,"" The Ohio State University, 1993","Xe, mdot = 0.5 A, T vs Id for 1.21 mm: Fig 5.68"
 71,Salhi-Xe,2.0,0.93,Xe,1.21,1.24,3.81,25.4,130.0,,848.09,,10.6098,,,,,,"A. Salhi, ""Theoretical and experimental studies of orificed, hollow cathode operation,"" The Ohio State University, 1993","Xe, mdot = 0.93 A, T vs Id for 1.21 mm: Fig 6.3"
 72,Salhi-Xe,3.0,0.93,Xe,1.21,1.24,3.81,25.4,130.0,,893.83,,11.0662,,,,,,"A. Salhi, ""Theoretical and experimental studies of orificed, hollow cathode operation,"" The Ohio State University, 1993","Xe, mdot = 0.93 A, T vs Id for 1.21 mm: Fig 6.3"
 73,Salhi-Xe,5.0,0.93,Xe,1.21,1.24,3.81,25.4,130.0,,936.5,,11.4436,,,,,,"A. Salhi, ""Theoretical and experimental studies of orificed, hollow cathode operation,"" The Ohio State University, 1993","Xe, mdot = 0.93 A, T vs Id for 1.21 mm: Fig 6.3"
@@ -4765,3 +4779,45 @@
  [4.42211000e+01 1.02007006e+18]]",,,"G. Becatti, D. M. Goebel, J. E. Polk, and P. Guerrero, ""Life Evaluation of a Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thruster,"" J. Propuls. Power, vol. 34, no. 4, pp. 893–900, 2017.",Fig. 7b
 411,JPL-1.5cm-3mm,25.0,0.9326845183361842,Xe,3.0,1.0,7.0,25.4,13.0,,,,3.42876,,,,,,"G. Becatti, D. M. Goebel, J. E. Polk, and P. Guerrero, ""Life Evaluation of a Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thruster,"" J. Propuls. Power, vol. 34, no. 4, pp. 893–900, 2017.",Fig. 8
 412,JPL-1.5cm-5mm,25.0,0.9326845183361842,Xe,5.0,1.0,7.0,25.4,13.0,,,,2.41291,,,,,,"G. Becatti, D. M. Goebel, J. E. Polk, and P. Guerrero, ""Life Evaluation of a Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thruster,"" J. Propuls. Power, vol. 34, no. 4, pp. 893–900, 2017.",Fig. 8
+413,Salhi-Xe,5.0,0.5,Xe,1.21,1.24,3.81,25.4,130.0,,,,,,,"[[1.00033000e+00 5.10058512e+20]
+ [2.00749000e+00 2.64496543e+20]
+ [2.99944000e+00 1.05735300e+20]
+ [3.99141000e+00 4.12334810e+19]
+ [5.00365000e+00 2.33190042e+19]
+ [5.99041000e+00 1.00413013e+19]
+ [6.98718000e+00 6.11716225e+18]
+ [7.98427000e+00 2.44534421e+18]
+ [8.99711000e+00 6.10449862e+17]]","[[0.9992  1.45011]
+ [2.0219  1.30298]
+ [3.0102  1.25596]
+ [3.9986  1.20536]
+ [5.0041  1.09399]
+ [6.001   1.03623]
+ [6.9894  0.98206]
+ [8.0035  0.89213]
+ [9.009   0.82007]]",,"A. Salhi, ""Theoretical and experimental studies of orificed,  hollow cathode operation,"" Ph.D. Thesis, The Ohio State University 1993.",Fig. 5.7
+414,Salhi-Xe,9.0,0.5,Xe,1.21,1.24,3.81,25.4,130.0,,,,,,,"[[1.00486000e+00 1.15552674e+21]
+ [1.99621000e+00 1.03359405e+21]
+ [3.00313000e+00 7.48927883e+20]
+ [3.99509000e+00 2.92058601e+20]
+ [4.98727000e+00 8.56524914e+19]
+ [5.98939000e+00 3.97283017e+19]
+ [6.98147000e+00 1.33524205e+19]
+ [7.98374000e+00 4.95530054e+18]
+ [8.99656000e+00 1.28386689e+18]]","[[0.9992  1.42866]
+ [2.0047  1.36733]
+ [3.0016  1.3203 ]
+ [5.0127  1.15474]
+ [6.998   0.83193]
+ [8.0035  0.73129]
+ [9.009   0.6628 ]]",,"A. Salhi, ""Theoretical and experimental studies of orificed,  hollow cathode operation,"" Ph.D. Thesis, The Ohio State University 1993.",Fig. 5.7
+415,Salhi-Xe,3.0,0.5,Xe,1.21,1.24,3.81,25.4,130.0,,,,,,,,1.0,,"A. Salhi, ""Theoretical and experimental studies of orificed,  hollow cathode operation,"" Ph.D. Thesis, The Ohio State University 1993.","Te: Fig. 5.28-5.31, ne: Fig. 5.34-5.36"
+416,Salhi-Xe,12.0,0.5,Xe,1.21,1.24,3.81,25.4,130.0,,,,,,,"[[1.00668000e+00 1.45010684e+21]
+ [2.01335000e+00 5.40729421e+20]
+ [3.00462000e+00 2.11840991e+20]
+ [4.00103000e+00 9.74406113e+19]
+ [4.99230000e+00 4.88652359e+19]
+ [5.98870000e+00 1.98664377e+19]
+ [6.97997000e+00 4.86844200e+18]
+ [7.98151000e+00 1.93098989e+18]
+ [8.98305000e+00 3.93214931e+17]]",,,"A. Salhi, ""Theoretical and experimental studies of orificed,  hollow cathode operation,"" Ph.D. Thesis, The Ohio State University 1993.",ne: Fig. 5.34-5.36
