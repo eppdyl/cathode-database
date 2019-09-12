@@ -7,12 +7,21 @@ import cathode.constants as cc
 zerod_files = ['GOEBEL-1.5CM-LAB6_run_3000K.pkl',
          'GOEBEL-1.5CM-LAB6_run_3000K_12sccm.pkl',
          'NSTAR_run_3000K.pkl',
-         'NEXIS_run_3000K.pkl']
+         'NEXIS_run_3000K.pkl',
+         'Salhi-Xe_run_3000K.pkl',
+         'Friedly_run_3000K.pkl',
+         'plhc_run_2000K.pkl',
+         'Salhi-Ar-1.21_run_3000K.pkl'
+         ]
 
 catname = ['JPL-1.5cm',
            'JPL-1.5cm',
            'NSTAR',
-           'NEXIS']
+           'NEXIS',
+           'Salhi-Xe',
+           'Friedly',
+           'PLHC',
+           'Salhi-Ar-1.21']
 
 def build_zerod_dataframe():
     # Empty dataframe    
@@ -24,6 +33,7 @@ def build_zerod_dataframe():
         
         for entry in data:
             Pgvec = np.zeros((len(entry),2))
+            Ptotvec = np.zeros((len(entry),2))
             
             # Extract conditions
             extract = entry[0]
@@ -44,6 +54,10 @@ def build_zerod_dataframe():
             for idx, elem in enumerate(entry):
                 phis = elem['complete']['phi_s']
                 Pg = elem['complete']['Pg']
+                Ptot = elem['complete']['Ptot']
+                Ptotvec[idx,0] = phis
+                Ptotvec[idx,1] = Ptot
+                
                 Pgvec[idx,0] = phis
                 Pgvec[idx,1] = Pg
                 
@@ -56,7 +70,10 @@ def build_zerod_dataframe():
                                             'insertDiameter': insertDiameter,
                                             'neutralPressure': Pgvec,
                                             'neutralPressureAverage': np.nanmean(Pgvec[:,1]),
-                                            'neutralPressureStd': np.nanstd(Pgvec[:,1])
+                                            'neutralPressureStd': np.nanstd(Pgvec[:,1]),
+                                            'totalPressure': Ptotvec,
+                                            'totalPressureAverage': np.nanmean(Ptotvec[:,1]),
+                                            'totalPressureStd': np.nanstd(Ptotvec[:,1]),                                
                                             },ignore_index=True)
     
 
