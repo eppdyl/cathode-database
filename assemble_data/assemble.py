@@ -130,6 +130,8 @@ for idx in pdf.index:
         
         tmp['cathode'] = idx
         
+
+        
         alldata = alldata.append(tmp,ignore_index=True)
 
 ### Populate references
@@ -182,6 +184,9 @@ alldata.loc[43:56,'reference'] = NEXIS_ref[0]
 alldata.loc[43:56,'note'] = NEXIS_notes[0]
 alldata.loc[57:63,'reference'] = NEXIS_ref[1]
 alldata.loc[57:63,'note'] = NEXIS_notes[1]
+
+alldata.loc[57:63,'orificeDiameter'] = 2.75 # 2.75 mm explicitely
+alldata.loc[43:56,'orificeDiameter'] = 2.5 # "Between 2 and 3 mm"
 
 # Salhi
 Salhi_ref = ("A. Salhi, \"Theoretical and experimental studies of orificed, " 
@@ -300,6 +305,9 @@ alldata = populate_NSTAR(alldata)
 alldata = populate_NEXIS(alldata)
 alldata = populate_JPL_lab6(alldata)
 alldata = populate_Salhi(alldata)
+
+alldata.loc[366,'orificeDiameter'] = 3.0 
+alldata.loc[367,'orificeDiameter'] = 2.75
 
 ### ADD THE DATA FOR THE PLHC
 alldata = append_PLHC(alldata)
