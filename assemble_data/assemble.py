@@ -5,6 +5,7 @@ from cathode.experimental.load_data import load_all_data
 
 from import_db import dtypes
 from populate_positional_data import populate_NEXIS, populate_NSTAR, populate_JPL_lab6, populate_Salhi
+from populate_PLHC import append_PLHC
 
 def assign_geometry(idx):
     if idx == 'NSTAR':
@@ -299,3 +300,8 @@ alldata = populate_NSTAR(alldata)
 alldata = populate_NEXIS(alldata)
 alldata = populate_JPL_lab6(alldata)
 alldata = populate_Salhi(alldata)
+
+### ADD THE DATA FOR THE PLHC
+alldata = append_PLHC(alldata)
+
+
