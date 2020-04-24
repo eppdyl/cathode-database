@@ -3,7 +3,8 @@ from populate_nstar import populate_th8, populate_th15
 from populate_jpl_lab6 import populate_chu_2012, populate_becatti_2017
 from populate_salhi import populate_salhi_thesis
 
-root = '/Users/Pyt/Documents/Pyt/hollow_cathode/cathode-data'
+#root = '/Users/Pyt/Documents/Pyt/hollow_cathode/cathode-data'
+root = '/home/pyt/Documents/Princeton/EPPDyL/Hollow Cathode/cathode-data'
 
 def populate_NEXIS(alldata):
     nexis_root = '/jpl/nexis/staging/'

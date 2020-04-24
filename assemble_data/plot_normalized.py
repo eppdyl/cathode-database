@@ -149,10 +149,20 @@ def plot_density(alldata,zerod_data):
             Lemerr = 2*s_err # 95% confidence
             
             ### Plot
+#            print("Cathode","Lem","5/P","15/P")
             if(row['cathode'] == 'JPL-1.5cm' or 
                row['cathode'] == 'NSTAR' or 
                row['cathode'] == 'NEXIS' or
                row['cathode'] == 'Salhi-Xe'):
+                
+                if row['cathode'] == 'NEXIS':
+                    print(Lexp*dc*1e-3,5/(1.15*101325./760.),15/(1.15*101325./760.))
+                elif row['cathode'] == 'JPL-1.5cm':
+                    if row['dischargeCurrent'] == 100:
+                        print(Lexp*dc*1e-3,5/(2*101325./760.),15/(2*101325./760.))
+                else:
+                    print(Lexp*dc*1e-3,5/(row['totalPressure']*101325./760.),15/(row['totalPressure']*101325./760.))
+
     #                plt.semilogy(rev[:,0],
     #                         rev[:,1])
     #                
@@ -199,7 +209,7 @@ def plot_density(alldata,zerod_data):
                     
 
                     
-                    print(row['cathode'],Id,mdot_sccm,Pd,Lexp,Lemerr)
+#                    print(row['cathode'],Id,mdot_sccm,Pd,Lexp,Lemerr)
                     
                     ax[0].errorbar(Pd,Lexp,xerr=Pderr,yerr=Lemerr,fmt=style)
                                         
@@ -229,7 +239,7 @@ def plot_density(alldata,zerod_data):
                         ng = Pg * cc.Torr / cc.kB / 3000.
                         Lem0d = Lem(ng,row['insertDiameter']*1e-3,row['gas'])
                        
-                        print(row['cathode'],Id,mdot_sccm,Pd,Lexp,Lemerr)
+#                        print(row['cathode'],Id,mdot_sccm,Pd,Lexp,Lemerr)
                         
                         ax[0].errorbar(Pd,Lexp,yerr=Lemerr,fmt=style)
 #                        ax[1].plot(row['dischargeCurrent']/row['massFlowRate'],Lem0d/(row['insertDiameter']*1e-3),Idstyle)
@@ -467,5 +477,5 @@ def plot_temperature(alldata,zerod_data):
 zerod_data = build_zerod_dataframe()
 alldata = import_data("assembled.csv")                                
 
-#plot_density(alldata,zerod_data)
-plot_temperature(alldata,zerod_data)
+plot_density(alldata,zerod_data)
+#plot_temperature(alldata,zerod_data)
