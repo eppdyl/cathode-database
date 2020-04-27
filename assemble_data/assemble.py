@@ -389,6 +389,7 @@ def assemble():
     alldata.loc[alldata['gas'] == 'Hg', 'gasMass'] = cc.M.Hg
     
     # Ionization potential in eV
+    # TODO FIX THIS TO BE THE IONIZATION POTENTIAL!!!!
     alldata.loc[alldata['gas'] == 'Xe', 'ionizationPotential'] = cc.M.Xe
     alldata.loc[alldata['gas'] == 'Ar', 'ionizationPotential'] = cc.M.Ar
     alldata.loc[alldata['gas'] == 'Hg', 'ionizationPotential'] = cc.M.Hg
