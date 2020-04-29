@@ -9,6 +9,11 @@ def compute_attachment_length(ne_data, dc, idxmin=None, idxmax=None):
         array where the first column is the position in mm, and the second 
         column is the density in 1/m3
         - dc: insert diameter, mm
+        - idxmin, idxmax: the indices to limit the data to the exponential
+        decay of the density
+    Returns:
+        - Emission length
+        - Error of the emission length
     ''' 
     # Grab only insert data
     insert_ne = ne_data[ne_data[:,0]>0]
@@ -54,3 +59,37 @@ def compute_attachment_length(ne_data, dc, idxmin=None, idxmax=None):
     Lemerr = 2*s_err # 95% confidence
     
     return Lexp, Lemerr
+
+
+def compute_average_temperature(Te_data, dc):
+    ''' Calculates the electron temperature as the 1D average of the 
+    temperature data if more than multiple data points are available.
+    Inputs:
+        - Te_data: the density data ne vs position. Assumes that it is a Nx2 
+        array where the first column is the position in mm, and the second 
+        column is the density in eV
+        - dc: insert diameter, mm
+    Returns:
+        - Average electron temperature
+        - Error of the electron temperature
+    '''     
+    # Insert stuff only
+    try:
+        if len(Te_data) > 1:
+            insert_Te = Te_data[Te_data[:,0]>0]
+            insert_Te = insert_Te[:,1]
+        
+            ### Average
+            if len(insert_Te) > 1:
+#                Texp = np.average(insert_Te)
+                tmp = Te_data[Te_data[:,0]>0]
+                Texp = np.trapz(tmp[:,1],tmp[:,0]) / (tmp[-1,0]-tmp[0,0])
+                Terr = 0.5
+            else:
+                Texp = insert_Te
+                Terr = 0.5
+    except:
+        Texp = Te_data.reshape(-1)[0]
+        Terr = 0.5
+        
+    return Texp, Terr
