@@ -11,56 +11,6 @@ from import_db import import_data
 from correlation import Lem, Te_insert
 from build_numerical import build_zerod_dataframe
 
-def find_JPL_indexing(Id,mdot):
-    idx = -1
-    if np.isclose(mdot,12.):
-        if Id == 20:
-            idx = 40
-        elif Id == 30:
-            idx = 30
-        elif Id == 40:
-            idx = 30
-        elif Id == 50:
-            idx = 11
-        elif Id == 60:
-            idx = 6
-        elif Id == 70:
-            idx = 20
-        elif Id == 80:
-            idx = 23
-        elif Id == 90:
-            idx = 30
-        elif Id == 100:
-            idx = 20
-
-    elif np.isclose(mdot,10.):
-        if Id <= 90:
-            idx = 50
-        elif Id == 100:
-            idx = 30
-
-    elif np.isclose(mdot,8.):
-        if Id == 20:
-            idx = 15
-        elif Id == 30:
-            idx = 20
-        elif Id == 40:
-            idx = 30
-        elif Id == 50:
-            idx = 40
-        elif Id == 60:
-            idx = 20
-        elif Id == 70:
-            idx = 15
-        elif Id == 80:
-            idx = 15
-        elif Id == 90:
-            idx = 7
-        elif Id == 100:
-            idx = 50
-    return idx
-
-
 def plot_density(alldata,zerod_data):
     TgK = 3000
     ngvec = np.logspace(18,23)
