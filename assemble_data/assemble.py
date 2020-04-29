@@ -11,6 +11,7 @@ from cathode.models.flow import reynolds_number
 from import_db import dtypes
 from populate_positional_data import populate_NEXIS, populate_NSTAR, populate_JPL_lab6, populate_Salhi
 from populate_PLHC import append_PLHC
+from populate_positional_data import populate_Siegfried_ng
 
 def df_reynolds_number(alldata):
     ### Hg viscosity
@@ -356,6 +357,7 @@ def assemble():
     alldata = populate_NEXIS(alldata)
     alldata = populate_JPL_lab6(alldata)
     alldata = populate_Salhi(alldata)
+    alldata = populate_Siegfried_ng(alldata)
     
     # Correct NEXIS cases
     alldata.loc[366,'orificeDiameter'] = 3.0 
@@ -365,6 +367,7 @@ def assemble():
     alldata = append_PLHC(alldata)
     
     ### FIX TEMPERATURES THAT ARE NAN
+    ### TODO: DO WE USE K OR DEGC?
     alldata.insertTemperatureAverage.fillna(1273,inplace=True)
 
     ### PRESSURE DIAMETER PRODUCT
@@ -390,9 +393,9 @@ def assemble():
     
     # Ionization potential in eV
     # TODO FIX THIS TO BE THE IONIZATION POTENTIAL!!!!
-    alldata.loc[alldata['gas'] == 'Xe', 'ionizationPotential'] = cc.M.Xe
-    alldata.loc[alldata['gas'] == 'Ar', 'ionizationPotential'] = cc.M.Ar
-    alldata.loc[alldata['gas'] == 'Hg', 'ionizationPotential'] = cc.M.Hg
+    alldata.loc[alldata['gas'] == 'Xe', 'ionizationPotential'] = 12.1298
+    alldata.loc[alldata['gas'] == 'Ar', 'ionizationPotential'] = 15.75962
+    alldata.loc[alldata['gas'] == 'Hg', 'ionizationPotential'] = 10.4375
     
     # Speed of sound
     sos_str = 'speedOfSound=(@gam*@kb/(gasMass*@amu)*insertTemperatureAverage*3)**(0.5)'

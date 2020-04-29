@@ -2,6 +2,7 @@ from populate_nexis import populate_goebel_jpc_2004,populate_mikellides_jap_2005
 from populate_nstar import populate_th8, populate_th15
 from populate_jpl_lab6 import populate_chu_2012, populate_becatti_2017
 from populate_salhi import populate_salhi_thesis
+from populate_siegfried_ng import populate_sgng
 
 #root = '/Users/Pyt/Documents/Pyt/hollow_cathode/cathode-data'
 root = '/home/pyt/Documents/Princeton/EPPDyL/Hollow Cathode/cathode-data'
@@ -39,5 +40,12 @@ def populate_Salhi(alldata):
     salhi_root = '/original-material/salhi-thesis-1993/'
     
     alldata = populate_salhi_thesis(alldata,root,salhi_root)
+    
+    return alldata
+
+def populate_Siegfried_ng(alldata):
+    sgng_root = '/original-material/wilbur-CR168340-1984/csv/'
+    
+    alldata = populate_sgng(alldata,root,sgng_root)
     
     return alldata
