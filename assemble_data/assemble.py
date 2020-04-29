@@ -198,7 +198,11 @@ def assemble():
                  "S. E. Hornbeck, \"Emitter Temperature Distributions in the NSTAR " 
                  "Discharge Hollow Cathode,\" 41st JPC, 2005.")]   
     NSTAR_notes = [("Fig 3 - Pressure measured inside the 1/4\" hollow cathode " 
-                   "for various NSTAR throttle levels. The throttle levels TH4, " 
+                   "for various NSTAR throttle levels. "
+                   "Fig 4 - Axial density cathode and anode profiles plotted "
+                   "on a semi-log scale for TH8 and TH15. "
+                   "Fig 6 - Cathode plasma potential and electron temperature "
+                   "profiles for TH8 and TH15. The throttle levels TH4, " 
                    "TH8, TH15 are from: V. Rawlin, J. Sovey, J. Anderson, and " 
                    "J. Polk, \"NSTAR flight thruster qualification testing, " 
                    "34th AIAA/ASME/SAE/ASEE JPC, 1998. "
@@ -392,7 +396,6 @@ def assemble():
     alldata.loc[alldata['gas'] == 'Hg', 'gasMass'] = cc.M.Hg
     
     # Ionization potential in eV
-    # TODO FIX THIS TO BE THE IONIZATION POTENTIAL!!!!
     alldata.loc[alldata['gas'] == 'Xe', 'ionizationPotential'] = 12.1298
     alldata.loc[alldata['gas'] == 'Ar', 'ionizationPotential'] = 15.75962
     alldata.loc[alldata['gas'] == 'Hg', 'ionizationPotential'] = 10.4375
