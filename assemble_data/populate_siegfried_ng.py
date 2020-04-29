@@ -1,5 +1,8 @@
 import numpy as np
 
+from compute_attachment_length import compute_attachment_length
+
+
 def Pcorr(mdot,do,Id,species):
     if species == 'Ar':
         P = mdot/do**2 * (0.0056 + 0.0012*Id)
@@ -195,11 +198,15 @@ def populate_sgng(alldata,root,cat_root):
     Id = 2.3
     nevec = np.zeros((len(data['x']),2))
     nevec[:,0] = np.copy(data['x'])
-    nevec[:,1] = np.copy(data['ne'])
+    nevec[:,1] = np.copy(data['ne']) * 1e16 # was in 1e-13/cm3
     
     
     # Get the mass flow rate from P and Id
     mdot = P * do**2 / (0.0090 + 0.0040 * Id) * 1e-3
+    
+    ne_data = nevec[data['phi_wf']==1.9]
+    Lem_xp, Lem_err = compute_attachment_length(ne_data, dc, idxmin=-20)
+    
     alldata = alldata.append({'cathode' : cat_name, 
                               'totalPressure': P,
                               'dischargeCurrent' : Id,
@@ -210,9 +217,14 @@ def populate_sgng(alldata,root,cat_root):
                               'orificeLength': Lo,
                               'insertDiameter': dc,
                               'reference': ref,
-                              'note': note
+                              'note': note,
+                              'attachmentLength':Lem_xp,
+                              'attachmentLength_err':Lem_err
                               } , ignore_index=True) 
 
+    ne_data = nevec[data['phi_wf']==2.5]
+    Lem_xp, Lem_err = compute_attachment_length(ne_data, dc, idxmin=-30)
+    
     alldata = alldata.append({'cathode' : cat_name, 
                           'totalPressure': P,
                           'dischargeCurrent' : Id,
@@ -223,7 +235,9 @@ def populate_sgng(alldata,root,cat_root):
                           'orificeLength': Lo,
                           'insertDiameter': dc,
                           'reference': ref,
-                          'note': note
+                          'note': note,
+                          'attachmentLength':Lem_xp,
+                          'attachmentLength_err':Lem_err                          
                           } , ignore_index=True)
 
 
