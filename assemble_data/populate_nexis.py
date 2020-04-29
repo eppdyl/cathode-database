@@ -32,10 +32,18 @@ def populate_mikellides_jap_2005(alldata,root,cat_root):
     phip_data = data[~np.isnan(data[:,1])][:,0:2]
     Te_data = data[~np.isnan(data[:,2])][:,0::2]
     
+    # We can arguably get the average pressure from the two closest cases
+    # that are at 24 A and 26 A, 5.5 sccm
+    df = alldata[alldata['cathode'] == 'NEXIS']
+    ddf = df[np.isclose(alldata[alldata['cathode'] == 'NEXIS'].dischargeCurrent,25,atol=1)]
+    
+    averagePressure = np.nanmean(ddf.totalPressure)
+    
     alldata = alldata.append({'cathode' : 'NEXIS', 
                               'dischargeCurrent' : 25.,
                               'massFlowRate': 5.5*cc.sccm2eqA,
                               'gas':'Xe',
+                              'totalPressure': averagePressure,
                               'orificeDiameter': np.unique(alldata[alldata.cathode=='NEXIS'].orificeDiameter)[0],
                               'orificeLength': np.unique(alldata[alldata.cathode=='NEXIS'].orificeLength)[0],
                               'insertDiameter': np.unique(alldata[alldata.cathode=='NEXIS'].insertDiameter)[0],
@@ -86,6 +94,13 @@ def populate_goebel_jpc_2004(alldata,root,cat_root):
     data[:,1] *= 1e20
     ne_data = np.copy(data)
 
+    # We can arguably get the average pressure from the two closest cases
+    # that is at 27 A, 10 sccm
+    df = alldata[alldata['cathode'] == 'NEXIS']
+    ddf = df[np.isclose(alldata[alldata['cathode'] == 'NEXIS'].massFlowRate/cc.sccm2eqA,10,atol=1)]
+    
+    averagePressure = np.nanmean(ddf.totalPressure)
+
     dc = np.unique(alldata[alldata.cathode=='NEXIS'].insertDiameter)[0]
     idxmin = 40 # From the data
     idxmax = 10
@@ -102,6 +117,7 @@ def populate_goebel_jpc_2004(alldata,root,cat_root):
                               'dischargeCurrent' : 25.,
                               'massFlowRate': 10*cc.sccm2eqA,
                               'gas':'Xe',
+                              'totalPressure':averagePressure,
                               'orificeDiameter': np.unique(alldata[alldata.cathode=='NEXIS'].orificeDiameter)[0],
                               'orificeLength': np.unique(alldata[alldata.cathode=='NEXIS'].orificeLength)[0],
                               'insertDiameter': np.unique(alldata[alldata.cathode=='NEXIS'].insertDiameter)[0],
