@@ -1,6 +1,9 @@
 import numpy as np
 import cathode.constants as cc
 
+from compute_attachment_length import compute_attachment_length
+
+
 def populate_mikellides_jap_2005(alldata,root,cat_root):
     ### mdot = 5.5 sccm, Id = 25 A
     # Source: Mikellides JAP 2005
@@ -16,6 +19,11 @@ def populate_mikellides_jap_2005(alldata,root,cat_root):
            "vol. 98, no. 2005, pp. 0–14, 2005.")
     
     ne_data = np.copy(data)
+
+    dc = np.unique(alldata[alldata.cathode=='NEXIS'].insertDiameter)[0]
+    idxmin = 40 # From the data
+    idxmax = 10
+    Lem_xp, Lem_err = compute_attachment_length(ne_data, dc, idxmin=-idxmin, idxmax=-idxmax)
     
     # Then get temperature and potential
     data = np.genfromtxt(root + cat_root + 'Te-phip_vs_x_mdot-5.5sccm_Id-25A.csv',
@@ -37,7 +45,9 @@ def populate_mikellides_jap_2005(alldata,root,cat_root):
                               'electronTemperature': np.copy(Te_data),
                               'plasmaPotential': np.copy(phip_data),
                               'reference': ref,
-                              'note': 'Fig. 5'
+                              'note': 'Fig. 5',
+                              'attachmentLength': Lem_xp,
+                              'attachmentLength_err': Lem_err
                               } , ignore_index=True)
     
     return alldata
@@ -75,6 +85,11 @@ def populate_goebel_jpc_2004(alldata,root,cat_root):
                          delimiter=',')
     data[:,1] *= 1e20
     ne_data = np.copy(data)
+
+    dc = np.unique(alldata[alldata.cathode=='NEXIS'].insertDiameter)[0]
+    idxmin = 40 # From the data
+    idxmax = 10
+    Lem_xp, Lem_err = compute_attachment_length(ne_data, dc, idxmin=-idxmin, idxmax=-idxmax)
     
     data = np.genfromtxt(root + cat_root + 'Te-phip_vs_x_mdot-5.5-10sccm_Id-10-25A.csv',
                          skip_header = True,
@@ -96,7 +111,9 @@ def populate_goebel_jpc_2004(alldata,root,cat_root):
                               'electronTemperature': np.copy(Te_data),
                               'plasmaPotential': np.copy(phip_data),
                               'reference': ref,
-                              'note': 'Fig. 12'
+                              'note': 'Fig. 12',
+                              'attachmentLength': Lem_xp,
+                              'attachmentLength_err': Lem_err                              
                               } , ignore_index=True)  
     
     return alldata

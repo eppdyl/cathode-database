@@ -3,6 +3,9 @@ import pandas as pd
 
 import cathode.constants as cc
 
+from compute_attachment_length import compute_attachment_length
+
+
 def populate_salhi_thesis(alldata,root,cat_root):
     ref = ("A. Salhi, \"Theoretical and experimental studies of orificed,  " 
            "hollow cathode operation,\" Ph.D. Thesis, The Ohio State University "
@@ -17,6 +20,9 @@ def populate_salhi_thesis(alldata,root,cat_root):
     # cathode was operated at 0.5 A and with an orifice diameter of 1.21 mm
     mdot = 0.5 # eq-A
     do = 1.21 # mm
+    dc = 3.81 # mm
+    Lo = 1.24 # mm
+    Lc = 25.4 # mm
     
     # Electron temperature as functionof position
     data = np.genfromtxt(root + cat_root + 'Te_vs_x_do-1.21mm_Xe_Q-0.5A_Id-5-9-15A.csv',
@@ -37,9 +43,9 @@ def populate_salhi_thesis(alldata,root,cat_root):
                                   'massFlowRate': mdot,
                                   'gas':'Xe',
                                   'orificeDiameter': do,
-                                  'orificeLength': 1.24,
-                                  'insertDiameter': 3.81,
-                                  'insertLength': 25.4,
+                                  'orificeLength': Lo,
+                                  'insertDiameter': dc,
+                                  'insertLength': Lc,
                                   'upstreamPressurePoint': 130.0,
                                   'electronTemperature': np.copy(Te_data),
                                   'reference': ref,
@@ -72,9 +78,9 @@ def populate_salhi_thesis(alldata,root,cat_root):
                                   'massFlowRate': mdot,
                                   'gas':'Xe',
                                   'orificeDiameter': do,
-                                  'orificeLength': 1.24,
-                                  'insertDiameter': 3.81,
-                                  'insertLength': 25.4,
+                                  'orificeLength': Lo,
+                                  'insertDiameter': dc,
+                                  'insertLength': Lc,
                                   'upstreamPressurePoint': 130.0,
                                   'electronTemperature': tmpTe,
                                   'reference': ref,
@@ -105,6 +111,8 @@ def populate_salhi_thesis(alldata,root,cat_root):
             ne_data[ne_idx,0] = x
             ne_data[ne_idx,1] = 10**(lne + 6.)
             ne_idx = ne_idx + 1
+
+        Lem_xp, Lem_err = compute_attachment_length(ne_data, dc, idxmax=-1)
         
         if alldata.loc[bcond].empty:
             alldata = alldata.append({'cathode' : cat_name, 
@@ -112,15 +120,19 @@ def populate_salhi_thesis(alldata,root,cat_root):
                                   'massFlowRate': mdot,
                                   'gas':'Xe',
                                   'orificeDiameter': do,
-                                  'orificeLength': 1.24,
-                                  'insertDiameter': 3.81,
-                                  'insertLength': 25.4,
+                                  'orificeLength': Lo,
+                                  'insertDiameter': dc,
+                                  'insertLength': Lc,
                                   'upstreamPressurePoint': 130.0,
                                   'electronDensity': np.copy(ne_data),
                                   'reference': ref,
-                                  'note': 'ne: Fig. 5.34-5.36'
+                                  'note': 'ne: Fig. 5.34-5.36',
+                                  'attachmentLength': Lem_xp,
+                                  'attachmentLength_err': Lem_err
                                   } , ignore_index=True)                
         else:
             alldata.loc[bcond,'electronDensity'] = alldata.loc[bcond,'electronDensity'].apply(lambda x: np.copy(ne_data)) 
+            alldata.loc[bcond,'attachmentLength'] = Lem_xp
+            alldata.loc[bcond,'attachmentLength_err'] = Lem_err       
             
     return alldata
