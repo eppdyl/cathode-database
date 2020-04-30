@@ -227,12 +227,14 @@ def populate_chu_2012(alldata,root,cat_root):
 
     for idx,mdot in enumerate(mdot_array):
         Te_data = data[~np.isnan(data[:,idx+1])][:,[0,idx+1]]
-        Te_xp, Te_err = compute_average_temperature(Te_data, dc)
-        
+                
         for idxId, Id in enumerate(Te_data[:,0]):
             bcond = (alldata.cathode==cat_name) 
             bcond &= (alldata.dischargeCurrent == Id) 
             bcond &= (alldata.massFlowRate == mdot) 
+            
+            Te_xp = Te_data[idxId,1]
+            Te_err = 0.5
 
             # If there is nothing there, fill it
             # Otherwise we already stored that data in a Te vs x array
@@ -240,6 +242,21 @@ def populate_chu_2012(alldata,root,cat_root):
                 alldata.loc[bcond,'electronTemperature'] = alldata.loc[bcond,'electronTemperature'].apply(lambda x: np.copy(Te_data[idxId,1]))           
                 alldata.loc[bcond,'electronTemperatureAverage'] = Te_xp
                 alldata.loc[bcond,'electronTemperatureAverage_err'] = Te_err
+     
+    ### Pressure for the 100 A case
+    data = np.genfromtxt(root + cat_root + 'P_vs_mdot_Id-100A.csv',
+                         skip_header = True,
+                         delimiter=',')    
+    
+    Id = 100
+    mdot_array = data[:,0] * cc.sccm2eqA
+    
+    for idx, mdot in enumerate(mdot_array):
+        bcond = (alldata.cathode==cat_name) 
+        bcond &= (alldata.dischargeCurrent == Id) 
+        bcond &= (alldata.massFlowRate == mdot)         
+        alldata.loc[bcond,'totalPressure'] = data[idx,1]
+            
         
     return alldata
 
