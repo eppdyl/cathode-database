@@ -216,6 +216,7 @@ def populate_sgng(alldata,root,cat_root):
                               'orificeDiameter': do,
                               'orificeLength': Lo,
                               'insertDiameter': dc,
+                              'insertLength': Lem,
                               'reference': ref,
                               'note': note,
                               'attachmentLength':Lem_xp,
@@ -234,13 +235,73 @@ def populate_sgng(alldata,root,cat_root):
                           'orificeDiameter': do,
                           'orificeLength': Lo,
                           'insertDiameter': dc,
+                          'insertLength': Lem,
                           'reference': ref,
                           'note': note,
                           'attachmentLength':Lem_xp,
                           'attachmentLength_err':Lem_err                          
                           } , ignore_index=True)
 
+    # Xenon temperature data
+    note = 'Fig. 32 Mass flow deduced from P, Id, do and correlation.'
+    data = np.genfromtxt(root + cat_root + 'Te_vs_P_xenon_do-0.76mm_Id-2.3A.csv',
+                         names = True,
+                         delimiter=',')     
 
+    ### 1.9 eV
+    Pvec = data['totalPressure'][~np.isnan(data['19eV'])]
+    Te_data = data['19eV'][~np.isnan(data['19eV'])]
+    mdotvec = Pvec * do**2 / (0.0090 + 0.0040 * Id) * 1e-3
+
+    Te_err = 0.5
+    
+    for idx,P in enumerate(Pvec):
+        mdot = mdotvec[idx]
+        P = Pvec[idx]
+        Te_xp = Te_data[idx]
+        alldata = alldata.append({'cathode' : cat_name, 
+                                  'totalPressure': P,
+                                  'dischargeCurrent' : Id,
+                                  'gas':species,
+                                  'massFlowRate': mdot,                          
+                                  'orificeDiameter': do,
+                                  'orificeLength': Lo,
+                                  'insertDiameter': dc,
+                                  'insertLength': Lem,
+                                  'reference': ref,
+                                  'note': note,
+                                  'electronTemperatureAverage':Te_xp,
+                                  'electronTemperatureAverage_err':Te_err
+                                  } , ignore_index=True) 
+
+
+    
+    ### 1.9 eV
+    Pvec = data['totalPressure'][~np.isnan(data['25eV'])]
+    Te_data = data['25eV'][~np.isnan(data['25eV'])]
+    mdotvec = Pvec * do**2 / (0.0090 + 0.0040 * Id) * 1e-3
+
+    Te_err = 0.5
+    
+    for idx,P in enumerate(Pvec):
+        mdot = mdotvec[idx]
+        P = Pvec[idx]
+        Te_xp = Te_data[idx]
+        alldata = alldata.append({'cathode' : cat_name, 
+                                  'totalPressure': P,
+                                  'dischargeCurrent' : Id,
+                                  'gas':species,
+                                  'massFlowRate': mdot,                          
+                                  'orificeDiameter': do,
+                                  'orificeLength': Lo,
+                                  'insertDiameter': dc,
+                                  'insertLength': Lem,
+                                  'reference': ref,
+                                  'note': note,
+                                  'electronTemperatureAverage':Te_xp,
+                                  'electronTemperatureAverage_err':Te_err
+                                  } , ignore_index=True) 
+    
     return alldata
     
 #    ''

@@ -3,7 +3,7 @@ import pandas as pd
 
 import cathode.constants as cc
 
-from compute_attachment_length import compute_attachment_length
+from compute_attachment_length import compute_attachment_length, compute_average_temperature
 
 
 def populate_salhi_thesis(alldata,root,cat_root):
@@ -36,6 +36,8 @@ def populate_salhi_thesis(alldata,root,cat_root):
         bcond &= (alldata.massFlowRate == mdot)
         
         Te_data = data[~np.isnan(data[:,idx+1])][:,[0,idx+1]]
+        
+        Te_xp, Te_err = compute_average_temperature(Te_data, dc)
     
         if alldata.loc[bcond].empty:
             alldata = alldata.append({'cathode' : cat_name, 
@@ -49,10 +51,16 @@ def populate_salhi_thesis(alldata,root,cat_root):
                                   'upstreamPressurePoint': 130.0,
                                   'electronTemperature': np.copy(Te_data),
                                   'reference': ref,
-                                  'note': 'Fig. 5.7'
+                                  'note': 'Fig. 5.7',
+                                  'electronTemperatureAverage': Te_xp,
+                                  'electronTemperatureAverage_err':Te_err
                                   } , ignore_index=True) 
         else:
             alldata.loc[bcond,'electronTemperature'] = alldata.loc[bcond,'electronTemperature'].apply(lambda x: np.copy(Te_data))
+            alldata.loc[bcond,'electronTemperatureAverage'] = Te_xp
+            alldata.loc[bcond,'electronTemperatureAverage_err'] = Te_err
+
+
 
     # Electron temperature from spectroscopy measurements
     # Ignore 15 A bc. we already have positional data for that one
@@ -64,13 +72,19 @@ def populate_salhi_thesis(alldata,root,cat_root):
         bcond &= (alldata.massFlowRate == mdot)
     
         if Id == 3:
-            tmpTe = 1.0
+            Te_xp = 1.0
+            Te_err = 0.1
         elif Id == 10:
-            tmpTe = 0.98
+            Te_xp = 0.98
+            Te_err = 0.12
         elif Id == 15:
-            tmpTe = 1.09
+            Te_xp = 1.09
+            Te_err = 0.15
         elif Id == 20:
-            tmpTe = 1.07
+            Te_xp = 1.07
+            Te_err = 0.15
+            
+        
     
         if alldata.loc[bcond].empty:
             alldata = alldata.append({'cathode' : cat_name, 
@@ -82,12 +96,16 @@ def populate_salhi_thesis(alldata,root,cat_root):
                                   'insertDiameter': dc,
                                   'insertLength': Lc,
                                   'upstreamPressurePoint': 130.0,
-                                  'electronTemperature': tmpTe,
                                   'reference': ref,
-                                  'note': 'Te: Fig. 5.28-5.31, ne: Fig. 5.34-5.36'
+                                  'note': 'Te: Fig. 5.28-5.31, ne: Fig. 5.34-5.36',
+                                  'electronTemperatureAverage': Te_xp,
+                                  'electronTemperatureAverage_err':Te_err                                  
                                   } , ignore_index=True)                
         else:
-            alldata.loc[bcond,'electronTemperature'] = alldata.loc[bcond,'electronTemperature'].apply(lambda x: tmpTe)
+#            alldata.loc[bcond,'electronTemperature'] = alldata.loc[bcond,'electronTemperature'].apply(lambda x: tmpTe)
+            alldata.loc[bcond,'electronTemperatureAverage'] = Te_xp
+            alldata.loc[bcond,'electronTemperatureAverage_err'] = Te_err
+
  
     # Density data
     # Grab the compiled data
