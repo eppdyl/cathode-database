@@ -13,8 +13,7 @@ from assemble import assemble
 
 data = assemble()
 
-Pdarr = np.array(data.pressureDiameter)
-Pdarr = Pdarr[~np.isnan(Pdarr)]
+Pdarr = np.array(data[['pressureDiameter']].dropna())
 
 ## KERNEL DENSITY
 # Calculate best kernel density bandwidth
