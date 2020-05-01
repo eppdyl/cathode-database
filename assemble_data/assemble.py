@@ -371,8 +371,7 @@ def assemble():
     alldata = append_PLHC(alldata)
     
     ### FIX TEMPERATURES THAT ARE NAN
-    ### TODO: DO WE USE K OR DEGC?
-    alldata.insertTemperatureAverage.fillna(1273,inplace=True)
+    alldata.insertTemperatureAverage.fillna(1000,inplace=True)
 
     ### PRESSURE DIAMETER PRODUCT
     pd_str = 'pressureDiameter = totalPressure * insertDiameter * 0.1'
@@ -401,7 +400,7 @@ def assemble():
     alldata.loc[alldata['gas'] == 'Hg', 'ionizationPotential'] = 10.4375
     
     # Speed of sound
-    sos_str = 'speedOfSound=(@gam*@kb/(gasMass*@amu)*insertTemperatureAverage*3)**(0.5)'
+    sos_str = 'speedOfSound=(@gam*@kb/(gasMass*@amu)*(insertTemperatureAverage+273.15)*3)**(0.5)'
     alldata.eval(sos_str, local_dict=constant_dict, inplace=True)
     
     # Mass flow rate
