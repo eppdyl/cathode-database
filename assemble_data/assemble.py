@@ -1,12 +1,13 @@
 import pandas as pd
 import numpy as np
 from scipy.interpolate import splrep,splev
+from scipy.optimize import root
 import math
 
 from cathode.experimental.load_data import load_all_data
 import cathode.experimental.files as cef
 import cathode.constants as cc
-from cathode.models.flow import reynolds_number
+from cathode.models.flow import reynolds_number, viscosity
 
 from import_db import dtypes
 from populate_positional_data import populate_NEXIS, populate_NSTAR, populate_JPL_lab6, populate_Salhi
@@ -83,7 +84,7 @@ def assign_geometry(idx):
         
     return Lemitter,Lupstream
 
-def assemble():        
+def assemble(empirical_pressure=False):        
     # Load all of the data
     pdf = load_all_data()
     
@@ -371,8 +372,68 @@ def assemble():
     alldata = append_PLHC(alldata)
     
     ### FIX TEMPERATURES THAT ARE NAN
-    alldata.insertTemperatureAverage.fillna(1000,inplace=True)
+#    alldata.insertTemperatureAverage.fillna(1200,inplace=True)
+#    alldata.loc[alldata['cathode']=='PLHC','insertTemperatureAverage'] = 1000
 
+    # Fill up AR3, EK6, SC012 by averaging AR3 and EK6
+    bcond = (alldata.cathode=='AR3') | (alldata.cathode=='EK6')
+    Tdf = np.array(alldata[bcond][['insertTemperatureAverage']])
+    Tave = np.nanmean(Tdf)
+    
+    bcondfill = (alldata.cathode=='AR3') | (alldata.cathode=='EK6') | (alldata.cathode=='SC012')
+    alldata.loc[bcondfill,'insertTemperatureAverage'] = alldata.loc[bcondfill,'insertTemperatureAverage'].fillna(Tave)
+
+    # NEXIS
+    bcond = (alldata.cathode == 'NEXIS')
+    Iddf = alldata[bcond]['dischargeCurrent']
+    Tmax = 1370 + 3.971e-7 * Iddf ** 6 - 273.15
+    alldata.loc[bcond,'insertTemperatureAverage'] = alldata.loc[bcond,'insertTemperatureAverage'].fillna(Tmax)
+    
+    # T6: use the same values as NSTAR
+#    Iddf = alldata[bcond]['dischargeCurrent']
+#    Tmax = 1191.6 * Iddf ** 0.0988 - 273.15
+#    alldata.loc[bcond,'insertTemperatureAverage'] = Tmax
+    bcond = (alldata.cathode=='T6')
+    phi_wf = lambda Tw: 1.67 + 2.87e-4 * Tw
+    dc = np.unique(alldata[bcond].insertDiameter) * 1e-3
+    fTw = lambda Id,Tw: Id - 120e6 * Tw**2 * np.exp(-cc.e * phi_wf(Tw) / (cc.Boltzmann * Tw)) * 2*np.pi * (dc/2) * 0.5 * dc
+    for row in alldata[bcond].iterrows():
+        Id = row[1]['dischargeCurrent']
+        sol = root(lambda Tw: fTw(Id,Tw),1500)
+        Temp = sol.x[0]-273.15
+        alldata.loc[row[0],'insertTemperatureAverage'] = Temp
+
+
+    # Salhi, T6: average for a given geometry and gas
+    for name in ['Salhi-Ar-0.76','Salhi-Ar-1.21','Salhi-Xe','Siegfried-NG']:
+        bcond = (alldata.cathode == name)
+        
+        if name == 'Siegfried-NG':
+            bcond &= (alldata.gas == 'Xe')
+        Tdf = np.array(alldata[bcond][['insertTemperatureAverage']])
+        Tave = np.nanmean(Tdf)
+        
+        
+        alldata.loc[bcond,'insertTemperatureAverage'] = alldata.loc[bcond,'insertTemperatureAverage'].fillna(Tave)
+        
+    # JPL 1.5 cm: fit to orifice plate temperature
+    for name in ['JPL-1.5cm','JPL-1.5cm-3mm','JPL-1.5cm-5mm']:
+        bcond = (alldata.cathode == name)
+        Iddf = alldata[bcond]['dischargeCurrent']
+        Tmax = 1144 + 5.56 * Iddf
+        alldata.loc[bcond,'insertTemperatureAverage'] = alldata.loc[bcond,'insertTemperatureAverage'].fillna(Tmax)
+    
+    # PLHC: assume Lem ~ 0.5 dc, and compute the temperature from R-D
+    bcond = (alldata.cathode=='PLHC')
+    phi_wf = 2.67
+    dc = np.unique(alldata[bcond].insertDiameter) * 1e-3
+    fTw = lambda Id,Tw: Id - 29e6 * Tw**2 * np.exp(-cc.e * phi_wf / (cc.Boltzmann * Tw)) * 2*np.pi * (dc/2) * 0.5 * dc
+    for row in alldata[bcond].iterrows():
+        Id = row[1]['dischargeCurrent']
+        sol = root(lambda Tw: fTw(Id,Tw),1500)
+        Temp = sol.x[0]-273.15
+        alldata.loc[row[0],'insertTemperatureAverage'] = Temp
+    
     ### PRESSURE DIAMETER PRODUCT
     pd_str = 'pressureDiameter = totalPressure * insertDiameter * 0.1'
     alldata.eval(pd_str, inplace=True)
@@ -408,10 +469,47 @@ def assemble():
     alldata.eval(mdot_str, local_dict=constant_dict, inplace=True)
     
     ### Pressures
+    # Use the empirical correlation if we want to add to the dataset 
+    if empirical_pressure:
+        def pressure_empirical(Id, TgK, mdot_sccm, Locm, Mamu, eps, dccm, docm):
+            
+            if Mamu == 131.293:
+                species = 'Xe'
+            elif Mamu == 39.948:
+                species = 'Ar'
+            else:
+                species = 'Hg'
+                
+            mu = viscosity(TgK,species=species,units='Pa-s')
+            
+            Pval = 2.47287280477684e-7   
+            Pval *= Id**0.401051279571408 * Mamu**0.547870293394218 * TgK**0.365393042518454
+            Pval *= mdot_sccm**0.683717435287032 * eps**0.298234175803028
+            Pval /= Locm**0.233998925947759 * dccm ** 0.791908626218164 * docm ** 1.91389567576415
+            Pval /= mu**0.412023151501404
+            
+            return Pval
+            
+        for row in alldata.iterrows():
+            if np.isnan(row[1]['totalPressure']):
+                TwC = row[1]['insertTemperatureAverage']
+                Id = row[1]['dischargeCurrent']
+                TgK = (TwC + 273.15) * 3
+                Locm = row[1]['orificeLength'] * 0.1
+                docm = row[1]['orificeDiameter'] * 0.1
+                dccm = row[1]['insertDiameter'] * 0.1
+                Mamu = row[1]['gasMass']
+                eps = row[1]['ionizationPotential']
+                mdot_sccm = row[1]['massFlowRate'] / cc.sccm2eqA
+                
+                P = pressure_empirical(Id, TgK, mdot_sccm, Locm, Mamu, eps, dccm, docm)
+                
+                alldata.loc[row[0],'totalPressure'] = P
+
     # Total pressure
     p_str = 'totalPressure_SI=totalPressure*@Torr'
     alldata.eval(p_str, local_dict=constant_dict, inplace=True)
-    
+        
     # Magnetic pressure
     pmag_str = 'magneticPressure=@mu0*dischargeCurrent**2 / (@pi**2*(orificeDiameter*1e-3)**2)'
     alldata.eval(pmag_str, local_dict=constant_dict, inplace=True)
