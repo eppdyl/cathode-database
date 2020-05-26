@@ -15,6 +15,7 @@ from populate_PLHC import append_PLHC
 from populate_positional_data import populate_Siegfried_ng
 
 def df_reynolds_number(alldata):
+    gam = 5/3
     ### Hg viscosity
     collision_file = cef.__path__[0] + '/collision-integrals-lj.csv'
     data = np.genfromtxt(collision_file,delimiter=',',names=True)
@@ -52,6 +53,10 @@ def df_reynolds_number(alldata):
     alldata.loc[alldata['gas'] == 'Xe', 'reynoldsNumber'] = reynolds_number(alldata['massFlowRate_SI'],alldata['orificeDiameter']*1e-3,(alldata['insertTemperatureAverage']+273.15)*3,'Xe')
     alldata.loc[alldata['gas'] == 'Ar', 'reynoldsNumber'] = reynolds_number(alldata['massFlowRate_SI'],alldata['orificeDiameter']*1e-3,(alldata['insertTemperatureAverage']+273.15)*3,'Ar')
     alldata.loc[alldata['gas'] == 'Hg', 'reynoldsNumber'] = reynolds_number(alldata['massFlowRate_SI'],alldata['orificeDiameter']*1e-3,(alldata['insertTemperatureAverage']+273.15)*3,'Hg',Tvec,mu_lj)
+
+    alldata.loc[alldata['gas'] == 'Xe', 'reynoldsNumberInsert'] = reynolds_number(alldata['massFlowRate_SI'],alldata['insertDiameter']*1e-3,(alldata['insertTemperatureAverage']+273.15)*3 * (gam+1)/2,'Xe')
+    alldata.loc[alldata['gas'] == 'Ar', 'reynoldsNumberInsert'] = reynolds_number(alldata['massFlowRate_SI'],alldata['insertDiameter']*1e-3,(alldata['insertTemperatureAverage']+273.15)*3 * (gam+1)/2,'Ar')
+    alldata.loc[alldata['gas'] == 'Hg', 'reynoldsNumberInsert'] = reynolds_number(alldata['massFlowRate_SI'],alldata['insertDiameter']*1e-3,(alldata['insertTemperatureAverage']+273.15)*3 * (gam+1)/2,'Hg',Tvec,mu_lj)
 
     return alldata
 
@@ -441,6 +446,8 @@ def assemble(empirical_pressure=False):
     ### CHANGE TO SI UNITS
     # Gamma
     gam = 5/3
+#    def ln_e(x, y): return np.log(x)-np.log(y)
+    
     constant_dict = {'pi':np.pi,
                      'q':cc.e,
                      'amu':cc.atomic_mass,
@@ -522,7 +529,23 @@ def assemble(empirical_pressure=False):
     piz_str = 'izPressure = 4/@pi * @q * ionizationPotential / ( (orificeDiameter * 1e-3)**2 * orificeLength * 1e-3)'
     alldata.eval(piz_str, local_dict=constant_dict, inplace=True)
 
+    # Ratio of total pressure to magnetic pressure (includes the log term)
+    rat_str = 'totalToMagnetic = totalPressure_SI / magneticPressure * 1/(1/4 + log(insertDiameter/orificeDiameter))'
+    alldata.eval(rat_str, local_dict=constant_dict, inplace=True)
+    
+    # Ratio of Id over mdot
+    rat_str = 'IdToMdot = dischargeCurrent / massFlowRate'
+    alldata.eval(rat_str, local_dict=constant_dict, inplace=True)
+
     ### COMPUTE REYNOLDS NUMBER
     alldata = df_reynolds_number(alldata)
         
+    # Orifice entrance length
+    entrance_str = 'entranceLength = 0.06 * reynoldsNumber * orificeDiameter / orificeLength'
+    alldata.eval(entrance_str,inplace=True)
+    
+    # Orifice Knudsen number
+    knudsen_str = 'orificeKnudsenNumber = 1 / reynoldsNumber * (@gam * @pi/2)**(0.5)'
+    alldata.eval(knudsen_str, local_dict=constant_dict, inplace=True)
+    
     return alldata
