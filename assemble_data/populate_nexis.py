@@ -87,12 +87,20 @@ def populate_goebel_jpc_2004(alldata,root,cat_root):
     alldata.loc[bcond,'reference'] = alldata.loc[bcond,'reference'] + "[2] " + ref
     alldata.loc[bcond,'note'] = alldata.loc[bcond,'note'] + "[2] " + note
 
+    dc = np.unique(alldata[alldata.cathode=='NEXIS'].insertDiameter)[0]
+    Te_xp, Te_err = compute_average_temperature(Te_data, dc)
+    alldata.loc[bcond,'electronTemperatureAverage'] = Te_xp
+    alldata.loc[bcond,'electronTemperatureAverage_err'] = Te_err
 
     ### mdot = 10 sccm, Id = 25 A
     # Source: Goebel JPC 2004    
     ref = ("D. Goebel, K. K. Jameson, R. M. Watkins, and I. Katz, "
            "\"Hollow Cathode and Keeper-Region Plasma Measurements Using "
            "Ultra-Fast Miniature Scanning Probes,\" 40th JPC, 2004.")
+
+    Te_data = data[~np.isnan(data[:,3])][:,[0,3]]
+    phip_data = data[~np.isnan(data[:,4])][:,[0,4]]
+
  
     data = np.genfromtxt(root + cat_root + 'ne_vs_x_mdot-5-10sccm_Id-25A.csv',
                          delimiter=',')
