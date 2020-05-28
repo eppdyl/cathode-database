@@ -64,7 +64,7 @@ plot_correlation = False
 plot_pca = False
 plot_lle = False
 plot_gp = False
-plot_pi_correlation = True
+plot_pi_correlation = False
 randomization = False
 plot_theory_correlation = False
 
@@ -539,49 +539,57 @@ if randomization:
     X5 = np.log10(X[:,4]) # PI6
     X6 = np.log10(X[:,5]) # PI7
 
-    
-    for idx in np.arange(1,7):        
-        Xlsq = np.array([X0,X1,X2,X3,X4,X5,X6]) 
-        
-        Xidx = Xlsq[idx,:]
-        np.random.shuffle(Xidx)
-        Xlsq[idx,:] = np.copy(Xidx)
-    
-    
-        At = np.copy(Xlsq) # Include all
-        A = np.transpose(At)
-        b_vec = np.linalg.inv(At@A)@At@Y
-    
-#        print(b_vec)
-    
-        C = 10**b_vec[0]
-    
-        X_sum = np.transpose(np.array([X0,X1,X2,X3,X4,X5,X6]))
-        ## R squared
-        # Residuals sum of squares
-        rss = np.sum( (Y - np.sum(X_sum*b_vec,axis=1))**2)
-        
-        # Total sum of squares
-    #    PI1ave = np.average(PI1)
-        Yave = np.average(Y)
-        tss = np.sum( (Y-Yave)**2)
-        
-        R2 = 1 - rss / tss
-        
-        ## Average error
-        # Least squares
-        P_xp = np.array(data[['totalPressure_SI']].dropna())[:,0]
-        P_model = data[['totalPressure_SI','magneticPressure']].dropna()
-        P_model = np.array(P_model[['magneticPressure']])[:,0]
-        
-        P_model *=  C *np.prod(X**b_vec[1:],axis=1) 
-        
-        
-        vec_err =  np.abs((P_xp-P_model)/P_xp)* 100
-        
-        ave_err = np.average(vec_err) 
 
-        print(idx+1,R2,ave_err)    
+    rand_results = np.zeros((6,2))
+    
+    NITER=1000
+    for niter in range(NITER):    
+        for idx in np.arange(1,7):        
+            Xlsq = np.array([X0,X1,X2,X3,X4,X5,X6]) 
+            
+            Xidx = Xlsq[idx,:]
+            np.random.shuffle(Xidx)
+            Xlsq[idx,:] = np.copy(Xidx)
+        
+        
+            At = np.copy(Xlsq) # Include all
+            A = np.transpose(At)
+            b_vec = np.linalg.inv(At@A)@At@Y
+        
+    #        print(b_vec)
+        
+            C = 10**b_vec[0]
+        
+            X_sum = np.transpose(np.array([X0,X1,X2,X3,X4,X5,X6]))
+            ## R squared
+            # Residuals sum of squares
+            rss = np.sum( (Y - np.sum(X_sum*b_vec,axis=1))**2)
+            
+            # Total sum of squares
+        #    PI1ave = np.average(PI1)
+            Yave = np.average(Y)
+            tss = np.sum( (Y-Yave)**2)
+            
+            R2 = 1 - rss / tss
+            
+            ## Average error
+            # Least squares
+            P_xp = np.array(data[['totalPressure_SI']].dropna())[:,0]
+            P_model = data[['totalPressure_SI','magneticPressure']].dropna()
+            P_model = np.array(P_model[['magneticPressure']])[:,0]
+            
+            P_model *=  C *np.prod(X**b_vec[1:],axis=1) 
+            
+            
+            vec_err =  np.abs((P_xp-P_model)/P_xp)* 100
+            
+            ave_err = np.average(vec_err) 
+            
+            rand_results[idx-1,0] += R2
+            rand_results[idx-1,1] += ave_err
+        
+    for idx in np.arange(1,7):
+        print(idx+1,rand_results[idx-1,0]/NITER,rand_results[idx-1,1]/NITER)    
         
         
     ### REMOVE PI3 AND PI6
@@ -624,49 +632,56 @@ if randomization:
     ave_err = np.average(vec_err)  
     
     print("reference",R2,ave_err)
-    
-    for idx in np.arange(1,5):
-        Xlsq = np.array([X0,X1,X3,X4,X6]) 
-        
-        Xidx = Xlsq[idx,:]
-        np.random.shuffle(Xidx)
-        Xlsq[idx,:] = np.copy(Xidx)
-    
-    
-        At = np.copy(Xlsq) # Include all
-        A = np.transpose(At)
-        b_vec = np.linalg.inv(At@A)@At@Y
-    
-#        print(b_vec)
-    
-        C = 10**b_vec[0]
-    
-        X_sum = np.transpose(np.array([X0,X1,X3,X4,X6]))
-        ## R squared
-        # Residuals sum of squares
-        rss = np.sum( (Y - np.sum(X_sum*b_vec,axis=1))**2)
-        
-        # Total sum of squares
-    #    PI1ave = np.average(PI1)
-        Yave = np.average(Y)
-        tss = np.sum( (Y-Yave)**2)
-        
-        R2 = 1 - rss / tss
-        
-        ## Average error
-        # Least squares
-        P_xp = np.array(data[['totalPressure_SI']].dropna())[:,0]
-        P_model = data[['totalPressure_SI','magneticPressure']].dropna()
-        P_model = np.array(P_model[['magneticPressure']])[:,0]
-        
-        P_model *=  C *np.prod(X**b_vec[1:],axis=1) 
-        
-        
-        vec_err =  np.abs((P_xp-P_model)/P_xp)* 100
-        
-        ave_err = np.average(vec_err) 
 
-        print(idx+1,R2,ave_err)           
+    rand_results = np.zeros((4,2))
+    NITER=1000
+    for niter in range(NITER):     
+        for idx in np.arange(1,5):
+            Xlsq = np.array([X0,X1,X3,X4,X6]) 
+            
+            Xidx = Xlsq[idx,:]
+            np.random.shuffle(Xidx)
+            Xlsq[idx,:] = np.copy(Xidx)
+        
+        
+            At = np.copy(Xlsq) # Include all
+            A = np.transpose(At)
+            b_vec = np.linalg.inv(At@A)@At@Y
+        
+    #        print(b_vec)
+        
+            C = 10**b_vec[0]
+        
+            X_sum = np.transpose(np.array([X0,X1,X3,X4,X6]))
+            ## R squared
+            # Residuals sum of squares
+            rss = np.sum( (Y - np.sum(X_sum*b_vec,axis=1))**2)
+            
+            # Total sum of squares
+        #    PI1ave = np.average(PI1)
+            Yave = np.average(Y)
+            tss = np.sum( (Y-Yave)**2)
+            
+            R2 = 1 - rss / tss
+            
+            ## Average error
+            # Least squares
+            P_xp = np.array(data[['totalPressure_SI']].dropna())[:,0]
+            P_model = data[['totalPressure_SI','magneticPressure']].dropna()
+            P_model = np.array(P_model[['magneticPressure']])[:,0]
+            
+            P_model *=  C *np.prod(X**b_vec[1:],axis=1) 
+            
+            
+            vec_err =  np.abs((P_xp-P_model)/P_xp)* 100
+            
+            ave_err = np.average(vec_err) 
+            
+            rand_results[idx-1,0] += R2
+            rand_results[idx-1,1] += ave_err
+
+    for idx in np.arange(1,5):
+        print(idx+1,rand_results[idx-1,0]/NITER,rand_results[idx-1,1]/NITER)              
      
         
         
@@ -725,7 +740,7 @@ if plot_theory_correlation:
     pi2 = np.array(pidata[['PI2']])
     pi5 = np.array(pidata[['PI5']])
     
-    corr = 1/4 + np.log(pi2) + pi5 * (sqrt_min + alpha_min + (sqrt_max + alpha_max))/2
+    corr = 1/4 - np.log(pi2) + pi5 * (sqrt_min + alpha_min + (sqrt_max + alpha_max))/2
 
     plt.loglog(np.logspace(0,5),np.logspace(0,5),'k--')
     plt.xlim([0.5,1e5])
