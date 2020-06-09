@@ -4,8 +4,9 @@ from scipy.interpolate import splrep,splev
 from scipy.optimize import root
 import math
 
-from cathode.experimental.load_data import load_all_data
-import cathode.experimental.files as cef
+#from cathode.experimental.load_data import load_all_data
+#import cathode.experimental.files as cef
+import cathode.resources as cres
 import cathode.constants as cc
 from cathode.models.flow import reynolds_number, viscosity
 
@@ -17,7 +18,7 @@ from populate_positional_data import populate_Siegfried_ng
 def df_reynolds_number(alldata):
     gam = 5/3
     ### Hg viscosity
-    collision_file = cef.__path__[0] + '/collision-integrals-lj.csv'
+    collision_file = cres.__path__[0] + '/collision-integrals-lj.csv'
     data = np.genfromtxt(collision_file,delimiter=',',names=True)
     
     MHg = cc.M.species('Hg')
