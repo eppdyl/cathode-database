@@ -1,0 +1,19 @@
+############################
+### DOCUMENT
+# [1] E. Chu and D. M. Goebel, “High-current lanthanum hexaboride hollow cathode for 10-to-50-kW hall thrusters,” IEEE Trans. Plasma Sci., vol. 40, no. 9, pp. 2133–2144, 2012.
+# [2] G. Becatti, D. M. Goebel, J. E. Polk, and P. Guerrero, “Life Evaluation of a Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thruster,” J. Propuls. Power, vol. 34, no. 4, pp. 893–900, 2017.
+### SOFTWARE
+# Plot digitized using Engauge Digitizer
+### CAPTION
+# [1] Fig. 11. Pressure profiles inside the 1.5-cm LaB6 hollow cathode at 100 A and three xenon gas flow rates
+# [2] Fig. 8 Neutral pressure calculated inside the two cathodes for 25 A and 13 sccm flow.  
+### DATA
+# Id (A), mdot (sccm of Xe), P (Torr), Propellant mass, do (mm), Lo (mm), dc (mm)
+### NOTES
+############################
+Id,mdot,P,mass,do,Lo,dc
+25,13,3.42876,131.293,3.0,1.0,7.0
+25,13,2.41291,131.293,5.0,1.0,7.0
+100,8,1.89336,131.293,3.8,1.0,7.0
+100,10,2.24564,131.293,3.8,1.0,7.0
+100,12,2.64392,131.293,3.8,1.0,7.0
