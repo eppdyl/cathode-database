@@ -28,7 +28,8 @@ import pandas as pd
 import numpy as np
 import os
 
-#
+from import_db import dtypes
+
 # folder                 datafile skip_header  \
 #NSTAR          jpl/nstar/discharge         P_vs_Id_mdot.csv          21   
 #NEXIS                    jpl/nexis         P_vs_Id_mdot.csv          11   
@@ -42,6 +43,41 @@ import os
 #AR3                  pepl/domonkos  P_vs_mdot_Id-1A_AR3.csv          14   
 #EK6                  pepl/domonkos     P_vs_mdot_Id_EK6.csv          15   
 #SC012                pepl/domonkos   P_vs_mdot_Id_SC012.csv          13   
+#JPL 1.5cm     jpl/goebel-lab6-cathodes/1.5cm-cathode P_vs_Id_mdot.csv
+#JPL 1.5cm-3mm NaN
+#JPL 1.5cm-5mm NaN
+cathodeList = ['NSTAR','NEXIS','Salhi','Salhi-Ar-1.21','Salhi-Ar-0.76',
+               'Salhi-Xe','Siegfried','Siegfried-NG','Friedly','T6','AR3',
+               'EK6','SC012','JPL-1.5cm','JPL-1.5cm-3mm','JPL-1.5cm-5mm',
+               'PLHC']
+folderList = ['jpl/nstar/discharge','jpl/nexis','lewis/salhi',
+              np.nan,np.nan,np.nan,
+              'lewis/siegfried',np.nan,
+              'lewis/friedly','rae/t6',
+              'pepl/domonkos','pepl/domonkos','pepl/domonkos',
+              'jpl/goebel-lab6-cathodes/1.5cm-cathode',
+              np.nan,np.nan,
+              'princeton/plhc']
+
+fileList = ['P_vs_Id_mdot.csv','P_vs_Id_mdot.csv','P_vs_Id_mdot.csv',
+            np.nan,np.nan,np.nan,
+            'P_vs_Id_mdot.csv',np.nan,
+            'P_vs_Id_mdot.csv','P_vs_Id_mdot.csv',
+            'P_vs_mdot_Id-1A_AR3.csv','P_vs_mdot_Id_EK6.csv',
+            'P_vs_mdot_Id_SC012.csv',
+            'P_vs_Id_mdot.csv',np.nan,np.nan,
+            'P_vs_Id_mdot.csv']
+
+headerNames = ['Id','mdot','P','mass','do','Lo','dc','Tw','To']
+
+
+pressureFiles = {
+        'cathode' :cathodeList ,
+        'folder': folderList,
+        'datafile': fileList,
+        }
+
+
 
 def load_pressure_data():
     '''
@@ -53,51 +89,80 @@ def load_pressure_data():
     to the same idx specified in the datafile_idx.pkl...
     
     '''
-    ### Pandas representation...
-    # idx: name of the cathode
-    idx = ['NSTAR','NEXIS','Salhi','Salhi-Ar','Salhi-Xe','Salhi-Ar-1.21','Salhi-Ar-0.76','Siegfried','AR3','EK6','SC012','Friedly','T6']
-    cathode_idx = ['NSTAR','NEXIS','Salhi','Siegfried','AR3','EK6','SC012','Friedly','T6']
-
-    # col: name of the columns
-    # Id -> discharge current
-    # mdot -> mass flow rate
-    # P -> pressure
-    # do -> orifice diameter
-    # Lo -> orifice length
-    # species -> gas used
-    # corr -> P/mdot * do^2 for Siegfried and Wilbur
-    col = ['Id','mdot','P','do','Lo','mass','Tw','To','dc','eiz','corr','corr_up','corr_lo']
-
-    pdf = pd.DataFrame(index=idx, columns=col)
-
-    #### Load data
-    #root_folder = 'cathode-data'
+    ### Pandas representation of the list of files to load
+    df_pFiles = pd.DataFrame(pressureFiles,
+                             columns = np.sort(list(pressureFiles)),
+                             index = cathodeList)
+    
+    ### Pandas representation of the data that will be loaded
+    # Empty dataframe
+    data = np.empty(0, dtype=dtypes)
+    data = pd.DataFrame(data)
+    
+    ### Iterate through all the pressure files
     root_folder = os.path.dirname(__file__)
-    root_folder = os.path.join(root_folder,'files','cathode-data')
-
-    di_str = pkg_resources.open_binary(files,'datafile_index.pkl')
-    df = pd.read_pickle(di_str)
-
-    for cat in cathode_idx:
-        folder = root_folder + '/' + df.folder[cat]
-        datafile = folder + '/' + df.datafile[cat]
-        nskip = df.skip_header[cat]
-        dtype = df.dtype[cat]
-
-        load_single_cathode(cat,datafile,nskip,dtype,pdf)
-
-    ## Make sure we fill the temperature array with an arbitrary temperature
-    ## when data is not available
-    for name in idx:
-        arr = pdf.Tw[name]
-        arr_idx = np.isnan(arr)
-        arr[arr_idx] = 1000
-        pdf.Tw[name] = arr
-
-    ## Extract unique data 
-    pdf_extract = pdf[(pdf.index != 'Salhi') & (pdf.index != 'Salhi-Ar') ]
-
-    return pdf_extract
+    root_folder = os.path.join(root_folder,'..')
+    
+    for index, row  in df_pFiles.iterrows():
+        if pd.isnull(row['folder']):
+            next
+        else:
+            cathode = row['cathode']
+            folder = row['folder']
+            datafile = row['datafile']
+            
+            folder = root_folder + '/' + folder
+            datafile = folder + '/' + datafile
+            
+#            print(cathode,datafile)
+            
+            ### Load data
+#    
+#    
+#    # idx: name of the cathode
+#    idx = ['NSTAR','NEXIS','Salhi','Salhi-Ar','Salhi-Xe','Salhi-Ar-1.21','Salhi-Ar-0.76','Siegfried','AR3','EK6','SC012','Friedly','T6']
+#    cathode_idx = ['NSTAR','NEXIS','Salhi','Siegfried','AR3','EK6','SC012','Friedly','T6']
+#
+#    # col: name of the columns
+#    # Id -> discharge current
+#    # mdot -> mass flow rate
+#    # P -> pressure
+#    # do -> orifice diameter
+#    # Lo -> orifice length
+#    # species -> gas used
+#    # corr -> P/mdot * do^2 for Siegfried and Wilbur
+#    col = ['Id','mdot','P','do','Lo','mass','Tw','To','dc','eiz','corr','corr_up','corr_lo']
+#
+#    pdf = pd.DataFrame(index=idx, columns=col)
+#
+#    #### Load data
+#    #root_folder = 'cathode-data'
+#    root_folder = os.path.dirname(__file__)
+#    root_folder = os.path.join(root_folder,'..')
+#
+##    di_str = pkg_resources.open_binary(files,'datafile_index.pkl')
+#    df = pd.read_pickle('datafile_index.pkl')
+#
+#    for cat in cathode_idx:
+#        folder = root_folder + '/' + df.folder[cat]
+#        datafile = folder + '/' + df.datafile[cat]
+#        nskip = df.skip_header[cat]
+#        dtype = df.dtype[cat]
+#
+#        load_single_cathode(cat,datafile,nskip,dtype,pdf)
+#
+#    ## Make sure we fill the temperature array with an arbitrary temperature
+#    ## when data is not available
+#    for name in idx:
+#        arr = pdf.Tw[name]
+#        arr_idx = np.isnan(arr)
+#        arr[arr_idx] = 1000
+#        pdf.Tw[name] = arr
+#
+#    ## Extract unique data 
+#    pdf_extract = pdf[(pdf.index != 'Salhi') & (pdf.index != 'Salhi-Ar') ]
+#
+#    return pdf_extract
 
 def load_single_cathode(cat,datafile,nskip,dtype,pdf):
     '''
@@ -120,7 +185,7 @@ def load_single_cathode(cat,datafile,nskip,dtype,pdf):
         - Tw: wall temperature (degC)
     '''
     # Read data
-    print(cat)
+    print(cat,datafile)
     data = np.genfromtxt(datafile,delimiter=',',dtype=dtype,names=True,skip_header=nskip)
     
     pdf.Id[cat] = data['Id']
