@@ -16,4 +16,4 @@ Articles mined for data:
 - Goebel JPC 2004: ne vs x for Id = 25 A at mdot = 5 sccm and 10 sccm
 - Jameson 2005 IEPC: pressure vs. Id at mdot = 5.5 sccm, pressure vs mdot at Id = 22 A
 - Goebel JAP 2005: ne vs x for Id = 25 A at mdot = 5.5 sccm and 10 sccm with an orifice size of 2 mm
-- Mikellides JAP 2005: ne vs x, Te vs x, and phi_p vs x at Id = 25 A and mdot = 5.5 sccm
+- Mikellides JAP 2005: ne vs x, Te vs x, and phi_p vs x at Id = 25 A and mdot = 5.5 sccm with an orifice size of 2.75 mm
