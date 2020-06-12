@@ -8,6 +8,7 @@ This folder contains the data pertaining to the JPL's LaB6 hollow cathodes. The 
 - I. G. Mikellides, D. M. Goebel, B. a Jorns, J. E. Polk, and P. Guerrero, “Numerical Simulations of the Partially-ionized Gas in a 100-A LaB 6 Hollow Cathode,” IEEE Trans. Plasma Sci., vol. 43, no. 1, pp. 1–15, 2015.
 
 ### 0.8-cm cathode
+N/A
 
 ### 1.5-cm cathode
 Reference usage:
@@ -28,3 +29,4 @@ Here is the list of data that can be digitized
 
 
 ### 2.0-cm cathode
+N/A

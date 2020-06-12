@@ -8,6 +8,7 @@ This folder contains the data pertaining to the NSTAR neutralizer and discharge 
 - I. G. Mikellides, I. Katz, D. M. Goebel, K. K. Jameson, and J. E. Polk, “Wear Mechanisms in Electron Sources for Ion Propulsion, II: Discharge Hollow Cathode,” J. Propuls. Power, vol. 24, no. 4, pp. 866–879, 2008.
 
 ### NSTAR Neutralizer 
+N/A
 
 ### NSTAR Discharge
 Reference usage:
