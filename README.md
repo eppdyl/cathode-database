@@ -47,7 +47,7 @@ It creates a portable .hdf5 that can be loaded straight into Pandas.
 
 ## CONTRIBUTE
 As of June 2020, the database has over 400 data points with discharge currents
-ranging from 1 to 307~A, mass flow rates from 1 sccm to 200~sccm, and 
+ranging from 1 to 307 A, mass flow rates from 1 sccm to 200 sccm, and 
 mercury, xenon, and argon propellants. 
 
 However, more data is always welcome! 
