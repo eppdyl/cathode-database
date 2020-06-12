@@ -22,7 +22,7 @@ Orifice hollow cathodes currently considered:
 
     - T6 cathode 
 
-- Princeton University
+- EPPDyL at Princeton University
 
     - PLHC cathode
 
