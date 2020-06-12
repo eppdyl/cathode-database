@@ -1,4 +1,6 @@
 ## About the JPL cathodes
+Finding consistent dimensions has been difficult and sometimes requires guesswork. I show below data compiled from many different articles. 
+
 Goebel and Katz (2008) mention both the NEXIS and the NSTAR cathodes.
 Both cathodes use barium oxide for their insert.
 - NEXIS: Nuclear Electric Xenon Ion Thruster System
@@ -10,7 +12,7 @@ The NSTAR ion engine features TWO different hollow cathodes:
 Their dimensions are different! It is also difficult to find any good information about the size of these cathodes.
 Nonetheless, here are some references that set some values of these dimensions...
 
-Goebel also built several LaB6 cathodes, with various insert diameters.
+The JPL also built several LaB6 cathodes, with various insert diameters.
 
 ---
 
@@ -86,6 +88,7 @@ Fig. 1 shows the basic dimensions of the NEXIS cathode.
 - I. G. Mikellides, I. Katz, D. M. Goebel, J. E. Polk, and K. K. Jameson, “Plasma processes inside dispenser hollow cathodes,” Phys. Plasmas, vol. 13, 2006.
 
 Mikellides has a table with dimensions (Table 1). The actual orifice of the ``larger'' cathode (read: NEXIS) is 2.79 mm.
+Note that different work has the NEXIS orifice size reported to be 2.0 mm, 2.75 mm, 3.0 mm, and ``between 2.0 and 3.0 mm...'' 
 The emitter length for the NEXIS is also taken to be 2.54 cm.
 
 The plots seem to suggest the following dimensions
@@ -98,7 +101,7 @@ The plots seem to suggest the following dimensions
 ### Goebel, Katz, et al. (2004)
 - D. M. Goebel, I. Katz, J. E. Polk, I. G. Mikellides, K. K. Jameson, T. Liu, and R. Dougherty, “Extending Hollow Cathode Life for Electric Propulsion in Long-Term Missions,” Sp. 2004 Conf. Exhib., 2004.
 
-Figure 5 shows the dimensions of cathode. It has an insert diameter of 1.2 cm, emitter length of 2.5 cm, and orifice diameter of 0.15 cm. The figure is referenced after Mikelldies et al, 2004 ("Theoretical model..."
+Figure 5 shows the dimensions of cathode. It has an insert diameter of 1.2 cm, emitter length of 2.5 cm, and orifice diameter of 0.15 cm. The figure is referenced after Mikellides et al, 2004 ("Theoretical model..."
 
 ### Goebel, Jameson, et al. (2004)
 - D. Goebel, K. K. Jameson, R. M. Watkins, and I. Katz, “Hollow Cathode and Keeper-Region Plasma Measurements Using Ultra-Fast Miniature Scanning Probes,” 40th AIAA/ASME/SAE/ASEE Jt. Propuls. Conf. Exhib., 2004.
@@ -106,12 +109,10 @@ Figure 5 shows the dimensions of cathode. It has an insert diameter of 1.2 cm, e
 p.3 last paragraph: the orifice diameter is 2.75 mm.
 
 
-
-
 ---
 ## Average cathodes
 
-Based on the data used above, we can get the following dimensions for each cathode. If a reference appears more than once, this means that the dimension has been experimented with multiple values.
+Based on the data used above, we can get the following dimensions for each cathode. If a reference appears more than once, this means that the dimension has been reported with multiple values.
 
 #### NSTAR neutralizer cathode
 
