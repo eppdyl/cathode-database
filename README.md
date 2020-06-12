@@ -45,3 +45,4 @@ The merged data is stored under the folder institution/cathode/data.csv
 The database is assembled with the scripts in the folder ''assemble_data''. 
 It creates a portable .hdf5 that can be loaded straight into Pandas. 
 
+Pierre-Yves Taunay, 2020
