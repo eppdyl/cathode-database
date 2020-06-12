@@ -8,13 +8,13 @@ Orifice hollow cathodes currently considered:
     - NEXIS
     - LaB6 cathodes
 
-- Lewis
+- NASA Lewis
 
     - Siegfried and Wilbur Hg, Ar, and Xe cathodes 
     - Salhi's Ar and Xe cathode
     - Friedly's Xe cathode
 
-- PEPL
+- PEPL at University of Michigan
 
     - Domonkos's Xe cathode
 
@@ -22,7 +22,7 @@ Orifice hollow cathodes currently considered:
 
     - T6 cathode 
 
-- Princeton
+- Princeton University
 
     - PLHC cathode
 
