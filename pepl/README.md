@@ -1,6 +1,6 @@
 ### Domonkos' work
 Domonkos presents a bunch of cathodes in a series of papers and in his dissertation. The cathodes are designated with either "AR" ("Aspect Ratio"), "EK" ("Enclosed Keeper"), or OK ("Open Keeper").
-The dimensions are shown below
+The dimensions are shown below.
 
 #### References
 [1] M. T. Domonkos, M. J. Patterson, and A. D. Gallimore, “Low-Current, Xenon Orificed Hollow Cathode Performance for In-Space Applications,” J. Propuls. Power, vol. 19, no. 3, pp. 438–443, 2003.
