@@ -1,5 +1,7 @@
+### Reference
 [1] P. J. Wilbur, “Advanced Ion Thruster Research,” NASA CR-168340, 1984.
 
+### Notes
 Siegfried's argon and xenon cathode
 
 The insert was 15 to 20mm long and had a diameter of 3.8 mm; the cathode was operated with orifice plates having 0.51 and 0.76 mm diameter orifices
