@@ -8,12 +8,12 @@ into a Pandas dataframe, then re-writes it as a monolithic csv file.
 import pandas as pd
 import numpy as np
 
-# Geometry
+### Geometry
 do = 1.02 # mm
 dc = 3.8 # mm
 Lo = 0.74 # mm
 
-# Define cases
+### Define cases
 dischargeCurrent = np.array([8.29,13.2])
 massFlow_sccm = np.array([2.47,3.7])
 
@@ -24,7 +24,7 @@ dc = np.ones_like(dischargeCurrent) * dc
 idxmin = np.array([-50,-50],dtype=np.int64)
 idxmax = np.array([np.nan,np.nan])
 
-# Extract density data
+### Extract density data
 root = "../../../original-material/jameson-jpc-2005/"
 ne_data = np.genfromtxt(root+"raw/ne_vs_position_TH8-TH15.csv",delimiter=",",
                         skip_header=1)
@@ -32,7 +32,7 @@ ne_data = np.genfromtxt(root+"raw/ne_vs_position_TH8-TH15.csv",delimiter=",",
 ne_th8 = ne_data[~np.isnan(ne_data[:,1])][:,[0,1]]
 ne_th15 = ne_data[~np.isnan(ne_data[:,2])][:,[0,2]]
 
-# Extract Te and potential
+### Extract Te and potential
 data = np.genfromtxt(root + "raw/phip-Te_vs_position_TH8-TH15.csv",delimiter=",",
                         skip_header=1)
 
@@ -53,11 +53,8 @@ df = pd.DataFrame({'dischargeCurrent':dischargeCurrent,
                    'orificeDiameter':do,
                    'insertDiameter':dc})
 
-#df.to_csv("positional_combined.csv",index=False)
-
-### Note: we add the header by hand thereafter
-header_str = """
-############################
+# Write the header 
+header_str = """############################
 ### DOCUMENT
 # [1] K. K. Jameson, D. M. Goebel, and R. M. Watkins, “Hollow Cathode and Keeper-Region Plasma Measurements,” 41st AIAA/ASME/SAE/ASEE Jt. Propuls. Conf. Exhib., 2005.
 ### SOFTWARE
@@ -69,6 +66,11 @@ header_str = """
 # Id (A), log10(electron density) vs. x (in 1/m3 and mm, resp.), electron temperature vs. x (in eV and mm), idxmax, idxmin, dc (mm), mass flow (sccm of Xe), do (mm), Lo (mm), plasma potential vs. x (in V and mm)
 ### NOTES
 ############################
-dischargeCurrent,electronDensity,electronTemperature,idxmax,idxmin,insertDiameter,massFlowRate_sccm,orificeDiameter,orificeLength,plasmaPotential
 """
+f = open("positional_combined.csv","w")
+f.write(header_str)
+f.close()
+
+# Dump data
+df.to_csv("positional_combined.csv",index=False,mode="a")
 
