@@ -25,14 +25,15 @@ idxmin = np.array([-50,-50],dtype=np.int64)
 idxmax = np.array([np.nan,np.nan])
 
 # Extract density data
-ne_data = np.genfromtxt("raw/ne_vs_position_TH8-TH15.csv",delimiter=",",
+root = "../../../original-material/jameson-jpc-2005/"
+ne_data = np.genfromtxt(root+"raw/ne_vs_position_TH8-TH15.csv",delimiter=",",
                         skip_header=1)
 
 ne_th8 = ne_data[~np.isnan(ne_data[:,1])][:,[0,1]]
 ne_th15 = ne_data[~np.isnan(ne_data[:,2])][:,[0,2]]
 
 # Extract Te and potential
-data = np.genfromtxt("raw/phip-Te_vs_position_TH8-TH15.csv",delimiter=",",
+data = np.genfromtxt(root + "raw/phip-Te_vs_position_TH8-TH15.csv",delimiter=",",
                         skip_header=1)
 
 Te_th8 = data[~np.isnan(data[:,2])][:,[0,2]]
@@ -52,6 +53,22 @@ df = pd.DataFrame({'dischargeCurrent':dischargeCurrent,
                    'orificeDiameter':do,
                    'insertDiameter':dc})
 
-df.to_csv("positional_combined.csv",index=False)
+#df.to_csv("positional_combined.csv",index=False)
 
 ### Note: we add the header by hand thereafter
+header_str = """
+############################
+### DOCUMENT
+# [1] K. K. Jameson, D. M. Goebel, and R. M. Watkins, “Hollow Cathode and Keeper-Region Plasma Measurements,” 41st AIAA/ASME/SAE/ASEE Jt. Propuls. Conf. Exhib., 2005.
+### SOFTWARE
+# Plot digitized using Engauge Digitizer
+### CAPTION
+# [1] Fig.4 Axial density cathode and anode profiles plotted on a semi-log scale for TH8 and TH15. 
+# [1] Fig.6 Cathode plasma potential and electron temperature profiles for TH8 and TH15 
+### DATA
+# Id (A), log10(electron density) vs. x (in 1/m3 and mm, resp.), electron temperature vs. x (in eV and mm), idxmax, idxmin, dc (mm), mass flow (sccm of Xe), do (mm), Lo (mm), plasma potential vs. x (in V and mm)
+### NOTES
+############################
+dischargeCurrent,electronDensity,electronTemperature,idxmax,idxmin,insertDiameter,massFlowRate_sccm,orificeDiameter,orificeLength,plasmaPotential
+"""
+
