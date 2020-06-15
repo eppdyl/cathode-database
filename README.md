@@ -45,13 +45,17 @@ The merged data is stored under the folder institution/cathode/data.csv
 The database is assembled with the scripts in the folder ''assemble_data''. 
 It creates a portable .hdf5 that can be loaded straight into Pandas. 
 
+## Data currently considered
+The data considered at this point is the total pressure, axial electron density, electron temperature, and potential. 
+The scripts that are scattered throughout the repository can be easily adapted to include other data, such as the
+voltage-current characteristic.
+
 ## CONTRIBUTE
-As of June 2020, the database has over 400 data points with discharge currents
+As of June 2020, the database has over 400 data entries with discharge currents
 ranging from 1 to 307 A, mass flow rates from 1 sccm to 200 sccm, and 
 mercury, xenon, and argon propellants. 
 
-However, more data is always welcome! 
-You can send me data or (preferably) create a pull request to push more data
-to the database.
+More data is always welcome! 
+You can send me data or (preferably) create a pull request to push more data to the database.
 
 Pierre-Yves Taunay, 2020
