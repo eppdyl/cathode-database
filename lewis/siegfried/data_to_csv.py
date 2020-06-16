@@ -18,6 +18,7 @@ def Pcorr(mdot,do,Id,species):
 
 ### Geometry
 do = 0.76
+Lo = 1.8
 
 ### Start with the pressure data
 ## Mercury data
@@ -28,20 +29,27 @@ hg_pdata = np.genfromtxt(root + 'P_vs_Id_mdot.csv', delimiter=',', names=True,
 dischargeCurrent = hg_pdata['Id']
 massFlow_eqA = hg_pdata['mdot'] * 1e-3
 pressureArray = np.copy(hg_pdata['P'])
+massArray = cc.M.Hg * np.ones_like(dischargeCurrent)
+twallArray = np.copy(hg_pdata['Tw'])
+dc = np.copy(hg_pdata['dc'])
 
 ## Argon data
 root = '../../original-material/wilbur-CR168340-1984/csv/'
-
+dcval = 3.8 # mm
 
 # Pressure known, back out mass flow rate
 ar_pdata = np.genfromtxt(root + 'argon_do-0.76mm_Id-2.3A.csv', delimiter=',', names=True,
                       skip_header=15)
 Id = 2.3
+
 mdot = ar_pdata['P'] * do**2 / (0.0056 + 0.0012 * Id) * 1e-3
 
 dischargeCurrent = np.append(dischargeCurrent,np.ones_like(ar_pdata['P']) * Id)
 massFlow_eqA = np.append(massFlow_eqA,mdot)
 pressureArray = np.append(pressureArray,ar_pdata['P'])
+massArray = np.append(massArray,cc.M.Ar *np.ones_like(ar_pdata['P']))
+twallArray = np.append(twallArray,ar_pdata['Tc'])
+dc = np.append(dc,dcval*np.ones_like(ar_pdata['P']))
 
 # Mass flow rate known, back out pressure
 ar_pdata = np.genfromtxt(root + 'argon_do-0.76mm_mdot-287mA.csv', delimiter=',', names=True,
@@ -51,8 +59,12 @@ mdot = 287 # mA
 P = Pcorr(mdot,do,ar_pdata['Id'],'Ar')
 
 dischargeCurrent = np.append(dischargeCurrent,ar_pdata['Id'])
-massFlow_eqA = np.append(massFlow_eqA,mdot)
+massFlow_eqA = np.append(massFlow_eqA,mdot*np.ones_like(ar_pdata['Id']))
 pressureArray = np.append(pressureArray,P)
+massArray = np.append(massArray,cc.M.Ar *np.ones_like(ar_pdata['Id']))
+twallArray = np.append(twallArray,ar_pdata['Tc'])
+dc = np.append(dc,dcval*np.ones_like(ar_pdata['Id']))
+
 
 ## Xenon data
 root = '../../original-material/wilbur-CR168340-1984/csv/'
@@ -67,6 +79,11 @@ dischargeCurrent = np.append(dischargeCurrent,np.ones_like(xe_pdata['P']) * Id)
 massFlow_eqA = np.append(massFlow_eqA,mdot)
 pressureArray = np.append(pressureArray,xe_pdata['P'])
 
+massArray = np.append(massArray,cc.M.Xe *np.ones_like(xe_pdata['P']))
+twallArray = np.append(twallArray,xe_pdata['Tc'])
+dc = np.append(dc,dcval*np.ones_like(xe_pdata['P']))
+
+
 # Mass flow rate known, back out pressure
 xe_pdata = np.genfromtxt(root + 'xenon_do-0.76mm_mdot-92mA.csv', delimiter=',', names=True,
                       skip_header=15)
@@ -75,10 +92,55 @@ mdot = 92 # mA
 P = Pcorr(mdot,do,xe_pdata['Id'],'Ar')
 
 dischargeCurrent = np.append(dischargeCurrent,xe_pdata['Id'])
-massFlow_eqA = np.append(massFlow_eqA,mdot)
+massFlow_eqA = np.append(massFlow_eqA,mdot*np.ones_like(xe_pdata['Id']))
 pressureArray = np.append(pressureArray,P)
+massArray = np.append(massArray,cc.M.Xe *np.ones_like(xe_pdata['Id']))
+twallArray = np.append(twallArray,xe_pdata['Tc'])
+dc = np.append(dc,dcval*np.ones_like(xe_pdata['Id']))
 
 
+do = do * np.ones_like(dischargeCurrent)
+Lo = Lo * np.ones_like(dischargeCurrent)
+
+#Id,mdot,P,mass,do,Tw,Lo,dc
+### Assemble and dump
+df = pd.DataFrame({'dischargeCurrent':dischargeCurrent,
+                   'massFlowRate_eqA':massFlow_eqA,
+                   'totalPressure':pressureArray,
+                   'gasMass': massArray,
+                   'insertTemperatureAverage':twallArray,
+                   'orificeLength':Lo,
+                   'orificeDiameter':do,
+                   'insertDiameter':dc})
+
+    
+# Write the header 
+header_str = """############################
+### DOCUMENT
+# [1] P. J. Wilbur, “Ion and advanced electric thruster research,” CR-165253, 1980.
+# [2] Siegfried, D. E., Wilbur, P. J. "Phenomenological model describing orificed, hollow cathode operation," 15th IEPC, 1981 
+# [3] Siegfried, D. E. "A Phenomenological Model for Orificed Hollow Cathodes", Ph.D. thesis, Colorado State University, 1982 
+# [4] P. J. Wilbur, "Advanced Ion Thruster Research," CR-168340, 1984.
+### DATA
+# Id (A), Propellant mass (amu), Insert diameter (mm), Insert temperature (degC), Mass flow rate (eqA), Orifice diameter (mm), Orifice length (mm), Total pressure (Torr)
+### NOTES
+# Mercury cathode with a 0.76mm diameter orifice
+# Table p. 14 of Ref. [1], p.4 of Ref. [2]. 
+# Temperature data for the cases at 3.3 A are from Ref. [2] 
+# Orifice length is from Ref. [3], p.130
+# The insert temperature for the experiments at fixed Id = 3.31 A but varying mass flow rate are taken to be the same as the one reported for 3.31 A
+# [4] Plots are p.101-104 for Argon and p.105-108 for Xenon
+############################
+"""
+f = open("positional_combined.csv","w")
+f.write(header_str)
+f.close()
+
+# Dump data
+df.to_csv("P_vs_Id_mdot.csv",index=False,mode="a")
+
+
+    
 
 #master_ne = []
 #master_Te = []
