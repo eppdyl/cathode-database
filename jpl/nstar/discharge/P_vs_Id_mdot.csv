@@ -19,7 +19,7 @@
 # [3] Tw is calculated with Polk's fit when data is not available (e.g. lines 23-47)
 # Tw is the _peak_ insert temperature in this case; To is the orifice plate temperature
 ############################
-Id,mdot,P,mass,do,Lo,Tw,To,dc
+dischargeCurrent,massFlowRate_sccm,totalPressure,gasMass,orificeDiameter,orificeLength,insertAverageTemperature,orificeTemperature,insertDiameter
 5.95,2.47,4.0275,131.293,1.02,0.74,1.148042054355279561e+03,,3.8
 8.24,2.47,4.6019,131.293,1.02,0.74,1.195382905271655090e+03,,3.8
 9.90,2.81,5.9054,131.293,1.02,0.74,1.221361467522763178e+03,,3.8
