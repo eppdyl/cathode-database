@@ -48,46 +48,63 @@ from import_db import dtypes
 #JPL 1.5cm-5mm NaN
 cathodeList = ['NSTAR','NEXIS','Salhi','Salhi-Ar-1.21','Salhi-Ar-0.76',
                'Salhi-Xe','Siegfried','Siegfried-NG','Friedly','T6','AR3',
-               'EK6','SC012','JPL-1.5cm','JPL-1.5cm-3mm','JPL-1.5cm-5mm',
-               'PLHC']
-folderList = ['jpl/nstar/discharge','jpl/nexis','lewis/salhi',
-              np.nan,np.nan,np.nan,
-              'lewis/siegfried',np.nan,
-              'lewis/friedly','rae/t6',
-              'pepl/domonkos','pepl/domonkos','pepl/domonkos',
-              'jpl/goebel-lab6-cathodes/1.5cm-cathode',
-              np.nan,np.nan,
-              'princeton/plhc']
+               'EK6','SC012','JPL-1.5cm','JPL-1.5cm-3mm','JPL-1.5cm-5mm'
+               ]
 
-fileList = ['P_vs_Id_mdot.csv','P_vs_Id_mdot.csv','P_vs_Id_mdot.csv',
-            np.nan,np.nan,np.nan,
-            'P_vs_Id_mdot.csv',np.nan,
-            'P_vs_Id_mdot.csv','P_vs_Id_mdot.csv',
-            'P_vs_mdot_Id-1A_AR3.csv','P_vs_mdot_Id_EK6.csv',
-            'P_vs_mdot_Id_SC012.csv',
-            'P_vs_Id_mdot.csv',np.nan,np.nan,
-            'P_vs_Id_mdot.csv']
+folderList = ['jpl/nstar/discharge',
+              'jpl/nexis',
+              'lewis/salhi',
+              None,None,None,
+              'lewis/siegfried',
+              None,
+              'lewis/friedly',
+              'rae/t6',
+              'pepl/domonkos',
+              'pepl/domonkos',
+              'pepl/domonkos',
+              'jpl/lab6-cathodes/1.5cm-cathode',
+              None,None]
 
-headerNames = ['Id','mdot','P','mass','do','Lo','dc','Tw','To']
+fileList = [['P_vs_Id_mdot.csv'],
+            ['P_vs_Id_mdot.csv'],
+            ['P_vs_Id_mdot.csv'],None,None,None,
+            ['P_vs_Id_mdot.csv'],None,
+            ['P_vs_Id_mdot.csv'],
+            ['P_vs_Id_mdot.csv'],
+            ['P_vs_mdot_Id-1A_AR3.csv'],
+            ['P_vs_mdot_Id_EK6.csv'],
+            ['P_vs_mdot_Id_SC012.csv'],
+            ['P_vs_Id_mdot.csv'],None,None]
 
+#headerNames = ['Id','mdot','P','mass','do','Lo','dc','Tw','To']
+#headerSkip = [21, # NSTAR 
+#              11, # NEXIS
+#              16, # Salhi
+#              None,None,None,
+#              16, # Siegfried
+#              None,
+#              14, # Friedly
+#              15, # T6
+#              14, # AR3
+#              15, # EK6
+#              13, # SC012
+#              13, # JPL 1.5 cm
+#              None, None
+#              ]
 
 pressureFiles = {
         'cathode' :cathodeList ,
         'folder': folderList,
-        'datafile': fileList,
+        'datafile': fileList
         }
 
 
 
-def load_pressure_data():
+def load_csv_data():
     '''
-    Loads pressure data for all the cathodes specified by name in cathode_idx. 
+    Loads the CSV data for all the cathodes specified by name in cathode_idx. 
     Stores the corresponding results in the dataframe pdf ("pressure 
-    dataframe")
-    
-    FYI - There are NO error checks. The cathode_idx variable should correspond
-    to the same idx specified in the datafile_idx.pkl...
-    
+    dataframe")    
     '''
     ### Pandas representation of the list of files to load
     df_pFiles = pd.DataFrame(pressureFiles,
@@ -96,8 +113,8 @@ def load_pressure_data():
     
     ### Pandas representation of the data that will be loaded
     # Empty dataframe
-    data = np.empty(0, dtype=dtypes)
-    data = pd.DataFrame(data)
+    df = np.empty(0, dtype=dtypes)
+    df = pd.DataFrame(df)
     
     ### Iterate through all the pressure files
     root_folder = os.path.dirname(__file__)
@@ -106,19 +123,50 @@ def load_pressure_data():
     for index, row  in df_pFiles.iterrows():
         if pd.isnull(row['folder']):
             next
-        else:
-            cathode = row['cathode']
-            folder = row['folder']
-            datafile = row['datafile']
-            
-            folder = root_folder + '/' + folder
-            datafile = folder + '/' + datafile
-            
-#            print(cathode,datafile)
-            
+        else:                        
             ### Load data
-#    
-#    
+            df = load_single_cathode(df,row)
+
+    df = df.reset_index()
+    
+    return df
+
+def load_single_cathode(df,row):
+    cathode = row['cathode']
+    folder = row['folder']
+    datafiles = row['datafile']
+        
+    folder = '../' + folder  
+        
+    for _,fname in enumerate(datafiles):
+        datafile = folder + '/' + fname
+        
+        ### What type of file are we loading? 
+        # Are we loading pressure?
+        if 'P_vs_' in datafile:
+            print(cathode,'Pressure',datafile)
+            
+            df_from_csv = pd.read_csv(datafile,comment='#',delimiter=',')
+            df_from_csv['cathode'] = cathode
+            
+            ### Some necessary conversions
+            if cathode == 'Friedly':
+                # Convert to eqA from mA
+                df_from_csv['massFlowRate'] = df_from_csv['massFlowRate'].apply(lambda x: x * 1e-3)
+            elif cathode == 'AR3' or cathode == 'EK6' or cathode == 'SC012':
+                # Convert from Pa x 1e-3 to Torr
+                df_from_csv['totalPressure'] = df_from_csv['totalPressure'].apply(lambda x: x * 1e3 / cc.Torr)
+            elif cathode == 'T6':
+                # Convert mass flow rate from mg/s to kg/s
+                df_from_csv['massFlowRate_SI'] = df_from_csv['massFlowRate_SI'].apply(lambda x: x * 1e-6)
+                
+                        
+            df = df.append(pd.DataFrame(df_from_csv,columns=df.columns))
+            
+    return df
+    
+
+    
 #    # idx: name of the cathode
 #    idx = ['NSTAR','NEXIS','Salhi','Salhi-Ar','Salhi-Xe','Salhi-Ar-1.21','Salhi-Ar-0.76','Siegfried','AR3','EK6','SC012','Friedly','T6']
 #    cathode_idx = ['NSTAR','NEXIS','Salhi','Siegfried','AR3','EK6','SC012','Friedly','T6']
@@ -162,76 +210,76 @@ def load_pressure_data():
 #    ## Extract unique data 
 #    pdf_extract = pdf[(pdf.index != 'Salhi') & (pdf.index != 'Salhi-Ar') ]
 #
-#    return pdf_extract
-
-def load_single_cathode(cat,datafile,nskip,dtype,pdf):
-    '''
-    Loads the data from a single cathode. Since they each differ, there are 
-    tests to determine which cathode we are considering. 
-    The corresponding fields are then filled in the dataframe used
-    Inputs:
-        - cat: the cathode name of interest
-        - datafile: the datafile we are loading
-        - nskip: number of header lines to skipe
-        - dtype: the datatype loaded
-        - pdf: the pandas frame to fill
-    Note about the units for the final panda frame
-        - Id: current (A)
-        - mdot: mass flow rate (A)
-        - P: pressure (Torr)
-        - do: Orifice diameter (mm)
-        - Lo: Orifice length (mm)
-        - mass: propellant mass (amu)
-        - Tw: wall temperature (degC)
-    '''
-    # Read data
-    print(cat,datafile)
-    data = np.genfromtxt(datafile,delimiter=',',dtype=dtype,names=True,skip_header=nskip)
-    
-    pdf.Id[cat] = data['Id']
-    pdf.P[cat] = data['P']
-    pdf.do[cat] = data['do']
-    pdf.Lo[cat] = data['Lo']
-    pdf.mass[cat] = data['mass']
-    pdf.Tw[cat] = data['Tw']
-    pdf.dc[cat] = data['dc']
-    
-    
-    # Deduce the ionization energy from the mass
-    # TODO: Add the ionization energy to the cathode.constants package
-    pdf.eiz[cat] = (data['mass'] == 131.293) * 12.1298  # Xe
-    pdf.eiz[cat] += (data['mass'] == 39.948) * 15.75962 # Ar
-    pdf.eiz[cat] += (data['mass'] == 200.59) * 10.43750 # Hg
-    
-    
-    if cat != 'Siegfried':
-        pdf.mdot[cat] = data['mdot']
-
-    if cat == 'NSTAR' or cat == 'NEXIS':        
-        pdf.mdot[cat] *= cc.sccm2eqA # sccm to equivalent amperes
-
-    elif cat == 'Salhi':
-        # Get a couple of datasets separately
-        separate_salhi(pdf)
-
-    elif cat == 'Siegfried':     
-        # Round to 102 to have similar correlation
-        pdf.mdot[cat] = [102,102,102,102,102,78,62,35,25] 
-        
-        # mA to A
-        pdf.mdot[cat]  = np.asarray([mdot * 1e-3 for mdot in pdf.mdot[cat]]) 
-
-    elif cat == 'AR3' or cat == 'EK6' or cat == 'SC012':
-        pdf.P[cat] *= 1e3/cc.Torr
-        pdf.mdot[cat] *= cc.sccm2eqA # sccm to A
-
-    elif cat == 'Friedly':
-        pdf.mdot[cat] *= 1e-3 # mA to A
-
-    elif cat == 'T6':
-        mg2sccm = 22.413996 * 1e3 * 60.0 / (1e6*6.02214179e23) * 1.0 / cc.M.species('Xe')
-        mg2eqA = mg2sccm * cc.sccm2eqA
-        pdf.mdot[cat] *= mg2eqA # mg to A
+##    return pdf_extract
+#
+#def load_single_cathode(cat,datafile,nskip,dtype,pdf):
+#    '''
+#    Loads the data from a single cathode. Since they each differ, there are 
+#    tests to determine which cathode we are considering. 
+#    The corresponding fields are then filled in the dataframe used
+#    Inputs:
+#        - cat: the cathode name of interest
+#        - datafile: the datafile we are loading
+#        - nskip: number of header lines to skipe
+#        - dtype: the datatype loaded
+#        - pdf: the pandas frame to fill
+#    Note about the units for the final panda frame
+#        - Id: current (A)
+#        - mdot: mass flow rate (A)
+#        - P: pressure (Torr)
+#        - do: Orifice diameter (mm)
+#        - Lo: Orifice length (mm)
+#        - mass: propellant mass (amu)
+#        - Tw: wall temperature (degC)
+#    '''
+#    # Read data
+#    print(cat,datafile)
+#    data = np.genfromtxt(datafile,delimiter=',',dtype=dtype,names=True,skip_header=nskip)
+#    
+#    pdf.Id[cat] = data['Id']
+#    pdf.P[cat] = data['P']
+#    pdf.do[cat] = data['do']
+#    pdf.Lo[cat] = data['Lo']
+#    pdf.mass[cat] = data['mass']
+#    pdf.Tw[cat] = data['Tw']
+#    pdf.dc[cat] = data['dc']
+#    
+#    
+#    # Deduce the ionization energy from the mass
+#    # TODO: Add the ionization energy to the cathode.constants package
+#    pdf.eiz[cat] = (data['mass'] == 131.293) * 12.1298  # Xe
+#    pdf.eiz[cat] += (data['mass'] == 39.948) * 15.75962 # Ar
+#    pdf.eiz[cat] += (data['mass'] == 200.59) * 10.43750 # Hg
+#    
+#    
+#    if cat != 'Siegfried':
+#        pdf.mdot[cat] = data['mdot']
+#
+#    if cat == 'NSTAR' or cat == 'NEXIS':        
+#        pdf.mdot[cat] *= cc.sccm2eqA # sccm to equivalent amperes
+#
+#    elif cat == 'Salhi':
+#        # Get a couple of datasets separately
+#        separate_salhi(pdf)
+#
+#    elif cat == 'Siegfried':     
+#        # Round to 102 to have similar correlation
+#        pdf.mdot[cat] = [102,102,102,102,102,78,62,35,25] 
+#        
+#        # mA to A
+#        pdf.mdot[cat]  = np.asarray([mdot * 1e-3 for mdot in pdf.mdot[cat]]) 
+#
+#    elif cat == 'AR3' or cat == 'EK6' or cat == 'SC012':
+#        pdf.P[cat] *= 1e3/cc.Torr
+#        pdf.mdot[cat] *= cc.sccm2eqA # sccm to A
+#
+#    elif cat == 'Friedly':
+#        pdf.mdot[cat] *= 1e-3 # mA to A
+#
+#    elif cat == 'T6':
+#        mg2sccm = 22.413996 * 1e3 * 60.0 / (1e6*6.02214179e23) * 1.0 / cc.M.species('Xe')
+#        mg2eqA = mg2sccm * cc.sccm2eqA
+#        pdf.mdot[cat] *= mg2eqA # mg to A
 
 
 
