@@ -13,7 +13,7 @@
 # IGNORE THE FOLLOWING (kept for posterity) "The mass flow rate values are not exactly the same from one run to the other one, so I kept them as raw data values extracted from the plots."
 # The temperature data is the orifice plate temperature
 ############################
-Id,mdot,P,mass,do,Lo,Tw,dc
+dischargeCurrent,massFlowRate_sccm,totalPressure,gasMass,orificeDiameter,orificeLength,insertTemperatureAverage,insertDiameter
 0.50,2.00,36.0294,131.293,0.13,0.71,,1.17
 0.50,2.40,40.0735,131.293,0.13,0.71,,1.17
 0.50,2.80,44.3015,131.293,0.13,0.71,,1.17

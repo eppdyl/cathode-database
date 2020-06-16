@@ -14,7 +14,7 @@
 # Xe, mdot = 0.93 A, T vs Id for 1.21 mm: Fig 6.3
 # Xe, mdot = 0.5 A, T vs Id for 1.21 mm: Fig 5.68
 ############################
-Id,mdot,do,mass,P,Lo,Tw,dc
+dischargeCurrent,massFlowRate,orificeDiameter,gasMass,totalPressure,orificeLength,insertTemperatureAverage,insertDiameter
 2.0,0.50,0.76,39.948,8.0473,1.24,,3.81
 3.0,0.50,0.76,39.948,8.5451,1.24,,3.81
 4.0,0.50,0.76,39.948,9.07,1.24,,3.81

@@ -121,7 +121,7 @@ neArray = np.log10(neArray)
 #Id,mdot,P,mass,do,Tw,Lo,dc
 ### Assemble and dump
 df = pd.DataFrame({'dischargeCurrent':dischargeCurrent,
-                   'massFlowRate_eqA':massFlow_eqA,
+                   'massFlowRate':massFlow_eqA,
                    'totalPressure':pressureArray,
                    'gasMass': massArray,
                    'insertTemperatureAverage':twallArray,
@@ -202,7 +202,7 @@ massFlowRate_eqA = np.array([mdot,mdot])
 ### Assemble and dump
 df = pd.DataFrame({'totalPressure':totalPressure,
                     'dischargeCurrent':dischargeCurrent,
-                   'massFlowRate_eqA':massFlowRate_eqA,
+                   'massFlowRate':massFlowRate_eqA,
                    'idxmin': master_idxmin,'idxmax':master_idxmax,
                    'electronDensity':master_ne,
                    'orificeLength':[Lo_val,Lo_val],
@@ -226,7 +226,7 @@ for idx,P in enumerate(Pvec):
     Te_xp = Te_data[idx]
     df = df.append({'totalPressure': P,
                               'dischargeCurrent' : Id,
-                              'massFlowRate_eqA': mdot,                          
+                              'massFlowRate': mdot,                          
                               'orificeDiameter': do_val,
                               'orificeLength': Lo_val,
                               'insertDiameter': dc_val,
@@ -243,7 +243,7 @@ for idx,P in enumerate(Pvec):
     Te_xp = Te_data[idx]
     df = df.append({'totalPressure': P,
                               'dischargeCurrent' : Id,
-                              'massFlowRate_eqA': mdot,                          
+                              'massFlowRate': mdot,                          
                               'orificeDiameter': do_val,
                               'orificeLength': Lo_val,
                               'insertDiameter': dc_val,

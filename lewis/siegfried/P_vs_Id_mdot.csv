@@ -14,7 +14,7 @@
 # The insert temperature for the experiments at fixed Id = 3.31 A but varying mass flow rate are taken to be the same as the one reported for 3.31 A
 # [4] Plots are p.101-104 for Argon and p.105-108 for Xenon
 ############################
-dischargeCurrent,electronDensity,gasMass,insertDiameter,insertTemperatureAverage,massFlowRate_eqA,orificeDiameter,orificeLength,plasmaPotential,totalPressure
+dischargeCurrent,electronDensity,gasMass,insertDiameter,insertTemperatureAverage,massFlowRate,orificeDiameter,orificeLength,plasmaPotential,totalPressure
 1.27,,200.59,3.9,965.0,0.10200000000000001,0.76,1.8,,3.6
 2.3,,200.59,3.9,1009.0,0.10200000000000001,0.76,1.8,,4.6
 3.31,,200.59,3.9,1039.0,0.106,0.76,1.8,,5.5

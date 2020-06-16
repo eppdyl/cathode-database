@@ -13,7 +13,7 @@
 # Extracted from Fig. 15. Gas is xenon. Mass flow rate error: 1 to 2%. The orifice diameter is probably 1 mm as Ref. [1] refers to Ref. [2], which uses 1 mm in Figs 6 and 12 
 # [2] Fig 16 The wall temperature is the exterior casing temperature, NOT the insert temperature.
 ############################
-mdot,Id,do,mass,P,Lo,Tw,dc
+massFlowRate_SI,dischargeCurrent,orificeDiameter,gasMass,totalPressure,orificeLength,insertTemperatureAverage,insertDiameter
 0.050348,5,1.0,131.293,23.5156,2.0,,2.0
 0.053009,5,1.0,131.293,22.5981,2.0,,2.0
 0.055201,5,1.0,131.293,10.8051,2.0,,2.0

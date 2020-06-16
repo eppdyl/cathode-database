@@ -11,7 +11,7 @@
 # Extracted from the overall plot; this data is for the SC012. Need to multiply pressure by 1e3 to obtain the correct values
 # The mass flow rate values are not exactly the same from one run to the other one, so I kept them as raw data values extracted from the plots.
 ############################
-Id,mdot,P,mass,do,Lo,Tw,dc
+dischargeCurrent,massFlowRate_sccm,totalPressure,gasMass,orificeDiameter,orificeLength,insertTemperatureAverage,insertDiameter
 0.5,0.985075,21.8196,131.293,0.13,0.5,,1.8
 0.5,1.19776,25.1788,131.293,0.13,0.5,,1.8
 0.5,1.39925,28.0404,131.293,0.13,0.5,,1.8

@@ -11,7 +11,7 @@
 # Id (A), log10(electron density) vs. x (in 1/m3 and mm, resp.), idxmax, idxmin, dc (mm), mass flow (eqA), do (mm), Lo (mm), total pressure (Torr), electron temperature (eV)
 ### NOTES
 ############################
-dischargeCurrent,electronDensity,idxmax,idxmin,insertDiameter,massFlowRate_eqA,orificeDiameter,orificeLength,totalPressure,electronTemperatureAverage
+dischargeCurrent,electronDensity,idxmax,idxmin,insertDiameter,massFlowRate,orificeDiameter,orificeLength,totalPressure,electronTemperatureAverage
 2.3,"[[  4.01000000e-02   2.45970000e+20]
  [  1.70400000e-01   2.48583000e+20]
  [  5.05600000e-01   2.53071000e+20]

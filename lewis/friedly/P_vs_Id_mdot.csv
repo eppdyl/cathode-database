@@ -12,7 +12,7 @@
 # Lo is not specified so we set it as 1 mm
 # The cathode wall temperature is plotted with a single point for a flow rate range of 180 to 550 mA; we consider that the wall temperature stays constant with flow rate. 
 ############################
-Id,mdot,P,mass,do,Lo,Tw,dc
+dischargeCurrent,massFlowRate,totalPressure,gasMass,orificeDiameter,orificeLength,insertTemperatureAverage,insertDiameter
 5,180,5.851,131.293,0.74,1.0,931.05,4.7
 10,180,8.803,131.293,0.74,1.0,1120.06,4.7
 15,180,11.014,131.293,0.74,1.0,1320.81,4.7
