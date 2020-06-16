@@ -9,7 +9,7 @@
 ### DATA
 # Id (A), mdot (sccm of Xe), P (Torr), Propellant mass (amu), do (mm), Lo (mm),dc(mm)
 ############################
-Id,mdot,P,mass,do,Lo,Tw,dc
+dischargeCurrent,massFlowRate_sccm,totalPressure,gasMass,orificeDiameter,orificeLength,insertAverageTemperature,insertDiameter
 8.0,5.5,1.11388,131.293,2.0,0.74,,12.7
 10.0,5.5,1.18253,131.293,2.0,0.74,,12.7
 12.0,5.5,1.29485,131.293,2.0,0.74,,12.7
