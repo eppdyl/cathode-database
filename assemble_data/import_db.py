@@ -7,7 +7,11 @@ dtypes = np.dtype([
         ('cathode',str), # Cathode name
        ('dischargeCurrent',float), # Discharge current , A
        ('massFlowRate',float), # Mass flow rate, eqA
+       ('massFlowRate_sccm',float), # Mass flow rate, sccm
+       ('massFlowRate_SI',float), # Mass flow rate, kg/s
        ('gas',str), # Gas used (periodic table shortcut)
+       ('gasMass',float), # Mass of gas (amu)
+       ('ionizationPotential',float), # Ionization potential
        ('orificeDiameter',float), # Orifice diam, mm
        ('orificeLength',float), # Orifice length, mm
        ('insertDiameter',float), # Insert diameter, mm
