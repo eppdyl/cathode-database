@@ -128,6 +128,8 @@ def load_csv_data():
             df = load_single_cathode(df,row)
 
     df = df.reset_index()
+ 
+    
     
     return df
 
@@ -143,22 +145,25 @@ def load_single_cathode(df,row):
         
         ### What type of file are we loading? 
         # Are we loading pressure?
-        if 'P_vs_' in datafile:
-            print(cathode,'Pressure',datafile)
-            
+        if 'P_vs_' in datafile:            
             df_from_csv = pd.read_csv(datafile,comment='#',delimiter=',')
             df_from_csv['cathode'] = cathode
             
             ### Some necessary conversions
             if cathode == 'Friedly':
                 # Convert to eqA from mA
-                df_from_csv['massFlowRate'] = df_from_csv['massFlowRate'].apply(lambda x: x * 1e-3)
+                df_from_csv['massFlowRate'] = \
+                df_from_csv['massFlowRate'].apply(lambda x: x * 1e-3)
+                
             elif cathode == 'AR3' or cathode == 'EK6' or cathode == 'SC012':
                 # Convert from Pa x 1e-3 to Torr
-                df_from_csv['totalPressure'] = df_from_csv['totalPressure'].apply(lambda x: x * 1e3 / cc.Torr)
+                df_from_csv['totalPressure'] = \
+                df_from_csv['totalPressure'].apply(lambda x: x * 1e3 / cc.Torr)
+                
             elif cathode == 'T6':
                 # Convert mass flow rate from mg/s to kg/s
-                df_from_csv['massFlowRate_SI'] = df_from_csv['massFlowRate_SI'].apply(lambda x: x * 1e-6)
+                df_from_csv['massFlowRate_SI'] = \
+                df_from_csv['massFlowRate_SI'].apply(lambda x: x * 1e-6)
                 
                         
             df = df.append(pd.DataFrame(df_from_csv,columns=df.columns))
