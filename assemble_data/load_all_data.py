@@ -48,7 +48,8 @@ from import_db import dtypes
 #JPL 1.5cm-5mm NaN
 cathodeList = ['NSTAR','NEXIS','Salhi','Salhi-Ar-1.21','Salhi-Ar-0.76',
                'Salhi-Xe','Siegfried','Siegfried-NG','Friedly','T6','AR3',
-               'EK6','SC012','JPL-1.5cm','JPL-1.5cm-3mm','JPL-1.5cm-5mm'
+               'EK6','SC012','JPL-1.5cm','JPL-1.5cm-3mm','JPL-1.5cm-5mm',
+               'PLHC'
                ]
 
 folderList = ['jpl/nstar/discharge',
@@ -63,18 +64,20 @@ folderList = ['jpl/nstar/discharge',
               'pepl/domonkos',
               'pepl/domonkos',
               'jpl/lab6-cathodes/1.5cm-cathode',
-              None,None]
+              None,None,
+              'princeton/plhc']
 
-fileList = [['P_vs_Id_mdot.csv'],
-            ['P_vs_Id_mdot.csv'],
-            ['P_vs_Id_mdot.csv'],None,None,None,
-            ['P_vs_Id_mdot.csv'],None,
+fileList = [['P_vs_Id_mdot.csv','positional_combined.csv'],
+            ['P_vs_Id_mdot.csv','positional_combined.csv'],
+            ['P_vs_Id_mdot.csv','positional_combined.csv'],None,None,None,
+            ['P_vs_Id_mdot.csv','positional_combined.csv'],None,
             ['P_vs_Id_mdot.csv'],
             ['P_vs_Id_mdot.csv'],
             ['P_vs_mdot_Id-1A_AR3.csv'],
             ['P_vs_mdot_Id_EK6.csv'],
             ['P_vs_mdot_Id_SC012.csv'],
-            ['P_vs_Id_mdot.csv'],None,None]
+            ['P_vs_Id_mdot.csv','positional_combined.csv'],None,None,
+            ['P_vs_Id_mdot.csv']]
 
 #headerNames = ['Id','mdot','P','mass','do','Lo','dc','Tw','To']
 #headerSkip = [21, # NSTAR 
