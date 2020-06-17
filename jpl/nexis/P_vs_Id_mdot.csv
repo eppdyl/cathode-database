@@ -1,13 +1,16 @@
 ############################
 ### DOCUMENT
-# K. K. Jameson, D. M. Goebel, and R. M. Watkins, "Hollow Cathode and Thruster Discharge Chamber Plasma Measurements Using High-Speed Scanning Probes," 29th International Electric Propulsion Conference, 2005.
-# D. Goebel, K. K. Jameson, R. M. Watkins, and I. Katz, "Hollow Cathode and Keeper-Region Plasma Measurements Using Ultra-Fast Miniature Scanning Probes," 40th AIAA/ASME/SAE/ASEE Joint Propulsion Conference and Exhibit, 2004. (Figure 8b)
+# [1] K. K. Jameson, D. M. Goebel, and R. M. Watkins, "Hollow Cathode and Thruster Discharge Chamber Plasma Measurements Using High-Speed Scanning Probes," 29th International Electric Propulsion Conference, 2005.
+# [2] D. Goebel, K. K. Jameson, R. M. Watkins, and I. Katz, "Hollow Cathode and Keeper-Region Plasma Measurements Using Ultra-Fast Miniature Scanning Probes," 40th AIAA/ASME/SAE/ASEE Joint Propulsion Conference and Exhibit, 2004. (Figure 8b)
 ### SOFTWARE
 # Plot digitized using Engauge Digitizer
 ### CAPTION
-# Internal NEXIS cathode pressure (a) constant flow rate at 5.5 sccm (b) constant discharge current at 22 A.
+# [1] Internal NEXIS cathode pressure (a) constant flow rate at 5.5 sccm (b) constant discharge current at 22 A.
 ### DATA
 # Id (A), mdot (sccm of Xe), P (Torr), Propellant mass (amu), do (mm), Lo (mm),dc(mm)
+### NOTES
+# Orifice diameter for data from [1] is taken to be 2.5 mm. See p.3, Section II: "an orifice size on the order 2-3 mm" 
+# Orifice diameter for data from [2] is 2.75 mm. See p.3, Section II: "area of the 2.75mm dia. cathode orifice used in these experiments" 
 ############################
 dischargeCurrent,massFlowRate_sccm,totalPressure,gasMass,orificeDiameter,orificeLength,insertAverageTemperature,insertDiameter
 8.0,5.5,1.11388,131.293,2.5,0.74,,12.7
@@ -24,10 +27,10 @@ dischargeCurrent,massFlowRate_sccm,totalPressure,gasMass,orificeDiameter,orifice
 22.0,5.5,1.43977,131.293,2.5,0.74,,12.7
 22.0,7.0,1.85228,131.293,2.5,0.74,,12.7
 22.0,10.0,2.75909,131.293,2.5,0.74,,12.7
-4,5,0.655046,131.293,2.0,0.74,,12.7
-7,5,0.726606,131.293,2.0,0.74,,12.7
-12,5,0.80367,131.293,2.0,0.74,,12.7
-17,5,0.941284,131.293,2.0,0.74,,12.7
-22,5,1.01284,131.293,2.0,0.74,,12.7
-27,5,1.11193,131.293,2.0,0.74,,12.7
-32,5,1.18899,131.293,2.0,0.74,,12.7
+4,5,0.655046,131.293,2.75,0.74,,12.7
+7,5,0.726606,131.293,2.75,0.74,,12.7
+12,5,0.80367,131.293,2.75,0.74,,12.7
+17,5,0.941284,131.293,2.75,0.74,,12.7
+22,5,1.01284,131.293,2.75,0.74,,12.7
+27,5,1.11193,131.293,2.75,0.74,,12.7
+32,5,1.18899,131.293,2.75,0.74,,12.7
