@@ -29,6 +29,12 @@ import numpy as np
 import os
 
 from import_db import dtypes,from_np_array
+from enum import Enum
+
+class massFlowType(Enum):
+    SCCM = 1
+    EQA = 2
+    SI = 3
 
 # folder                 datafile skip_header  \
 #NSTAR          jpl/nstar/discharge         P_vs_Id_mdot.csv          21   
@@ -129,12 +135,102 @@ def load_csv_data():
             next
         else:                        
             ### Load data
-            df = load_single_cathode(df,row)
+            df = load_single_cathode(df,row)    
+    
+    df = populate_gas_name(df) 
+    df = apply_split(df)
+    
+    return df
 
-    df = df.reset_index()
- 
+
+def load_pressure_data(df,datafile,cathode):
+    df_from_csv = pd.read_csv(datafile,comment='#',delimiter=',')
+    df_from_csv['cathode'] = cathode
     
+    ### Some necessary conversions
+    if cathode == 'Friedly':
+        # Convert to eqA from mA
+        df_from_csv['massFlowRate'] = \
+        df_from_csv['massFlowRate'].apply(lambda x: x * 1e-3)
+        
+    elif cathode == 'AR3' or cathode == 'EK6' or cathode == 'SC012':
+        # Convert from Pa x 1e-3 to Torr
+        df_from_csv['totalPressure'] = \
+        df_from_csv['totalPressure'].apply(lambda x: x * 1e3 / cc.Torr)
+        
+    elif cathode == 'T6':
+        # Convert mass flow rate from mg/s to kg/s
+        df_from_csv['massFlowRate_SI'] = \
+        df_from_csv['massFlowRate_SI'].apply(lambda x: x * 1e-6)
+        
+                
+    df = df.append(pd.DataFrame(df_from_csv,columns=df.columns))
     
+    return df
+
+def load_positional_data(df,datafile,cathode):
+    df_from_csv = pd.read_csv(datafile,comment='#',
+                              delimiter=',',
+                              converters = {
+                                'electronDensity': from_np_array,
+                                'electronTemperature': from_np_array,
+                                'plasmaPotential': from_np_array})
+
+    df_from_csv['cathode'] = cathode
+    
+    # Compute the actual density
+    df_from_csv['electronDensity'] = \
+    df_from_csv['electronDensity'].apply(lambda x: compute_ne(x))
+
+    ### Have we already entered the corresponding [Id,mdot] case?
+    for _, row in df_from_csv.iterrows():
+        bcond = (df.cathode == cathode)
+        bcond &= (df.dischargeCurrent == row['dischargeCurrent'])
+        bcond &= (df.orificeDiameter == row['orificeDiameter'])
+        
+        # Has the work function been specified?
+        try:
+            bcond &= (df.workFunction == row['workFunction'])
+        except KeyError:
+            # Has not, continue
+            pass
+        
+        ### Grab the correct mass flow unit
+        mfType = 0
+        if 'massFlowRate_sccm' in row.index:
+            bcond &= (df.massFlowRate_sccm == row['massFlowRate_sccm'])
+            mfType = massFlowType.SCCM
+        elif 'massFlowRate_SI' in row.index:
+            bcond &= (df.massFlowRate_SI == row['massFlowRate_SI'])
+            mfType = massFlowType.SI
+        elif 'massFlowRate' in row.index:
+            bcond &= (df.massFlowRate == row['massFlowRate'])
+            mfType = massFlowType.EQA
+        else:
+            # No flow rate specified, raise error
+            raise KeyError
+              
+   
+        ### Extracted dataframe
+        edf = df[bcond]
+        # Did we find a spot for the data to go?
+        if not edf.empty:                
+            try:
+                print(cathode,row['dischargeCurrent'],
+                      row['massFlowRate_sccm'],row['orificeDiameter'])
+            except:
+                print(cathode,row['dischargeCurrent'],
+                      row['massFlowRate'],row['orificeDiameter'])                        
+            loc = (int)(df[bcond].index[0])
+            
+
+            print(cathode,df[bcond].index,loc)
+            df.loc[loc,row.index] = row                        
+
+        # We did not find an existing location. Append at the end.
+        else:
+            df = df.append(row)    
+            
     return df
 
 def load_single_cathode(df,row):
@@ -146,62 +242,18 @@ def load_single_cathode(df,row):
         
     for _,fname in enumerate(datafiles):
         datafile = folder + '/' + fname
-        
+                
         ### What type of file are we loading? 
         # Are we loading pressure?
         if 'P_vs_' in datafile:            
-            df_from_csv = pd.read_csv(datafile,comment='#',delimiter=',')
-            df_from_csv['cathode'] = cathode
-            
-            ### Some necessary conversions
-            if cathode == 'Friedly':
-                # Convert to eqA from mA
-                df_from_csv['massFlowRate'] = \
-                df_from_csv['massFlowRate'].apply(lambda x: x * 1e-3)
+            df = load_pressure_data(df,datafile,cathode)
+
                 
-            elif cathode == 'AR3' or cathode == 'EK6' or cathode == 'SC012':
-                # Convert from Pa x 1e-3 to Torr
-                df_from_csv['totalPressure'] = \
-                df_from_csv['totalPressure'].apply(lambda x: x * 1e3 / cc.Torr)
-                
-            elif cathode == 'T6':
-                # Convert mass flow rate from mg/s to kg/s
-                df_from_csv['massFlowRate_SI'] = \
-                df_from_csv['massFlowRate_SI'].apply(lambda x: x * 1e-6)
-                
-                        
-            df = df.append(pd.DataFrame(df_from_csv,columns=df.columns))
-            
         # Are we loading positional data?
         elif 'positional_' in datafile:
-            print(cathode)
-            df_from_csv = pd.read_csv(datafile,comment='#',
-                                      delimiter=',',
-                                      converters = {
-                                        'electronDensity': from_np_array,
-                                        'electronTemperature': from_np_array,
-                                        'plasmaPotential': from_np_array})
-    
-            df_from_csv['cathode'] = cathode
-            
-            # Compute the actual density
-            df_from_csv['electronDensity'] = \
-            df_from_csv['electronDensity'].apply(lambda x: compute_ne(x))
-                     
-            ### Have we already entered the corresponding [Id,mdot] case?
-            for index, row in df_from_csv.iterrows():
-                bcond = (df.cathode == cathode)
-                bcond &= (df.dischargeCurrent == row['dischargeCurrent'])
-                bcond &= (df.massFlowRate_sccm == row['massFlowRate_sccm'])
-           
-                try:
-                    df.loc[bcond] = row.copy(deep=True)
-                    print(cathode,row['dischargeCurrent'],
-                          row['massFlowRate_sccm'])
-                except:
-                    continue
-            #dischargeCurrent,electronDensity,electronTemperature,idxmax,idxmin,insertDiameter,massFlowRate_sccm,orificeDiameter,orificeLength,plasmaPotential
-            
+            df = load_positional_data(df,datafile,cathode)
+                    
+        df.reset_index(drop=True,inplace=True)                         
     return df
     
 
@@ -215,7 +267,62 @@ def compute_ne(x):
         arr = np.nan
     
     return arr
+  
     
+def populate_gas_name(df):
+    ### Go through each cathode
+    for cat in cathodeList:
+       xecat = (cat == 'NSTAR' or 
+                   cat =='NEXIS' or 
+                   cat == 'AR3' or
+                   cat == 'EK6' or
+                   cat == 'SC012' or
+                   cat == 'Friedly' or
+                   cat == 'T6' or
+                   cat == 'JPL-1.5cm')
+       
+       arcat = (cat == 'PLHC')
+       
+       ### Check if xenon or argon cathode
+       if xecat:
+           df.loc[df.cathode==cat,'gas'] = 'Xe'
+       elif arcat:
+           df.loc[df.cathode==cat,'gas'] = 'Ar'
+       else:
+           ### Otherwise, case by case
+           print(cat)
+           # Check the obvious: gas mass
+           df.loc[(df.cathode==cat) & (df.gasMass == 131.293),'gas'] = 'Xe'
+           df.loc[(df.cathode==cat) & (df.gasMass == 39.948) ,'gas'] = 'Ar'
+           df.loc[(df.cathode==cat) & (df.gasMass == 200.59) ,'gas'] = 'Hg'
+           
+           # TODO: Other cases (they should not happen, though)
+           
+    return df
+
+def apply_split(df):
+    '''Split some cathodes by gas and orifice size'''
+    
+    ### Salhi: split by gas and orifice size
+    df.loc[(df.cathode=='Salhi') & (df.gas=='Xe'),'cathode'] = 'Salhi-Xe'
+    df.loc[(df.cathode=='Salhi') & (df.gas=='Ar') & \
+           (df.orificeDiameter == 0.76),'cathode'] = 'Salhi-Ar-0.76'
+    df.loc[(df.cathode=='Salhi') & (df.gas=='Ar') & \
+           (df.orificeDiameter == 1.21),'cathode'] = 'Salhi-Ar-1.21'    
+
+    ### JPL 1.5 cm cathode: split by orifice size
+    df.loc[(df.cathode=='JPL-1.5cm') & \
+           (df.orificeDiameter == 3.0),'cathode'] = 'JPL-1.5cm-3mm'
+    df.loc[(df.cathode=='JPL-1.5cm') & \
+           (df.orificeDiameter == 5.0),'cathode'] = 'JPL-1.5cm-5mm' 
+           
+    ### Sigfried: split by gas type    
+    df.loc[(df.cathode=='Siegfried') & \
+           (df.gas=='Ar'),'cathode'] = 'Siegfried-NG'
+    df.loc[(df.cathode=='Siegfried') & \
+           (df.gas=='Xe'),'cathode'] = 'Siegfried-NG' 
+           
+    return df
 #    # idx: name of the cathode
 #    idx = ['NSTAR','NEXIS','Salhi','Salhi-Ar','Salhi-Xe','Salhi-Ar-1.21','Salhi-Ar-0.76','Siegfried','AR3','EK6','SC012','Friedly','T6']
 #    cathode_idx = ['NSTAR','NEXIS','Salhi','Siegfried','AR3','EK6','SC012','Friedly','T6']
