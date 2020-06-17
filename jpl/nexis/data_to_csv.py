@@ -84,7 +84,7 @@ idxmax = np.append(idxmax,np.nan)
 
 # 10 sccm, 25 A
 ne_data = np.genfromtxt(root + 'raw/ne_vs_x_mdot-5-10sccm_Id-25A.csv', 
-        delimiter=',')
+        delimiter=',',skip_header=True)
 ne_data[:,1] *= 1e20
 ne_data[:,1] = np.log10(ne_data[:,1])
 

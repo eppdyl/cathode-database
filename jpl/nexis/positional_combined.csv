@@ -172,8 +172,7 @@ dischargeCurrent,electronDensity,electronTemperature,idxmax,idxmin,insertDiamete
  [ 29.8073   9.9954]
  [ 31.3124   5.5953]
  [ 32.4037   4.9273]]"
-25.0,"[[         nan          nan]
- [ -3.4738      19.93969393]
+25.0,"[[ -3.4738      19.93969393]
  [ -3.1544      19.98382017]
  [ -2.8705      20.02957856]
  [ -2.5865      20.0760904 ]
