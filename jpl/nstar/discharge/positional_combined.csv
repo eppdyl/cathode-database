@@ -11,7 +11,7 @@
 ### NOTES
 ############################
 dischargeCurrent,electronDensity,electronTemperature,idxmax,idxmin,insertDiameter,massFlowRate_sccm,orificeDiameter,orificeLength,plasmaPotential
-8.29,"[[-79.9475   17.95211]
+8.24,"[[-79.9475   17.95211]
  [-79.6583   17.9714 ]
  [-79.2967   17.97783]
  [-79.0075   17.98426]
@@ -307,7 +307,7 @@ dischargeCurrent,electronDensity,electronTemperature,idxmax,idxmin,insertDiamete
  [  5.328    9.0436]
  [  6.3988   8.7781]
  [  7.5096   8.3732]]"
-13.2,"[[ -7.99477000e+01   1.80742400e+01]
+13.3,"[[ -7.99477000e+01   1.80742400e+01]
  [ -7.95861000e+01   1.80742400e+01]
  [ -7.92246000e+01   1.80742500e+01]
  [ -7.88630000e+01   1.80742500e+01]
