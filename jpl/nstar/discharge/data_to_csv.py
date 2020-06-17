@@ -14,7 +14,7 @@ dc = 3.8 # mm
 Lo = 0.74 # mm
 
 ### Define cases
-dischargeCurrent = np.array([8.29,13.2])
+dischargeCurrent = np.array([8.24,13.3])
 massFlow_sccm = np.array([2.47,3.7])
 
 do = np.ones_like(dischargeCurrent) * do
