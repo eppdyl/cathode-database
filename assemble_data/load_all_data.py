@@ -28,7 +28,7 @@ import pandas as pd
 import numpy as np
 import os
 
-from import_db import dtypes
+from import_db import dtypes,from_np_array
 
 # folder                 datafile skip_header  \
 #NSTAR          jpl/nstar/discharge         P_vs_Id_mdot.csv          21   
@@ -51,6 +51,7 @@ cathodeList = ['NSTAR','NEXIS','Salhi','Salhi-Ar-1.21','Salhi-Ar-0.76',
                'EK6','SC012','JPL-1.5cm','JPL-1.5cm-3mm','JPL-1.5cm-5mm',
                'PLHC'
                ]
+
 
 folderList = ['jpl/nstar/discharge',
               'jpl/nexis',
@@ -171,9 +172,49 @@ def load_single_cathode(df,row):
                         
             df = df.append(pd.DataFrame(df_from_csv,columns=df.columns))
             
+        # Are we loading positional data?
+        elif 'positional_' in datafile:
+            print(cathode)
+            df_from_csv = pd.read_csv(datafile,comment='#',
+                                      delimiter=',',
+                                      converters = {
+                                        'electronDensity': from_np_array,
+                                        'electronTemperature': from_np_array,
+                                        'plasmaPotential': from_np_array})
+    
+            df_from_csv['cathode'] = cathode
+            
+            # Compute the actual density
+            df_from_csv['electronDensity'] = \
+            df_from_csv['electronDensity'].apply(lambda x: compute_ne(x))
+                     
+            ### Have we already entered the corresponding [Id,mdot] case?
+            for index, row in df_from_csv.iterrows():
+                bcond = (df.cathode == cathode)
+                bcond &= (df.dischargeCurrent == row['dischargeCurrent'])
+                bcond &= (df.massFlowRate_sccm == row['massFlowRate_sccm'])
+           
+                try:
+                    df.loc[bcond] = row.copy(deep=True)
+                    print(cathode,row['dischargeCurrent'],
+                          row['massFlowRate_sccm'])
+                except:
+                    continue
+            #dischargeCurrent,electronDensity,electronTemperature,idxmax,idxmin,insertDiameter,massFlowRate_sccm,orificeDiameter,orificeLength,plasmaPotential
+            
     return df
     
 
+def compute_ne(x):
+    try:
+        x0 = x[:,0]
+        log10ne = x[:,1]
+        
+        arr = np.array([x0,10**log10ne])
+    except:
+        arr = np.nan
+    
+    return arr
     
 #    # idx: name of the cathode
 #    idx = ['NSTAR','NEXIS','Salhi','Salhi-Ar','Salhi-Xe','Salhi-Ar-1.21','Salhi-Ar-0.76','Siegfried','AR3','EK6','SC012','Friedly','T6']
