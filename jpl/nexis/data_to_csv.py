@@ -20,10 +20,12 @@ master_phi = []
 # region," Journal of Applied Physics, vol. 98, no. 2005
 # 
 # Density, temperature, and plasma potential at 5.5 sccm, 25 A
+# Orifice diameter is 3.0 mm
+# See p.7 "with the large open area of the orifice (0.3 cm in diameter)"
 ########################################
 root = "../../original-material/mikellides-jap-2005/"
 
-do = 2.75 # mm
+do = 3.0 # mm
 dischargeCurrent = np.array([25.])
 massFlow_sccm = np.array([5.5])
 
@@ -66,13 +68,16 @@ master_phi.append(np.copy(phip_data))
 # [5.5 sccm, 10 A]
 # [10 sccm, 25 A]
 # 
+# Orifice diameter is 2.75 mm
+# To be consistent with pressure data from Jameson IEPC 2005 we set the orifice
+# diameter to 2.5 mm for the [5.5 sccm, 10 A] datapoint.
 ########################################
 root = "../../original-material/goebel-jpc-2004/"
 
 ### Append cases
 dischargeCurrent = np.append(dischargeCurrent,[10.0,25.0])
 massFlow_sccm = np.append(massFlow_sccm,[5.5,10.0])
-do = np.append(do,[2.75,2.75])
+do = np.append(do,[2.5,2.75])
 Lo = np.append(Lo,[0.74,0.74])
 dc = np.append(dc,[12.7,12.7])
 
