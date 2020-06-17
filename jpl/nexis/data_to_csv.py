@@ -4,6 +4,7 @@ Date: June 2020
 '''
 import pandas as pd
 import numpy as np
+import cathode.constants as cc
 
 ### Geometry
 dc = 12.7 # mm
@@ -135,6 +136,7 @@ df = pd.DataFrame({'dischargeCurrent':dischargeCurrent,
                    'electronDensity':master_ne,
                    'electronTemperature':master_Te,
                    'plasmaPotential':master_phi,
+                   'gasMass':cc.M.Xe * np.ones_like(Lo),
                    'orificeLength':Lo,
                    'orificeDiameter':do,
                    'insertDiameter':dc})

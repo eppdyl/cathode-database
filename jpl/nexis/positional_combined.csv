@@ -13,7 +13,7 @@
 # Id (A), log10(electron density) vs. x (in 1/m3 and mm, resp.), electron temperature vs. x (in eV and mm), idxmax, idxmin, dc (mm), mass flow (sccm of Xe), do (mm), Lo (mm), plasma potential vs. x (in V and mm)
 ### NOTES
 ############################
-dischargeCurrent,electronDensity,electronTemperature,idxmax,idxmin,insertDiameter,massFlowRate_sccm,orificeDiameter,orificeLength,plasmaPotential
+dischargeCurrent,electronDensity,electronTemperature,gasMass,idxmax,idxmin,insertDiameter,massFlowRate_sccm,orificeDiameter,orificeLength,plasmaPotential
 25.0,"[[ -3.72420000e+00   1.95563869e+01]
  [ -3.44350000e+00   1.95977391e+01]
  [ -3.05520000e+00   1.96354636e+01]
@@ -124,7 +124,7 @@ dischargeCurrent,electronDensity,electronTemperature,idxmax,idxmin,insertDiamete
  [ 19.3845   1.4633]
  [ 21.5487   1.4619]
  [ 24.0398   1.4883]
- [ 30.0009   1.2893]]",-10.0,-40.0,12.7,5.5,3.0,0.74,"[[ -3.8602  19.1067]
+ [ 30.0009   1.2893]]",131.293,-10.0,-40.0,12.7,5.5,3.0,0.74,"[[ -3.8602  19.1067]
  [ -3.0032  18.9946]
  [ -1.38    16.4831]
  [  0.0412  14.5297]
@@ -154,7 +154,7 @@ dischargeCurrent,electronDensity,electronTemperature,idxmax,idxmin,insertDiamete
  [ 25.7056   3.9707]
  [ 27.9634   3.198 ]
  [ 29.6191   1.791 ]
- [ 31.0866   1.4754]]",,,12.7,5.5,2.5,0.74,"[[ -1.9144  23.7351]
+ [ 31.0866   1.4754]]",131.293,,,12.7,5.5,2.5,0.74,"[[ -1.9144  23.7351]
  [ -0.5974  23.7715]
  [  1.4346  23.2451]
  [  3.4666  22.6131]
@@ -261,7 +261,7 @@ dischargeCurrent,electronDensity,electronTemperature,idxmax,idxmin,insertDiamete
  [ 12.4224   1.9872]
  [ 14.7554   1.5667]
  [ 17.0132   1.4278]
- [ 19.6097   1.3949]]",-10.0,-40.0,12.7,10.0,2.75,0.74,"[[ -3.2691  16.4804]
+ [ 19.6097   1.3949]]",131.293,-10.0,-40.0,12.7,10.0,2.75,0.74,"[[ -3.2691  16.4804]
  [ -2.5918  15.9528]
  [ -1.6886  14.2987]
  [ -0.1835  10.3915]

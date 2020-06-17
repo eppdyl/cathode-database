@@ -64,10 +64,11 @@ ar_pdata = np.genfromtxt(root + 'argon_do-0.76mm_mdot-287mA.csv', delimiter=',',
                       skip_header=15)
 
 mdot = 287 # mA
+mdot_A = mdot * 1e-3 # eqA
 P = Pcorr(mdot,do,ar_pdata['Id'],'Ar')
 
 dischargeCurrent = np.append(dischargeCurrent,ar_pdata['Id'])
-massFlow_eqA = np.append(massFlow_eqA,mdot*np.ones_like(ar_pdata['Id']))
+massFlow_eqA = np.append(massFlow_eqA,mdot_A*np.ones_like(ar_pdata['Id']))
 pressureArray = np.append(pressureArray,P)
 massArray = np.append(massArray,cc.M.Ar *np.ones_like(ar_pdata['Id']))
 twallArray = np.append(twallArray,ar_pdata['Tc'])
@@ -101,10 +102,11 @@ xe_pdata = np.genfromtxt(root + 'xenon_do-0.76mm_mdot-92mA.csv', delimiter=',', 
                       skip_header=15)
 
 mdot = 92 # mA
+mdot_A = mdot * 1e-3 # eqA
 P = Pcorr(mdot,do,xe_pdata['Id'],'Ar')
 
 dischargeCurrent = np.append(dischargeCurrent,xe_pdata['Id'])
-massFlow_eqA = np.append(massFlow_eqA,mdot*np.ones_like(xe_pdata['Id']))
+massFlow_eqA = np.append(massFlow_eqA,mdot_A*np.ones_like(xe_pdata['Id']))
 pressureArray = np.append(pressureArray,P)
 massArray = np.append(massArray,cc.M.Xe *np.ones_like(xe_pdata['Id']))
 twallArray = np.append(twallArray,xe_pdata['Tc'])
@@ -165,6 +167,7 @@ master_Te_err = []
 master_phi = []
 master_idxmin = []
 master_idxmax = []
+master_mass = []
     
 ### Geometry
 do_val = 0.76 # mm
@@ -190,12 +193,15 @@ mdot = P * do_val**2 / (0.0090 + 0.0040 * Id) * 1e-3
     
 ne_data = nevec[data['phi_wf']==1.9]
 master_ne.append(np.copy(ne_data))
+master_mass.append(cc.M.Xe)
 
 ne_data = nevec[data['phi_wf']==2.5]
 master_ne.append(np.copy(ne_data))
+master_mass.append(cc.M.Xe)
 
 master_idxmin = [-20,-30]
 master_idxmax = [np.nan,np.nan]
+master_wf = [1.9,2.5]  
 totalPressure = np.array([P,P])
 dischargeCurrent = np.array([Id,Id])
 massFlowRate_eqA = np.array([mdot,mdot])
@@ -206,9 +212,11 @@ df = pd.DataFrame({'totalPressure':totalPressure,
                    'massFlowRate':massFlowRate_eqA,
                    'idxmin': master_idxmin,'idxmax':master_idxmax,
                    'electronDensity':master_ne,
+                   'gasMass':master_mass,
                    'orificeLength':[Lo_val,Lo_val],
                    'orificeDiameter':[do_val,do_val],
-                   'insertDiameter':[dc_val,dc_val]})
+                   'insertDiameter':[dc_val,dc_val],
+                   'workFunction': master_wf})
 
 ### Electron temperature
 data = np.genfromtxt(root + 'Te_vs_P_xenon_do-0.76mm_Id-2.3A.csv',
@@ -231,7 +239,8 @@ for idx,P in enumerate(Pvec):
                               'orificeDiameter': do_val,
                               'orificeLength': Lo_val,
                               'insertDiameter': dc_val,
-                              'electronTemperatureAverage':Te_xp
+                              'electronTemperatureAverage':Te_xp,
+                              'gasMass':cc.M.Xe
                               } , ignore_index=True) 
 
 Pvec = data['totalPressure'][~np.isnan(data['25eV'])]
@@ -248,7 +257,8 @@ for idx,P in enumerate(Pvec):
                               'orificeDiameter': do_val,
                               'orificeLength': Lo_val,
                               'insertDiameter': dc_val,
-                              'electronTemperatureAverage':Te_xp
+                              'electronTemperatureAverage':Te_xp,
+                              'gasMass':cc.M.Xe
                               } , ignore_index=True) 
 
 # Write the header 

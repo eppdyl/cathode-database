@@ -15,7 +15,6 @@ master_phi = []
 master_idxmin = []
 master_idxmax = []
 
-
     
 ### Geometry
 do = 1.21 # mm
@@ -111,6 +110,7 @@ df = pd.DataFrame({'dischargeCurrent':dischargeCurrent,
                    'electronTemperature':master_Te,
                    'electronTemperature_err':master_Te_err,
                    'plasmaPotential':master_phi,
+                   'gasMass': cc.M.Xe * np.ones_like(Lo),
                    'orificeLength':Lo,
                    'orificeDiameter':do,
                    'insertDiameter':dc})
