@@ -183,6 +183,7 @@ Id = 2.3
 nevec = np.zeros((len(data['x']),2))
 nevec[:,0] = np.copy(data['x'])
 nevec[:,1] = np.copy(data['ne']) * 1e19 # was in 1e-13/cm3
+nevec[:,1] = np.log10(nevec[:,1]) # Apply log10
 
 # Get the mass flow rate from P and Id
 mdot = P * do_val**2 / (0.0090 + 0.0040 * Id) * 1e-3
