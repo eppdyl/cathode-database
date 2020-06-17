@@ -129,7 +129,7 @@ header_str = """############################
 # Id (A), log10(electron density) vs. x (in 1/m3 and mm, resp.), electron temperature vs. x (in eV and mm), electron temperature error, idxmax, idxmin, dc (mm), mass flow (sccm of Xe), do (mm), Lo (mm), plasma potential vs. x (in V and mm)
 ### NOTES
 ############################
-#"""
+"""
 f = open("positional_combined.csv","w")
 f.write(header_str)
 f.close()

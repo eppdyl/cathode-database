@@ -11,7 +11,7 @@
 # Id (A), log10(electron density) vs. x (in 1/m3 and mm, resp.), electron temperature vs. x (in eV and mm), electron temperature error, idxmax, idxmin, dc (mm), mass flow (sccm of Xe), do (mm), Lo (mm), plasma potential vs. x (in V and mm)
 ### NOTES
 ############################
-#dischargeCurrent,electronDensity,electronTemperature,electronTemperature_err,idxmax,idxmin,insertDiameter,massFlowRate_sccm,orificeDiameter,orificeLength,plasmaPotential
+dischargeCurrent,electronDensity,electronTemperature,electronTemperature_err,idxmax,idxmin,insertDiameter,massFlowRate_sccm,orificeDiameter,orificeLength,plasmaPotential
 3.0,,1.0,0.1,,,3.81,6.969130367463748,1.21,1.24,
 5.0,"[[  1.00033  20.70762]
  [  2.00749  20.42242]
