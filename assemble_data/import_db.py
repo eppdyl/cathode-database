@@ -1,10 +1,11 @@
 import numpy as np
-#import pandas as pd
 import ast
 import re
 
+from db_references import referenceList,noteList
 
-### Columns
+
+### Columns and respective type
 dtypes = np.dtype([('cathode',str), # Cathode name
        ### Controllable parameters: Id, mdot
        ('dischargeCurrent',float), # Discharge current , A
@@ -115,7 +116,9 @@ fileDictionary = {
         'cathode' :cathodeList ,
         'folder': folderList,
         'datafile': fileList,
-        'additionalGeometry': additionalGeometry
+        'additionalGeometry': additionalGeometry,
+        'reference': referenceList,
+        'note': noteList
         }
 
 
