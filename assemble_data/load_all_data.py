@@ -30,12 +30,7 @@ import os
 
 from import_db import dtypes,from_np_array,fileDictionary,cathodeList
 
-
-
-
-
-
-def load_csv_data():
+def generate_dataframe():
     '''
     Loads the CSV data for all the cathodes specified by name in cathodeList. 
     Stores the corresponding results in a dataframe.
@@ -69,11 +64,14 @@ def load_csv_data():
             
             df.loc[(df.cathode==row['cathode']),'insertLength'] = Lemitter
             df.loc[(df.cathode==row['cathode']),'upstreamPressurePoint'] = Lupstream
+            df.loc[(df.cathode==row['cathode']),'reference'] = row['reference']
+            df.loc[(df.cathode==row['cathode']),'note'] = row['note']
     
-    df = populate_gas_name(df) 
-    df = apply_split(df)
+    df = populate_gas_info(df) 
+    df = split_by_name(df)
     
     return df
+
 
 
 def load_pressure_data(df,datafile,cathode):
@@ -215,46 +213,21 @@ def compute_ne(x):
     return arr
   
     
-def populate_gas_name(df):
+def populate_gas_info(df):
     '''Translates the gas mass to the gas name'''
-    ### Go through each cathode
-    for cat in cathodeList:
-       xecat = (cat == 'NSTAR' or 
-                   cat =='NEXIS' or 
-                   cat == 'AR3' or
-                   cat == 'EK6' or
-                   cat == 'SC012' or
-                   cat == 'Friedly' or
-                   cat == 'T6' or
-                   cat == 'JPL-1.5cm')
-       
-       arcat = (cat == 'PLHC')
-       
-       ### Check if xenon or argon cathode
-       if xecat:
-           df.loc[df.cathode==cat,'gas'] = 'Xe'
-       elif arcat:
-           df.loc[df.cathode==cat,'gas'] = 'Ar'
-       else:
-           ### Otherwise, case by case
-           print(cat)
-           if cat == 'Salhi':
-               print(len(df.loc[(df.cathode==cat) & (df.gasMass == 131.293),'gas']))
-               print(len(df.loc[(df.cathode==cat) & (df.gasMass == 39.948),'gas']))
-               print(len(df.loc[(df.cathode==cat)]))
-               
-           # Check the obvious: gas mass
-           df.loc[(df.cathode==cat) & (df.gasMass == 131.293),'gas'] = 'Xe'
-           df.loc[(df.cathode==cat) & (df.gasMass == 39.948) ,'gas'] = 'Ar'
-           df.loc[(df.cathode==cat) & (df.gasMass == 200.59) ,'gas'] = 'Hg'
-           
-               
-           
-           # TODO: Other cases?
-           
+    # Assign name by mass
+    df.loc[(df.gasMass == 131.293),'gas'] = 'Xe'
+    df.loc[(df.gasMass == 39.948) ,'gas'] = 'Ar'
+    df.loc[(df.gasMass == 200.59) ,'gas'] = 'Hg'
+            
+    # Assign ionization potential by name
+    df.loc[df.gas=='Ar','ionizationPotential'] = 15.75962
+    df.loc[df.gas=='Xe','ionizationPotential'] = 12.1298
+    df.loc[df.gas=='Hg','ionizationPotential'] = 10.4375
+        
     return df
 
-def apply_split(df):
+def split_by_name(df):
     '''Split some cathodes by gas and orifice size'''
     
     ### Salhi: split by gas and orifice size
