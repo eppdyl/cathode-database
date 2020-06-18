@@ -23,7 +23,8 @@ Lo = 1.24 # mm
 
 ### Define cases
 dischargeCurrent = np.array([3,5,9,10,12,15,20],dtype=np.float64)
-massFlow_sccm = np.ones_like(dischargeCurrent) * 0.5 / cc.sccm2eqA
+#massFlow_sccm = np.ones_like(dischargeCurrent) * 0.5 / cc.sccm2eqA
+massFlow = np.ones_like(dischargeCurrent) * 0.5 # eqA
 
 do = np.ones_like(dischargeCurrent) * do
 Lo = np.ones_like(dischargeCurrent) * Lo
@@ -104,7 +105,7 @@ for idx,Id in enumerate(dischargeCurrent):
 
 ### Assemble and dump
 df = pd.DataFrame({'dischargeCurrent':dischargeCurrent,
-                   'massFlowRate_sccm':massFlow_sccm,
+                   'massFlowRate':massFlow,
                    'idxmin': master_idxmin,'idxmax':master_idxmax,
                    'electronDensity':master_ne,
                    'electronTemperature':master_Te,
@@ -126,7 +127,7 @@ header_str = """############################
 # Figs 5.28 - 5.31 for singular Te through spectrometry
 # Figs 5.34 - 5.36 for ne vs. position
 ### DATA
-# Id (A), log10(electron density) vs. x (in 1/m3 and mm, resp.), electron temperature vs. x (in eV and mm), electron temperature error, idxmax, idxmin, dc (mm), mass flow (sccm of Xe), do (mm), Lo (mm), plasma potential vs. x (in V and mm)
+# Id (A), log10(electron density) vs. x (in 1/m3 and mm, resp.), electron temperature vs. x (in eV and mm), electron temperature error (eV), idxmax, idxmin, dc (mm), mass flow (eqA), do (mm), Lo (mm), plasma potential vs. x (in V and mm)
 ### NOTES
 ############################
 """

@@ -8,11 +8,11 @@
 # Figs 5.28 - 5.31 for singular Te through spectrometry
 # Figs 5.34 - 5.36 for ne vs. position
 ### DATA
-# Id (A), log10(electron density) vs. x (in 1/m3 and mm, resp.), electron temperature vs. x (in eV and mm), electron temperature error, idxmax, idxmin, dc (mm), mass flow (sccm of Xe), do (mm), Lo (mm), plasma potential vs. x (in V and mm)
+# Id (A), log10(electron density) vs. x (in 1/m3 and mm, resp.), electron temperature vs. x (in eV and mm), electron temperature error (eV), idxmax, idxmin, dc (mm), mass flow (eqA), do (mm), Lo (mm), plasma potential vs. x (in V and mm)
 ### NOTES
 ############################
-dischargeCurrent,electronDensity,electronTemperature,electronTemperature_err,gasMass,idxmax,idxmin,insertDiameter,massFlowRate_sccm,orificeDiameter,orificeLength,plasmaPotential
-3.0,,1.0,0.1,131.293,,,3.81,6.969130367463748,1.21,1.24,
+dischargeCurrent,electronDensity,electronTemperature,electronTemperature_err,gasMass,idxmax,idxmin,insertDiameter,massFlowRate,orificeDiameter,orificeLength,plasmaPotential
+3.0,,1.0,0.1,131.293,,,3.81,0.5,1.21,1.24,
 5.0,"[[  1.00033  20.70762]
  [  2.00749  20.42242]
  [  2.99944  20.02422]
@@ -29,7 +29,7 @@ dischargeCurrent,electronDensity,electronTemperature,electronTemperature_err,gas
  [ 6.001    1.03623]
  [ 6.9894   0.98206]
  [ 8.0035   0.89213]
- [ 9.009    0.82007]]",,131.293,-1.0,,3.81,6.969130367463748,1.21,1.24,
+ [ 9.009    0.82007]]",,131.293,-1.0,,3.81,0.5,1.21,1.24,
 9.0,"[[  1.00486  21.06278]
  [  1.99621  21.01435]
  [  3.00313  20.87444]
@@ -44,8 +44,8 @@ dischargeCurrent,electronDensity,electronTemperature,electronTemperature_err,gas
  [ 5.0127   1.15474]
  [ 6.998    0.83193]
  [ 8.0035   0.73129]
- [ 9.009    0.6628 ]]",,131.293,-1.0,,3.81,6.969130367463748,1.21,1.24,
-10.0,,0.98,0.12,131.293,,,3.81,6.969130367463748,1.21,1.24,
+ [ 9.009    0.6628 ]]",,131.293,-1.0,,3.81,0.5,1.21,1.24,
+10.0,,0.98,0.12,131.293,,,3.81,0.5,1.21,1.24,
 12.0,"[[  1.00668  21.1614 ]
  [  2.01335  20.73298]
  [  3.00462  20.32601]
@@ -54,7 +54,7 @@ dischargeCurrent,electronDensity,electronTemperature,electronTemperature_err,gas
  [  5.9887   19.29812]
  [  6.97997  18.68739]
  [  7.98151  18.28578]
- [  8.98305  17.59463]]",,,131.293,-1.0,,3.81,6.969130367463748,1.21,1.24,
+ [  8.98305  17.59463]]",,,131.293,-1.0,,3.81,0.5,1.21,1.24,
 15.0,"[[  1.00032  20.9684 ]
  [  2.00219  20.75727]
  [  3.0041   20.58922]
@@ -69,5 +69,5 @@ dischargeCurrent,electronDensity,electronTemperature,electronTemperature_err,gas
  [ 5.0041   0.94744]
  [ 6.001    0.82535]
  [ 6.998    0.73543]
- [ 7.9949   0.64551]]",,131.293,-1.0,,3.81,6.969130367463748,1.21,1.24,
-20.0,,1.09,0.15,131.293,,,3.81,6.969130367463748,1.21,1.24,
+ [ 7.9949   0.64551]]",,131.293,-1.0,,3.81,0.5,1.21,1.24,
+20.0,,1.09,0.15,131.293,,,3.81,0.5,1.21,1.24,
