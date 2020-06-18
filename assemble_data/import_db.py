@@ -57,29 +57,66 @@ dtypes = np.dtype([('cathode',str), # Cathode name
        ('reference',str), # Literature reference
        ('note',str)]) # Any noteworthy comment
 
-#dtypes_import = np.dtype([
-#        ('',int),
-#        ('cathode',str), # Cathode name
-#       ('dischargeCurrent',float), # Discharge current , A
-#       ('massFlowRate',float), # Mass flow rate, eqA
-#       ('gas',str), # Gas used (periodic table shortcut)
-#       ('orificeDiameter',float), # Orifice diam, mm
-#       ('orificeLength',float), # Orifice length, mm
-#       ('insertDiameter',float), # Insert diameter, mm
-#       ('insertLength',float), # Insert length, mm
-#       ('upstreamPressurePoint',float), # Distance upstream of the emitter where the pressure is measured, mm
-#       ('orificeTemperature',float), # Orifice temperature, degC
-#       ('insertTemperatureAverage',float), # Average insert temperature, degC
-#       ('insertTemperature',np.ndarray), # Insert temperature vs. position, degC
-#       ('totalPressure',float), # Total pressure, Torr
-#       ('totalPressureError_p',float), # Total pressure error (+)
-#       ('totalPressureError_m',float), # Total pressure error (-) 
-#       ('electronDensity',np.ndarray), # Density vs. position, 1/m3
-#       ('electronTemperature',np.ndarray), # Electron temp. vs position, eV
-#       ('plasmaPotential',np.ndarray), # Plasma potential vs position, V
-#       ('reference',str), # Literature reference
-#        ('note',str)]) # Any noteworthy comment
+### List of cathode names
+cathodeList = ['NSTAR','NEXIS','Salhi','Salhi-Ar-1.21','Salhi-Ar-0.76',
+               'Salhi-Xe','Siegfried','Siegfried-NG','Friedly','T6','AR3',
+               'EK6','SC012','JPL-1.5cm','JPL-1.5cm-3mm','JPL-1.5cm-5mm',
+               'PLHC'
+               ]
 
+### Folders where the data lives
+folderList = ['jpl/nstar/discharge',
+              'jpl/nexis',
+              'lewis/salhi',
+              None,None,None,
+              'lewis/siegfried',
+              None,
+              'lewis/friedly',
+              'rae/t6',
+              'pepl/domonkos',
+              'pepl/domonkos',
+              'pepl/domonkos',
+              'jpl/lab6-cathodes/1.5cm-cathode',
+              None,None,
+              'princeton/plhc']
+
+### List of files to parse in each folder
+fileList = [['P_vs_Id_mdot.csv','positional_combined.csv'],
+            ['P_vs_Id_mdot.csv','positional_combined.csv'],
+            ['P_vs_Id_mdot.csv','positional_combined.csv'],None,None,None,
+            ['P_vs_Id_mdot.csv','positional_combined.csv'],None,
+            ['P_vs_Id_mdot.csv'],
+            ['P_vs_Id_mdot.csv'],
+            ['P_vs_mdot_Id-1A_AR3.csv'],
+            ['P_vs_mdot_Id_EK6.csv'],
+            ['P_vs_mdot_Id_SC012.csv'],
+            ['P_vs_Id_mdot.csv','positional_combined.csv'],None,None,
+            ['P_vs_Id_mdot.csv']]
+
+### Further geometry info
+# For each cathode, tuple with (emitter length, upstream pressure point) 
+# Dimensions are in mm
+additionalGeometry = [(25.4,130.), # NSTAR See Mikellides, Physics of Plasmas, 2009, p. 013501-7
+                      (25.4,120.), # NEXIS
+                      (25.4,130.), # Salhi Not sure what the upstream length is. Set to same as NSTAR / NEXIS
+                      None,None,None,
+                      (25.4,np.nan), # Siegfried
+                      None,
+                      (25.4,120.), # Friedly
+                      (25.4,np.nan), # T6
+                      (25.4,500.), # AR3 Domonkos dissertation "0.5-m upstream of the cathode insert" p.26
+                      (25.4,500.), # EK6
+                      (25.4,500.), # SC012
+                      (25.4,130.), # JPL 1.5 cm cathode: same pressure point as NSTAR / NEXIS bc. same setup
+                      None, None,
+                      (80.4,220) # PLHC
+                      ]
+fileDictionary = {
+        'cathode' :cathodeList ,
+        'folder': folderList,
+        'datafile': fileList,
+        'additionalGeometry': additionalGeometry
+        }
 
 
 def from_np_array(array_string):
@@ -103,12 +140,3 @@ def from_np_array(array_string):
     else:
         return np.nan
     
-#def import_data(datafile):
-#    alldata = pd.read_csv(datafile,
-#                          converters = {'electronDensity': from_np_array,
-#                                        'electronTemperature': from_np_array,
-#                                        'plasmaPotential': from_np_array},
-#                          dtype= dtypes_import
-#                          )
-    
-#    return alldata

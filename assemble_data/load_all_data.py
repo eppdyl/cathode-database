@@ -28,59 +28,24 @@ import pandas as pd
 import numpy as np
 import os
 
-from import_db import dtypes,from_np_array
+from import_db import dtypes,from_np_array,fileDictionary,cathodeList
 
 
-cathodeList = ['NSTAR','NEXIS','Salhi','Salhi-Ar-1.21','Salhi-Ar-0.76',
-               'Salhi-Xe','Siegfried','Siegfried-NG','Friedly','T6','AR3',
-               'EK6','SC012','JPL-1.5cm','JPL-1.5cm-3mm','JPL-1.5cm-5mm',
-               'PLHC'
-               ]
 
-folderList = ['jpl/nstar/discharge',
-              'jpl/nexis',
-              'lewis/salhi',
-              None,None,None,
-              'lewis/siegfried',
-              None,
-              'lewis/friedly',
-              'rae/t6',
-              'pepl/domonkos',
-              'pepl/domonkos',
-              'pepl/domonkos',
-              'jpl/lab6-cathodes/1.5cm-cathode',
-              None,None,
-              'princeton/plhc']
-
-fileList = [['P_vs_Id_mdot.csv','positional_combined.csv'],
-            ['P_vs_Id_mdot.csv','positional_combined.csv'],
-            ['P_vs_Id_mdot.csv','positional_combined.csv'],None,None,None,
-            ['P_vs_Id_mdot.csv','positional_combined.csv'],None,
-            ['P_vs_Id_mdot.csv'],
-            ['P_vs_Id_mdot.csv'],
-            ['P_vs_mdot_Id-1A_AR3.csv'],
-            ['P_vs_mdot_Id_EK6.csv'],
-            ['P_vs_mdot_Id_SC012.csv'],
-            ['P_vs_Id_mdot.csv','positional_combined.csv'],None,None,
-            ['P_vs_Id_mdot.csv']]
-
-pressureFiles = {
-        'cathode' :cathodeList ,
-        'folder': folderList,
-        'datafile': fileList
-        }
 
 
 
 def load_csv_data():
     '''
-    Loads the CSV data for all the cathodes specified by name in cathode_idx. 
-    Stores the corresponding results in the dataframe pdf ("pressure 
-    dataframe")    
+    Loads the CSV data for all the cathodes specified by name in cathodeList. 
+    Stores the corresponding results in a dataframe.
+    Inputs: None
+    Outputs:
+        - df: the filled dataframe
     '''
     ### Pandas representation of the list of files to load
-    df_pFiles = pd.DataFrame(pressureFiles,
-                             columns = np.sort(list(pressureFiles)),
+    df_Files = pd.DataFrame(fileDictionary,
+                             columns = np.sort(list(fileDictionary)),
                              index = cathodeList)
     
     ### Pandas representation of the data that will be loaded
@@ -92,12 +57,18 @@ def load_csv_data():
     root_folder = os.path.dirname(__file__)
     root_folder = os.path.join(root_folder,'..')
     
-    for index, row  in df_pFiles.iterrows():
+    for index, row  in df_Files.iterrows():
         if pd.isnull(row['folder']):
             continue
         else:                        
             ### Load data
-            df = load_single_cathode(df,row)    
+            df = load_single_cathode(df,row)   
+            
+            ### Fill further geometry info
+            Lemitter, Lupstream = row['additionalGeometry']
+            
+            df.loc[(df.cathode==row['cathode']),'insertLength'] = Lemitter
+            df.loc[(df.cathode==row['cathode']),'upstreamPressurePoint'] = Lupstream
     
     df = populate_gas_name(df) 
     df = apply_split(df)
