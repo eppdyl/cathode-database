@@ -6,12 +6,12 @@
 ### CAPTION
 # Reduction of Cathode Internal Pressure for Spot-Mode Operation
 ### DATA
-# Id (A), mdot (sccm of Xe), P (x10^(-3) Pa), propellant mass (amu), do (mm), Lo (mm), Tw (degC)
+# Id (A), mdot (sccm of Xe), P (x10^(-3) Pa), propellant mass (amu), do (mm), Lo (mm), To (degC), dc (mm)
 ### Notes
 # Extracted from the overall plot; this data is for the SC012. Need to multiply pressure by 1e3 to obtain the correct values
 # The mass flow rate values are not exactly the same from one run to the other one, so I kept them as raw data values extracted from the plots.
 ############################
-dischargeCurrent,massFlowRate_sccm,totalPressure,gasMass,orificeDiameter,orificeLength,insertTemperatureAverage,insertDiameter
+dischargeCurrent,massFlowRate_sccm,totalPressure,gasMass,orificeDiameter,orificeLength,orificeTemperature,insertDiameter
 0.5,0.985075,21.8196,131.293,0.13,0.5,,1.8
 0.5,1.19776,25.1788,131.293,0.13,0.5,,1.8
 0.5,1.39925,28.0404,131.293,0.13,0.5,,1.8

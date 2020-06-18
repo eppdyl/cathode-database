@@ -7,13 +7,13 @@
 # Cathode Internal Pressure Under Various Operating Conditions
 # Fig 3.29: Orifice plate temperature dependence on keeper type in a diode discharge
 ### DATA
-# Id (A), mdot (sccm of Xe), P (x10^(-3) Pa), propellant mass (amu), do (mm), Lo (mm), Tw (degC)
+# Id (A), mdot (sccm of Xe), P (x10^(-3) Pa), propellant mass (amu), do (mm), Lo (mm), To (degC), dc (mm)
 ### Notes
 # Extracted from the overall plot; this data is for the EK6. Need to multiply pressure by 1e3 to obtain the correct values
 # IGNORE THE FOLLOWING (kept for posterity) "The mass flow rate values are not exactly the same from one run to the other one, so I kept them as raw data values extracted from the plots."
 # The temperature data is the orifice plate temperature
 ############################
-dischargeCurrent,massFlowRate_sccm,totalPressure,gasMass,orificeDiameter,orificeLength,insertTemperatureAverage,insertDiameter
+dischargeCurrent,massFlowRate_sccm,totalPressure,gasMass,orificeDiameter,orificeLength,orificeTemperature,insertDiameter
 0.50,2.00,36.0294,131.293,0.13,0.71,,1.17
 0.50,2.40,40.0735,131.293,0.13,0.71,,1.17
 0.50,2.80,44.3015,131.293,0.13,0.71,,1.17

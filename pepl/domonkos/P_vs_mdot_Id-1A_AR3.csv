@@ -7,12 +7,12 @@
 # Reduction of Cathode Internal Pressure for Spot-Mode Operation
 # Fig 3.27 Orifice plate temperature dependence on aspect ratio in a 1.00-A discharge to the keeper
 ### DATA
-# Id (A), mdot (sccm of Xe), P (x10^(-3) Pa), propellant mass (amu), do (mm), Lo (mm), Tw (degC)
+# Id (A), mdot (sccm of Xe), P (x10^(-3) Pa), propellant mass (amu), do (mm), Lo (mm), To (degC), dc (mm)
 ### Notes
 # Extracted from the overall plot; this data is for the AR3, at Id = 1A. Need to multiply pressure by 1e3 to obtain the correct values
 # The wall temperature is here equal to the orifice plate temperature 
 ############################
-dischargeCurrent,massFlowRate_sccm,totalPressure,gasMass,orificeDiameter,orificeLength,insertTemperatureAverage,insertDiameter
+dischargeCurrent,massFlowRate_sccm,totalPressure,gasMass,orificeDiameter,orificeLength,orificeTemperature,insertDiameter
 1,1.39925,33.3904,131.293,0.13,0.38,909.62,1.22
 1,1.60075,33.888,131.293,0.13,0.38,915.62,1.22
 1,1.79478,37.1229,131.293,0.13,0.38,922.95,1.22
