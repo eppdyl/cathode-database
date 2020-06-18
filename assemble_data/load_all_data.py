@@ -29,35 +29,13 @@ import numpy as np
 import os
 
 from import_db import dtypes,from_np_array
-from enum import Enum
 
-class massFlowType(Enum):
-    SCCM = 1
-    EQA = 2
-    SI = 3
 
-# folder                 datafile skip_header  \
-#NSTAR          jpl/nstar/discharge         P_vs_Id_mdot.csv          21   
-#NEXIS                    jpl/nexis         P_vs_Id_mdot.csv          11   
-#Salhi                  lewis/salhi         P_vs_Id_mdot.csv          16   
-#Salhi-Ar-1.21                  NaN                      NaN         NaN   
-#Salhi-Ar-0.76                  NaN                      NaN         NaN   
-#Salhi-Xe                       NaN                      NaN         NaN   
-#Siegfried          lewis/siegfried         P_vs_Id_mdot.csv          14   
-#Friedly              lewis/friedly         P_vs_Id_mdot.csv          14   
-#T6                          rae/t6         P_vs_Id_mdot.csv          15   
-#AR3                  pepl/domonkos  P_vs_mdot_Id-1A_AR3.csv          14   
-#EK6                  pepl/domonkos     P_vs_mdot_Id_EK6.csv          15   
-#SC012                pepl/domonkos   P_vs_mdot_Id_SC012.csv          13   
-#JPL 1.5cm     jpl/goebel-lab6-cathodes/1.5cm-cathode P_vs_Id_mdot.csv
-#JPL 1.5cm-3mm NaN
-#JPL 1.5cm-5mm NaN
 cathodeList = ['NSTAR','NEXIS','Salhi','Salhi-Ar-1.21','Salhi-Ar-0.76',
                'Salhi-Xe','Siegfried','Siegfried-NG','Friedly','T6','AR3',
                'EK6','SC012','JPL-1.5cm','JPL-1.5cm-3mm','JPL-1.5cm-5mm',
                'PLHC'
                ]
-
 
 folderList = ['jpl/nstar/discharge',
               'jpl/nexis',
@@ -85,22 +63,6 @@ fileList = [['P_vs_Id_mdot.csv','positional_combined.csv'],
             ['P_vs_mdot_Id_SC012.csv'],
             ['P_vs_Id_mdot.csv','positional_combined.csv'],None,None,
             ['P_vs_Id_mdot.csv']]
-
-#headerNames = ['Id','mdot','P','mass','do','Lo','dc','Tw','To']
-#headerSkip = [21, # NSTAR 
-#              11, # NEXIS
-#              16, # Salhi
-#              None,None,None,
-#              16, # Siegfried
-#              None,
-#              14, # Friedly
-#              15, # T6
-#              14, # AR3
-#              15, # EK6
-#              13, # SC012
-#              13, # JPL 1.5 cm
-#              None, None
-#              ]
 
 pressureFiles = {
         'cathode' :cathodeList ,
@@ -132,7 +94,7 @@ def load_csv_data():
     
     for index, row  in df_pFiles.iterrows():
         if pd.isnull(row['folder']):
-            next
+            continue
         else:                        
             ### Load data
             df = load_single_cathode(df,row)    
@@ -188,6 +150,12 @@ def load_positional_data(df,datafile,cathode):
         bcond &= (df.dischargeCurrent == row['dischargeCurrent'])
         bcond &= (df.orificeDiameter == row['orificeDiameter'])
         
+        # Has the gas mass been specified?
+        try:
+            bcond &= (df.gasMass == row['gasMass'])
+        except KeyError:
+            pass
+        
         # Has the work function been specified?
         try:
             bcond &= (df.workFunction == row['workFunction'])
@@ -196,21 +164,16 @@ def load_positional_data(df,datafile,cathode):
             pass
         
         ### Grab the correct mass flow unit
-        mfType = 0
         if 'massFlowRate_sccm' in row.index:
             bcond &= (df.massFlowRate_sccm == row['massFlowRate_sccm'])
-            mfType = massFlowType.SCCM
         elif 'massFlowRate_SI' in row.index:
             bcond &= (df.massFlowRate_SI == row['massFlowRate_SI'])
-            mfType = massFlowType.SI
         elif 'massFlowRate' in row.index:
             bcond &= (df.massFlowRate == row['massFlowRate'])
-            mfType = massFlowType.EQA
         else:
             # No flow rate specified, raise error
             raise KeyError
-              
-   
+                 
         ### Extracted dataframe
         edf = df[bcond]
         # Did we find a spot for the data to go?
@@ -234,6 +197,15 @@ def load_positional_data(df,datafile,cathode):
     return df
 
 def load_single_cathode(df,row):
+    '''Load the data from a single cathode.
+    Inputs:
+        - df: the main dataframe
+        - row: a row of the files dataframe. It contains the name of the 
+        cathode, the folder where the data resides, and the list of datafiles
+        to load
+    Ouput:
+        - df: the updated dataframe
+    '''
     cathode = row['cathode']
     folder = row['folder']
     datafiles = row['datafile']
@@ -258,6 +230,9 @@ def load_single_cathode(df,row):
     
 
 def compute_ne(x):
+    '''From the 2D array stored in the csv file that contains 
+    [position,log10(density)], compute the actual density'''
+    
     try:
         x0 = x[:,0]
         log10ne = x[:,1]
@@ -270,6 +245,7 @@ def compute_ne(x):
   
     
 def populate_gas_name(df):
+    '''Translates the gas mass to the gas name'''
     ### Go through each cathode
     for cat in cathodeList:
        xecat = (cat == 'NSTAR' or 
@@ -291,12 +267,19 @@ def populate_gas_name(df):
        else:
            ### Otherwise, case by case
            print(cat)
+           if cat == 'Salhi':
+               print(len(df.loc[(df.cathode==cat) & (df.gasMass == 131.293),'gas']))
+               print(len(df.loc[(df.cathode==cat) & (df.gasMass == 39.948),'gas']))
+               print(len(df.loc[(df.cathode==cat)]))
+               
            # Check the obvious: gas mass
            df.loc[(df.cathode==cat) & (df.gasMass == 131.293),'gas'] = 'Xe'
            df.loc[(df.cathode==cat) & (df.gasMass == 39.948) ,'gas'] = 'Ar'
            df.loc[(df.cathode==cat) & (df.gasMass == 200.59) ,'gas'] = 'Hg'
            
-           # TODO: Other cases (they should not happen, though)
+               
+           
+           # TODO: Other cases?
            
     return df
 
@@ -323,169 +306,3 @@ def apply_split(df):
            (df.gas=='Xe'),'cathode'] = 'Siegfried-NG' 
            
     return df
-#    # idx: name of the cathode
-#    idx = ['NSTAR','NEXIS','Salhi','Salhi-Ar','Salhi-Xe','Salhi-Ar-1.21','Salhi-Ar-0.76','Siegfried','AR3','EK6','SC012','Friedly','T6']
-#    cathode_idx = ['NSTAR','NEXIS','Salhi','Siegfried','AR3','EK6','SC012','Friedly','T6']
-#
-#    # col: name of the columns
-#    # Id -> discharge current
-#    # mdot -> mass flow rate
-#    # P -> pressure
-#    # do -> orifice diameter
-#    # Lo -> orifice length
-#    # species -> gas used
-#    # corr -> P/mdot * do^2 for Siegfried and Wilbur
-#    col = ['Id','mdot','P','do','Lo','mass','Tw','To','dc','eiz','corr','corr_up','corr_lo']
-#
-#    pdf = pd.DataFrame(index=idx, columns=col)
-#
-#    #### Load data
-#    #root_folder = 'cathode-data'
-#    root_folder = os.path.dirname(__file__)
-#    root_folder = os.path.join(root_folder,'..')
-#
-##    di_str = pkg_resources.open_binary(files,'datafile_index.pkl')
-#    df = pd.read_pickle('datafile_index.pkl')
-#
-#    for cat in cathode_idx:
-#        folder = root_folder + '/' + df.folder[cat]
-#        datafile = folder + '/' + df.datafile[cat]
-#        nskip = df.skip_header[cat]
-#        dtype = df.dtype[cat]
-#
-#        load_single_cathode(cat,datafile,nskip,dtype,pdf)
-#
-#    ## Make sure we fill the temperature array with an arbitrary temperature
-#    ## when data is not available
-#    for name in idx:
-#        arr = pdf.Tw[name]
-#        arr_idx = np.isnan(arr)
-#        arr[arr_idx] = 1000
-#        pdf.Tw[name] = arr
-#
-#    ## Extract unique data 
-#    pdf_extract = pdf[(pdf.index != 'Salhi') & (pdf.index != 'Salhi-Ar') ]
-#
-##    return pdf_extract
-#
-#def load_single_cathode(cat,datafile,nskip,dtype,pdf):
-#    '''
-#    Loads the data from a single cathode. Since they each differ, there are 
-#    tests to determine which cathode we are considering. 
-#    The corresponding fields are then filled in the dataframe used
-#    Inputs:
-#        - cat: the cathode name of interest
-#        - datafile: the datafile we are loading
-#        - nskip: number of header lines to skipe
-#        - dtype: the datatype loaded
-#        - pdf: the pandas frame to fill
-#    Note about the units for the final panda frame
-#        - Id: current (A)
-#        - mdot: mass flow rate (A)
-#        - P: pressure (Torr)
-#        - do: Orifice diameter (mm)
-#        - Lo: Orifice length (mm)
-#        - mass: propellant mass (amu)
-#        - Tw: wall temperature (degC)
-#    '''
-#    # Read data
-#    print(cat,datafile)
-#    data = np.genfromtxt(datafile,delimiter=',',dtype=dtype,names=True,skip_header=nskip)
-#    
-#    pdf.Id[cat] = data['Id']
-#    pdf.P[cat] = data['P']
-#    pdf.do[cat] = data['do']
-#    pdf.Lo[cat] = data['Lo']
-#    pdf.mass[cat] = data['mass']
-#    pdf.Tw[cat] = data['Tw']
-#    pdf.dc[cat] = data['dc']
-#    
-#    
-#    # Deduce the ionization energy from the mass
-#    # TODO: Add the ionization energy to the cathode.constants package
-#    pdf.eiz[cat] = (data['mass'] == 131.293) * 12.1298  # Xe
-#    pdf.eiz[cat] += (data['mass'] == 39.948) * 15.75962 # Ar
-#    pdf.eiz[cat] += (data['mass'] == 200.59) * 10.43750 # Hg
-#    
-#    
-#    if cat != 'Siegfried':
-#        pdf.mdot[cat] = data['mdot']
-#
-#    if cat == 'NSTAR' or cat == 'NEXIS':        
-#        pdf.mdot[cat] *= cc.sccm2eqA # sccm to equivalent amperes
-#
-#    elif cat == 'Salhi':
-#        # Get a couple of datasets separately
-#        separate_salhi(pdf)
-#
-#    elif cat == 'Siegfried':     
-#        # Round to 102 to have similar correlation
-#        pdf.mdot[cat] = [102,102,102,102,102,78,62,35,25] 
-#        
-#        # mA to A
-#        pdf.mdot[cat]  = np.asarray([mdot * 1e-3 for mdot in pdf.mdot[cat]]) 
-#
-#    elif cat == 'AR3' or cat == 'EK6' or cat == 'SC012':
-#        pdf.P[cat] *= 1e3/cc.Torr
-#        pdf.mdot[cat] *= cc.sccm2eqA # sccm to A
-#
-#    elif cat == 'Friedly':
-#        pdf.mdot[cat] *= 1e-3 # mA to A
-#
-#    elif cat == 'T6':
-#        mg2sccm = 22.413996 * 1e3 * 60.0 / (1e6*6.02214179e23) * 1.0 / cc.M.species('Xe')
-#        mg2eqA = mg2sccm * cc.sccm2eqA
-#        pdf.mdot[cat] *= mg2eqA # mg to A
-
-
-
-def separate_salhi(pdf):
-    salhi_ar = pdf.mass['Salhi'] == 39.948
-    salhi_xe = pdf.mass['Salhi'] == 131.293
-    
-    pdf.Id['Salhi-Ar'] = pdf.Id['Salhi'][salhi_ar]
-    pdf.mdot['Salhi-Ar'] = pdf.mdot['Salhi'][salhi_ar]
-    pdf.P['Salhi-Ar'] = pdf.P['Salhi'][salhi_ar]
-    pdf.do['Salhi-Ar'] = pdf.do['Salhi'][salhi_ar]
-    pdf.Lo['Salhi-Ar'] = pdf.Lo['Salhi'][salhi_ar]
-    pdf.mass['Salhi-Ar'] = pdf.mass['Salhi'][salhi_ar]
-    pdf.Tw['Salhi-Ar'] = pdf.Tw['Salhi'][salhi_ar]
-    pdf.dc['Salhi-Ar'] = pdf.dc['Salhi'][salhi_ar]
-    pdf.eiz['Salhi-Ar'] = pdf.eiz['Salhi'][salhi_ar]
-        
-    pdf.Id['Salhi-Xe'] = pdf.Id['Salhi'][salhi_xe]
-    pdf.mdot['Salhi-Xe'] = pdf.mdot['Salhi'][salhi_xe]
-    pdf.P['Salhi-Xe'] = pdf.P['Salhi'][salhi_xe]
-    pdf.do['Salhi-Xe'] = pdf.do['Salhi'][salhi_xe]
-    pdf.Lo['Salhi-Xe'] = pdf.Lo['Salhi'][salhi_xe]
-    pdf.mass['Salhi-Xe'] = pdf.mass['Salhi'][salhi_xe]
-    pdf.Tw['Salhi-Xe'] = pdf.Tw['Salhi'][salhi_xe]
-    pdf.dc['Salhi-Xe'] = pdf.dc['Salhi'][salhi_xe]
-    pdf.eiz['Salhi-Xe'] = pdf.eiz['Salhi'][salhi_xe]
-
-    # Get the 1.21 mm separately
-    salhi_ar121 = pdf.do['Salhi-Ar'] == 1.21
-    
-    pdf.Id['Salhi-Ar-1.21'] = pdf.Id['Salhi-Ar'][salhi_ar121]
-    pdf.mdot['Salhi-Ar-1.21'] = pdf.mdot['Salhi-Ar'][salhi_ar121]
-    pdf.P['Salhi-Ar-1.21'] = pdf.P['Salhi-Ar'][salhi_ar121]
-    pdf.do['Salhi-Ar-1.21'] = pdf.do['Salhi-Ar'][salhi_ar121]
-    pdf.Lo['Salhi-Ar-1.21'] = pdf.Lo['Salhi-Ar'][salhi_ar121]
-    pdf.mass['Salhi-Ar-1.21'] = pdf.mass['Salhi-Ar'][salhi_ar121]
-    pdf.Tw['Salhi-Ar-1.21'] = pdf.Tw['Salhi-Ar'][salhi_ar121]
-    pdf.dc['Salhi-Ar-1.21'] = pdf.dc['Salhi-Ar'][salhi_ar121]
-    pdf.eiz['Salhi-Ar-1.21'] = pdf.eiz['Salhi-Ar'][salhi_ar121]
-    
-    salhi_ar076 = pdf.do['Salhi-Ar'] == 0.76
-    
-    pdf.Id['Salhi-Ar-0.76'] = pdf.Id['Salhi-Ar'][salhi_ar076]
-    pdf.mdot['Salhi-Ar-0.76'] = pdf.mdot['Salhi-Ar'][salhi_ar076]
-    pdf.P['Salhi-Ar-0.76'] = pdf.P['Salhi-Ar'][salhi_ar076]
-    pdf.do['Salhi-Ar-0.76'] = pdf.do['Salhi-Ar'][salhi_ar076]
-    pdf.Lo['Salhi-Ar-0.76'] = pdf.Lo['Salhi-Ar'][salhi_ar076]
-    pdf.mass['Salhi-Ar-0.76'] = pdf.mass['Salhi-Ar'][salhi_ar076]
-    pdf.Tw['Salhi-Ar-0.76'] = pdf.Tw['Salhi-Ar'][salhi_ar076]
-    pdf.dc['Salhi-Ar-0.76'] = pdf.dc['Salhi-Ar'][salhi_ar076]
-    pdf.eiz['Salhi-Ar-0.76'] = pdf.eiz['Salhi-Ar'][salhi_ar076]
-
-
