@@ -251,6 +251,8 @@ root = "../../../original-material/becatti-jpp-2017/csv/"
 ### Append cases
 massFlow_array = np.array([10.5,13.1,14.9,19.8])
 current_array = np.array([8.9,15.6,25.1,31.3]) 
+master_idxmin.extend([-20,-20,-20,-20])
+master_idxmax.extend([-2,-2,-2,-7])
 
 ### Density data at constant current
 # 3 mm
@@ -267,8 +269,6 @@ for idx,mdot in enumerate(massFlow_array):
     do = np.append(do,do_val)
     
     master_ne.append(np.copy(ne_data))
-    master_idxmin.append(-20)
-    master_idxmax.append(-2)
     
     master_Te.append(np.nan)
     master_phi.append(np.nan)
@@ -278,6 +278,8 @@ data = np.genfromtxt(root + 'ne_vs_x_mdot-multiple_Id-25A_do-5mm.csv',
                      skip_header = True,
                      delimiter=',')  
 
+master_idxmin.extend([-22,-22,-22,-22])
+master_idxmax.extend([-3,-3,-3,-5])
 do_val = 5 # mm
 for idx,mdot in enumerate(massFlow_array):
     ne_data = data[~np.isnan(data[:,idx+1])][:,[0,idx+1]]
@@ -287,8 +289,6 @@ for idx,mdot in enumerate(massFlow_array):
     do = np.append(do,do_val)
 
     master_ne.append(np.copy(ne_data))
-    master_idxmin.append(-22)
-    master_idxmax.append(-3)
     
     master_Te.append(np.nan)
     master_phi.append(np.nan)
@@ -298,6 +298,8 @@ for idx,mdot in enumerate(massFlow_array):
 data = np.genfromtxt(root + 'ne_vs_x_mdot-13sccm_Id-multiple_do-3mm.csv',
                      skip_header = True,
                      delimiter=',')  
+master_idxmin.extend([-16,-11,-16,-16])
+master_idxmax.extend([-3,-1,-3,-3])
 
 do_val = 3 # mm
 for idx,Id in enumerate(current_array):
@@ -308,8 +310,6 @@ for idx,Id in enumerate(current_array):
     do = np.append(do,do_val)
 
     master_ne.append(np.copy(ne_data))
-    master_idxmin.append(-16)
-    master_idxmax.append(-3)
     
     master_Te.append(np.nan)
     master_phi.append(np.nan)
@@ -318,6 +318,9 @@ for idx,Id in enumerate(current_array):
 data = np.genfromtxt(root + 'ne_vs_x_mdot-13sccm_Id-multiple_do-5mm.csv',
                      skip_header = True,
                      delimiter=',')  
+
+master_idxmin.extend([-16,-11,-16,-16])
+master_idxmax.extend([-2,-3,-2,-2])
 
 do_val = 5 # mm
 for idx,Id in enumerate(current_array):
@@ -328,8 +331,6 @@ for idx,Id in enumerate(current_array):
     do = np.append(do,do_val)
  
     master_ne.append(np.copy(ne_data))
-    master_idxmin.append(-16)
-    master_idxmax.append(-2)
     
     master_Te.append(np.nan)
     master_phi.append(np.nan)
