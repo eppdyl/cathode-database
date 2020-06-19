@@ -30,6 +30,68 @@ import os
 
 from import_db import dtypes,from_np_array,fileDictionary,cathodeList
 
+def special_cases(df,cat):
+    '''
+    Deals with special cases on cathode-by-cathode basis.
+    '''
+    if cat == 'NEXIS':
+        ### Fill two pressures
+        # 1. For 25 A, 5.5 sccm, we can arguably get the average pressure from 
+        # the two closest cases (24 A and 26 A)
+        # /!\ This is an estimate to get an idea of the total pressure /!\
+        # It allows to plot a variety of things vs. pressure-diameter
+        # bcond: the location where we should put new data
+        bcond = (df.cathode == cat)
+        bcond &= (df.massFlowRate_sccm == 5.5)
+        bcond &= (df.orificeDiameter == 3.0)
+        bcond &= (df.dischargeCurrent == 25.0)
+        
+        # datacond: the location we use as the data source
+        datacond = (df.cathode == cat)
+        datacond &= (df.massFlowRate_sccm == 5.5)
+        datacond &= (df.orificeDiameter == 2.5)
+        
+        tdf = df[datacond]
+        ddf = tdf[np.isclose(tdf.dischargeCurrent,25,atol=1)]
+        averagePressure = np.nanmean(ddf.totalPressure)
+       
+        df.loc[df[bcond].index,'totalPressure'] = averagePressure
+        
+        # 2. For 25 A, 10 sccm, use the closest case (22 A, 10 sccm)
+        # /!\ This is an estimate to get an idea of the total pressure /!\
+        # It allows to plot a variety of things vs. pressure-diameter        
+        bcond = df.cathode == cat
+        bcond &= (df.massFlowRate_sccm == 10.0)
+        bcond &= (df.orificeDiameter == 2.75)
+        bcond &= (df.dischargeCurrent == 25.0)
+
+        datacond = (df.cathode == cat)
+        datacond &= (df.massFlowRate_sccm == 10.0)
+        datacond &= (df.orificeDiameter == 2.5)
+        datacond &= (df.dischargeCurrent == 22.0)
+        
+        averagePressure = df.at[df[datacond].index[0],'totalPressure']
+        
+        df.loc[df[bcond].index,'totalPressure'] = averagePressure
+        
+    elif (cat == 'JPL-1.5cm-3mm') or (cat == 'JPL-1.5cm-5mm'):
+        ### The case 13.1 sccm, 25 A is pretty much the same as 13.0 sccm, 25 A
+        ### Same with 13.1 sccm, 25.1 A is pretty much the same as 13.0 sccm, 25 A
+        ### Use that value for the total pressure is pretty much the same as 13.0 sccm, 25 A
+        bcond = df.cathode == cat
+        bcond &= (df.massFlowRate_sccm == 13.1)
+        bcond &= ((df.dischargeCurrent == 25.0) | (df.dischargeCurrent == 25.1))        
+        
+        datacond = (df.cathode == cat)
+        datacond &= (df.massFlowRate_sccm == 13.0)
+        datacond &= (df.dischargeCurrent == 25.0)
+        
+        averagePressure = df.at[df[datacond].index[0],'totalPressure']
+        df.loc[df[bcond].index,'totalPressure'] = averagePressure
+                
+        
+    return df
+
 def generate_dataframe():
     '''
     Loads the CSV data for all the cathodes specified by name in cathodeList. 
@@ -68,7 +130,12 @@ def generate_dataframe():
             df.loc[(df.cathode==row['cathode']),'note'] = row['note']
     
     df = populate_gas_info(df) 
-    df = split_by_name(df)
+    df = split_by_name(df)   
+    df = calculate_electron_density_average(df)
+
+    ### Deal with any special cases
+    for cat in cathodeList:
+        df = special_cases(df,cat)
     
     return df
 
@@ -113,6 +180,8 @@ def load_positional_data(df,datafile,cathode):
     df_from_csv['electronDensity'] = \
     df_from_csv['electronDensity'].apply(lambda x: compute_ne(x))
 
+
+
     ### Have we already entered the corresponding [Id,mdot] case?
     for _, row in df_from_csv.iterrows():
         bcond = (df.cathode == cathode)
@@ -123,6 +192,7 @@ def load_positional_data(df,datafile,cathode):
         try:
             bcond &= (df.gasMass == row['gasMass'])
         except KeyError:
+            # Has not, continue
             pass
         
         # Has the work function been specified?
@@ -202,11 +272,12 @@ def compute_ne(x):
     '''From the 2D array stored in the csv file that contains 
     [position,log10(density)], compute the actual density'''
     
-    try:
+    try:          
         x0 = x[:,0]
         log10ne = x[:,1]
         
         arr = np.array([x0,10**log10ne])
+        arr = arr.T
     except:
         arr = np.nan
     
@@ -225,6 +296,12 @@ def populate_gas_info(df):
     df.loc[df.gas=='Xe','ionizationPotential'] = 12.1298
     df.loc[df.gas=='Hg','ionizationPotential'] = 10.4375
         
+    return df
+
+def calculate_electron_density_average(df):
+    tdf = df[['electronDensityAverage']].dropna()
+    df.loc[tdf.index,'electronDensityAverage'] = 10**tdf
+    
     return df
 
 def split_by_name(df):
