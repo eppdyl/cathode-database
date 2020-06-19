@@ -60,7 +60,8 @@ dc = 7.0 # mm
 Lo = 1.0 # mm
 
 master_ne = []
-master_Te = []
+master_Te_positional = []
+master_Te_average = []
 master_phi = []
 master_idxmin = []
 master_idxmax = []
@@ -144,13 +145,15 @@ for idx,Id in enumerate(current_array_8sccm):
     if Id == 50.:
         Te_data = Te_data_50A[~np.isnan(Te_data_50A[:,idxTe+4])][:,[0,idxTe+4]]
         phip_data = Te_data_50A[~np.isnan(Te_data_50A[:,idxTe+1])][:,[0,idxTe+1]]  
-        master_Te.append(np.copy(Te_data))
+        master_Te_positional.append(np.copy(Te_data))
+        master_Te_average.append(np.nan)
         master_phi.append(np.copy(phip_data))
         
     elif Id == 100.:
         Te_data = Te_data_100A[~np.isnan(Te_data_100A[:,idxTe+4])][:,[0,idxTe+4]]
         phip_data = Te_data_100A[~np.isnan(Te_data_100A[:,idxTe+1])][:,[0,idxTe+1]]        
-        master_Te.append(np.copy(Te_data))
+        master_Te_positional.append(np.copy(Te_data))
+        master_Te_average.append(np.nan)
         master_phi.append(np.copy(phip_data))
         
     else:
@@ -159,7 +162,8 @@ for idx,Id in enumerate(current_array_8sccm):
         bcond &= (Te_data_1cm[:,0] == Id)
         Te_data = Te_data_1cm[bcond][:,idxTe+1]
         
-        master_Te.append(np.copy(Te_data))
+        master_Te_positional.append(np.nan)
+        master_Te_average.append(np.copy(Te_data))
         master_phi.append(np.nan)
 
 # 10 sccm
@@ -181,14 +185,16 @@ for idx,Id in enumerate(current_array):
     if Id == 50.:
         Te_data = Te_data_50A[~np.isnan(Te_data_50A[:,idxTe+4])][:,[0,idxTe+4]]
         phip_data = Te_data_50A[~np.isnan(Te_data_50A[:,idxTe+1])][:,[0,idxTe+1]]  
-        master_Te.append(np.copy(Te_data))
         master_phi.append(np.copy(phip_data))
+        master_Te_positional.append(np.copy(Te_data))
+        master_Te_average.append(np.nan)
         
     elif Id == 100.:
         Te_data = Te_data_100A[~np.isnan(Te_data_100A[:,idxTe+4])][:,[0,idxTe+4]]
         phip_data = Te_data_100A[~np.isnan(Te_data_100A[:,idxTe+1])][:,[0,idxTe+1]]        
-        master_Te.append(np.copy(Te_data))
         master_phi.append(np.copy(phip_data))
+        master_Te_positional.append(np.copy(Te_data))
+        master_Te_average.append(np.nan)
         
     else:
         # Grab data from Te 1cm upstream
@@ -196,7 +202,8 @@ for idx,Id in enumerate(current_array):
         bcond &= (Te_data_1cm[:,0] == Id)
         Te_data = Te_data_1cm[bcond][:,idxTe+1]
         
-        master_Te.append(np.copy(Te_data))
+        master_Te_positional.append(np.nan)
+        master_Te_average.append(np.copy(Te_data))
         master_phi.append(np.nan)
     
 # 12 sccm
@@ -217,14 +224,16 @@ for idx,Id in enumerate(current_array_12sccm):
     if Id == 50.:
         Te_data = Te_data_50A[~np.isnan(Te_data_50A[:,idxTe+4])][:,[0,idxTe+4]]
         phip_data = Te_data_50A[~np.isnan(Te_data_50A[:,idxTe+1])][:,[0,idxTe+1]]  
-        master_Te.append(np.copy(Te_data))
         master_phi.append(np.copy(phip_data))
+        master_Te_positional.append(np.copy(Te_data))
+        master_Te_average.append(np.nan)
         
     elif Id == 100.:
         Te_data = Te_data_100A[~np.isnan(Te_data_100A[:,idxTe+4])][:,[0,idxTe+4]]
         phip_data = Te_data_100A[~np.isnan(Te_data_100A[:,idxTe+1])][:,[0,idxTe+1]]        
-        master_Te.append(np.copy(Te_data))
         master_phi.append(np.copy(phip_data))
+        master_Te_positional.append(np.copy(Te_data))
+        master_Te_average.append(np.nan)
         
     else:
         # Grab data from Te 1cm upstream
@@ -232,7 +241,8 @@ for idx,Id in enumerate(current_array_12sccm):
         bcond &= (Te_data_1cm[:,0] == Id)
         Te_data = Te_data_1cm[bcond][:,idxTe+1]
         
-        master_Te.append(np.copy(Te_data))
+        master_Te_positional.append(np.nan)
+        master_Te_average.append(np.copy(Te_data))
         master_phi.append(np.nan)
 
 ########################################
@@ -270,7 +280,8 @@ for idx,mdot in enumerate(massFlow_array):
     
     master_ne.append(np.copy(ne_data))
     
-    master_Te.append(np.nan)
+    master_Te_positional.append(np.nan)
+    master_Te_average.append(np.nan)
     master_phi.append(np.nan)
 
 # 5 mm
@@ -290,7 +301,8 @@ for idx,mdot in enumerate(massFlow_array):
 
     master_ne.append(np.copy(ne_data))
     
-    master_Te.append(np.nan)
+    master_Te_positional.append(np.nan)
+    master_Te_average.append(np.nan)
     master_phi.append(np.nan)
 
 ### Density data at constant mass flow
@@ -311,7 +323,8 @@ for idx,Id in enumerate(current_array):
 
     master_ne.append(np.copy(ne_data))
     
-    master_Te.append(np.nan)
+    master_Te_positional.append(np.nan)
+    master_Te_average.append(np.nan)
     master_phi.append(np.nan)
 
 # 5 mm
@@ -332,7 +345,8 @@ for idx,Id in enumerate(current_array):
  
     master_ne.append(np.copy(ne_data))
     
-    master_Te.append(np.nan)
+    master_Te_positional.append(np.nan)
+    master_Te_average.append(np.nan)
     master_phi.append(np.nan)
     
 
@@ -378,7 +392,8 @@ df = pd.DataFrame({'dischargeCurrent':dischargeCurrent,
                    'massFlowRate_sccm':massFlow_sccm,
                    'idxmin':master_idxmin,'idxmax':master_idxmax,
                    'electronDensity':master_ne,
-                   'electronTemperature':master_Te,
+                   'electronTemperature':master_Te_positional,
+                   'electronTemperatureAverage':master_Te_average,
                    'plasmaPotential':master_phi,
                    'gasMass': cc.M.Xe * np.ones_like(Lo),
                    'orificeLength':Lo,
@@ -401,7 +416,7 @@ header_str = """############################
 # [3] Fig. 6 Plasma density profiles at 25 A for a) 5 mm orifice, and b) 3 mm orifice.
 # [3] Fig. 7 Plasma density profiles at 13 sccm for a) 5 mm orifice, and b) 3 mm orifice.
 ### DATA
-# Id (A), log10(electron density) vs. x (in 1/m3 and mm, resp.), electron temperature vs. x (in eV and mm), idxmax, idxmin, dc (mm), mass flow (sccm of Xe), do (mm), Lo (mm), plasma potential vs. x (in V and mm)
+# Id (A), log10(electron density) vs. x (in 1/m3 and mm, resp.), electron temperature vs. x (in eV and mm), electron temperature average (eV), idxmax, idxmin, dc (mm), mass flow (sccm of Xe), do (mm), Lo (mm), plasma potential vs. x (in V and mm)
 ### NOTES
 # We merged the 10 sccm plot from [2] into the folder of [1].
 ############################
