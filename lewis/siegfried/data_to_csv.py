@@ -34,7 +34,7 @@ pressureArray = np.copy(hg_pdata['P'])
 massArray = cc.M.Hg * np.ones_like(dischargeCurrent)
 twallArray = np.copy(hg_pdata['Tw'])
 dc = np.copy(hg_pdata['dc'])
-neArray = np.nan * np.ones_like(dischargeCurrent)
+neAverageArray = np.nan * np.ones_like(dischargeCurrent)
 phipArray = np.nan * np.ones_like(dischargeCurrent)
 
 ## Argon data
@@ -56,7 +56,7 @@ massArray = np.append(massArray,cc.M.Ar *np.ones_like(ar_pdata['P']))
 twallArray = np.append(twallArray,ar_pdata['Tc'])
 dc = np.append(dc,dcval*np.ones_like(ar_pdata['P']))
 
-neArray = np.append(neArray,ar_pdata['ne_ave'])
+neAverageArray = np.append(neAverageArray,ar_pdata['ne_ave'])
 phipArray = np.append(phipArray,ar_pdata['Vp'])
 
 # Mass flow rate known, back out pressure
@@ -74,7 +74,7 @@ massArray = np.append(massArray,cc.M.Ar *np.ones_like(ar_pdata['Id']))
 twallArray = np.append(twallArray,ar_pdata['Tc'])
 dc = np.append(dc,dcval*np.ones_like(ar_pdata['Id']))
 
-neArray = np.append(neArray,ar_pdata['ne_ave'])
+neAverageArray = np.append(neAverageArray,ar_pdata['ne_ave'])
 phipArray = np.append(phipArray,ar_pdata['Vp'])
 
 ## Xenon data
@@ -94,7 +94,7 @@ massArray = np.append(massArray,cc.M.Xe *np.ones_like(xe_pdata['P']))
 twallArray = np.append(twallArray,xe_pdata['Tc'])
 dc = np.append(dc,dcval*np.ones_like(xe_pdata['P']))
 
-neArray = np.append(neArray,xe_pdata['ne_ave'])
+neAverageArray = np.append(neAverageArray,xe_pdata['ne_ave'])
 phipArray = np.append(phipArray,xe_pdata['Vp'])
 
 # Mass flow rate known, back out pressure
@@ -112,13 +112,13 @@ massArray = np.append(massArray,cc.M.Xe *np.ones_like(xe_pdata['Id']))
 twallArray = np.append(twallArray,xe_pdata['Tc'])
 dc = np.append(dc,dcval*np.ones_like(xe_pdata['Id']))
 
-neArray = np.append(neArray,xe_pdata['ne_ave'])
+neAverageArray = np.append(neAverageArray,xe_pdata['ne_ave'])
 phipArray = np.append(phipArray,xe_pdata['Vp'])
 
 do = do * np.ones_like(dischargeCurrent)
 Lo = Lo * np.ones_like(dischargeCurrent)
-neArray *= 1e20
-neArray = np.log10(neArray)
+neAverageArray *= 1e20
+neAverageArray = np.log10(neAverageArray)
 
 #Id,mdot,P,mass,do,Tw,Lo,dc
 ### Assemble and dump
@@ -130,7 +130,7 @@ df = pd.DataFrame({'dischargeCurrent':dischargeCurrent,
                    'orificeLength':Lo,
                    'orificeDiameter':do,
                    'insertDiameter':dc,
-                   'electronDensity':neArray,
+                   'electronDensityAverage':neAverageArray,
                    'plasmaPotential':phipArray})
 
     
