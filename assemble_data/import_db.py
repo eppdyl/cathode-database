@@ -138,8 +138,10 @@ def from_np_array(array_string):
         t_str = ','.join(t_str.split())
             
         ret = np.array(ast.literal_eval(t_str),dtype=np.float64)
-
+        
         return ret
     else:
         return np.nan
+
+
     
