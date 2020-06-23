@@ -353,39 +353,6 @@ for idx,Id in enumerate(current_array):
     master_phi.append(np.nan)
     
 
-## None for 5.5 sccm, 10 A
-#master_ne.append(np.nan)
-#idxmin = np.append(idxmin,np.nan)
-#idxmax = np.append(idxmax,np.nan)
-#
-## 10 sccm, 25 A
-#ne_data = np.genfromtxt(root + 'raw/ne_vs_x_mdot-5-10sccm_Id-25A.csv', 
-#        delimiter=',')
-#ne_data[:,1] *= 1e20
-#ne_data[:,1] = np.log10(ne_data[:,1])
-#
-#master_ne.append(ne_data)
-#idxmin = np.append(idxmin,-40)
-#idxmax = np.append(idxmax,-10)
-#
-#### Te, potential
-#data = np.genfromtxt(root + 'raw/Te-phip_vs_x_mdot-5.5-10sccm_Id-10-25A.csv',
-#        skip_header = True, delimiter=',')
-## 5.5 sccm, 10 A
-#Te_data = data[~np.isnan(data[:,1])][:,[0,1]]
-#phip_data = data[~np.isnan(data[:,2])][:,[0,2]]
-#
-#master_Te.append(np.copy(Te_data))
-#master_phi.append(np.copy(phip_data))
-#
-## 10 sccm, 25 A (it's in the same file)
-#Te_data = data[~np.isnan(data[:,3])][:,[0,3]]
-#phip_data = data[~np.isnan(data[:,4])][:,[0,4]]
-#
-#master_Te.append(np.copy(Te_data))
-#master_phi.append(np.copy(phip_data))
-#
-
 #### Assemble and dump
 # Lo and dc do not change
 Lo = np.ones_like(dischargeCurrent) * Lo
