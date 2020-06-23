@@ -26,15 +26,7 @@ def compute_attachment_length(ne_data, dc, idxmin=None, idxmax=None):
     elif idxmax:
         rev = insert_ne[:idxmax]
     
-#    if row['cathode'] == 'NSTAR':
-#        rev = insert_ne[-50:]
-#    elif row['cathode'] == 'NEXIS':
-#        rev = insert_ne[-40:-10]
-#    elif row['cathode'] == 'JPL-1.5cm':
-#        npoints = find_JPL_indexing(Id,mdot_sccm)
-#        rev = insert_ne[-npoints:]
-#    elif row['cathode'] == 'Salhi-Xe':
-#        rev = insert_ne[:-1]
+
     rev[:,0] /= dc
     rev[:,1] /= np.max(insert_ne[:,1])
     
@@ -136,17 +128,13 @@ def compute_from_positional(df):
     
     for idx,row in tdf.iterrows():
         Te_data = row['electronTemperature']
-#        Te_data = Te_data.T
         
         dc = row['insertDiameter'] 
         
-#        if row['cathode'] == 'NEXIS' and ~np.isnan(Te_data.all()):
-#            print(Te_data.shape)
-        
+
         Te_xp, Te_err = compute_average_temperature(Te_data, dc)
-#        print(row['cathode'],Te_xp,Te_err)
         
-        # If we don't already have data there?
+        # If we don't already have data there, then fill.
         if np.isnan(row['electronTemperatureAverage']):
             print(row['cathode'],idx,Te_xp,Te_err)
             df.loc[idx,'electronTemperatureAverage'] = Te_xp
