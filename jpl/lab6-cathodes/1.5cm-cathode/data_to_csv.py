@@ -161,9 +161,10 @@ for idx,Id in enumerate(current_array_8sccm):
         bcond = ~np.isnan(Te_data_1cm[:,idxTe+1])
         bcond &= (Te_data_1cm[:,0] == Id)
         Te_data = Te_data_1cm[bcond][:,idxTe+1]
+        Te_data = Te_data[0]
         
         master_Te_positional.append(np.nan)
-        master_Te_average.append(np.copy(Te_data))
+        master_Te_average.append(Te_data)
         master_phi.append(np.nan)
 
 # 10 sccm
@@ -201,9 +202,10 @@ for idx,Id in enumerate(current_array):
         bcond = ~np.isnan(Te_data_1cm[:,idxTe+1])
         bcond &= (Te_data_1cm[:,0] == Id)
         Te_data = Te_data_1cm[bcond][:,idxTe+1]
+        Te_data = Te_data[0]
         
         master_Te_positional.append(np.nan)
-        master_Te_average.append(np.copy(Te_data))
+        master_Te_average.append(Te_data)
         master_phi.append(np.nan)
     
 # 12 sccm
@@ -240,9 +242,10 @@ for idx,Id in enumerate(current_array_12sccm):
         bcond = ~np.isnan(Te_data_1cm[:,idxTe+1])
         bcond &= (Te_data_1cm[:,0] == Id)
         Te_data = Te_data_1cm[bcond][:,idxTe+1]
+        Te_data = Te_data[0]
         
         master_Te_positional.append(np.nan)
-        master_Te_average.append(np.copy(Te_data))
+        master_Te_average.append(Te_data)
         master_phi.append(np.nan)
 
 ########################################
