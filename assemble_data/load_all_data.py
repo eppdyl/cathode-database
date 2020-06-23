@@ -132,7 +132,8 @@ def generate_dataframe():
     df = populate_gas_info(df) 
     df = split_by_name(df)   
     df = calculate_electron_density_average(df)
-
+    df = convert_flow_rates(df)
+    
     ### Deal with any special cases
     for cat in cathodeList:
         df = special_cases(df,cat)
@@ -327,3 +328,27 @@ def split_by_name(df):
            (df.gas=='Xe'),'cathode'] = 'Siegfried-NG' 
            
     return df
+
+def convert_flow_rates(df):
+    '''
+    Convert from one set of flow rates to another one
+    '''
+    
+    ### sccm to eqA
+    tdf = df['massFlowRate_sccm'].dropna()
+    df.loc[tdf.index,'massFlowRate'] = tdf * cc.sccm2eqA
+    
+    ### SI to eqA
+    tdf = df[['gasMass','massFlowRate_SI']].dropna()
+    df.loc[tdf.index,'massFlowRate'] = tdf['massFlowRate_SI'] / tdf['gasMass'] * cc.e/cc.atomic_mass
+    
+    ### eqA to sccm
+    tdf = df['massFlowRate'].dropna()
+    df.loc[tdf.index,'massFlowRate_sccm'] = tdf / cc.sccm2eqA
+    
+    ### eqA to SI
+    tdf = df[['gasMass','massFlowRate']].dropna()
+    df.loc[tdf.index,'massFlowRate_SI'] = tdf['massFlowRate'] * tdf['gasMass'] * cc.atomic_mass/cc.e
+    
+    return df
+    
