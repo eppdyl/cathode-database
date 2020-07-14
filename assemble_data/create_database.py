@@ -34,18 +34,18 @@ data.eval(PI5_str, local_dict=constant_dict, inplace=True)
 data.eval(PI6_str, local_dict=constant_dict, inplace=True)
 data.eval(PI7_str, local_dict=constant_dict, inplace=True)
 
-### Create HDF5 file
-fname = 'cathode_database.h5'
-f = h5py.File(fname,'w')
-f.create_group("data")
-
-# Get a timestamp
-ts = datetime.datetime.utcnow()
-ts = ts.strftime('%Y%m%d%H%M%S')
-ts = (int)(ts)
-
-f.create_dataset('timestamp',shape=(1,),data=ts,dtype=np.int64)
-f.close()
-
-# Dump the data, compressed
-data.to_hdf(fname,'data',complib='zlib',complevel=9)
+#### Create HDF5 file
+#fname = 'cathode_database.h5'
+#f = h5py.File(fname,'w')
+#f.create_group("data")
+#
+## Get a timestamp
+#ts = datetime.datetime.utcnow()
+#ts = ts.strftime('%Y%m%d%H%M%S')
+#ts = (int)(ts)
+#
+#f.create_dataset('timestamp',shape=(1,),data=ts,dtype=np.int64)
+#f.close()
+#
+## Dump the data, compressed
+#data.to_hdf(fname,'data',complib='zlib',complevel=9)
