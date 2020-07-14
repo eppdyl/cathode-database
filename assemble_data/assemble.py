@@ -1,4 +1,3 @@
-import pandas as pd
 import numpy as np
 from scipy.optimize import root
 
@@ -6,13 +5,8 @@ import cathode.constants as cc
 from cathode.models.flow import reynolds_number, viscosity
 from lj_transport import transport_properties
 
-from import_db import dtypes
-from populate_positional_data import populate_NEXIS, populate_NSTAR, populate_JPL_lab6, populate_Salhi
-from populate_PLHC import append_PLHC
-from populate_positional_data import populate_Siegfried_ng
-
 from load_all_data import generate_dataframe
-
+from compute_from_positional import compute_from_positional
 
 def df_reynolds_number(alldata):
     gam = 5/3    
@@ -38,20 +32,12 @@ def df_reynolds_number(alldata):
 def assemble(empirical_pressure=False):        
     # Load all of the data
     alldata = generate_dataframe()
+    
+    # Calculate quantities derived from the positional datas
+    alldata = compute_from_positional(alldata)
+    
+    # Temperature data
 
-    ### DENSITY AND TEMPERATURE DATA
-    alldata = populate_NSTAR(alldata)
-    alldata = populate_NEXIS(alldata)
-    alldata = populate_JPL_lab6(alldata)
-    alldata = populate_Salhi(alldata)
-    alldata = populate_Siegfried_ng(alldata)
-    
-    # Correct NEXIS cases
-    alldata.loc[366,'orificeDiameter'] = 3.0 
-    alldata.loc[367,'orificeDiameter'] = 2.75
-    
-    ### ADD THE DATA FOR THE PLHC
-    alldata = append_PLHC(alldata)
     
     # Fill up AR3, EK6, SC012 by averaging AR3 and EK6
     bcond = (alldata.cathode=='AR3') | (alldata.cathode=='EK6')
@@ -61,16 +47,13 @@ def assemble(empirical_pressure=False):
     bcondfill = (alldata.cathode=='AR3') | (alldata.cathode=='EK6') | (alldata.cathode=='SC012')
     alldata.loc[bcondfill,'insertTemperatureAverage'] = alldata.loc[bcondfill,'insertTemperatureAverage'].fillna(Tave)
 
-    # NEXIS
+    # NEXIS: use fit
     bcond = (alldata.cathode == 'NEXIS')
     Iddf = alldata[bcond]['dischargeCurrent']
     Tmax = 1370 + 3.971e-7 * Iddf ** 6 - 273.15
     alldata.loc[bcond,'insertTemperatureAverage'] = alldata.loc[bcond,'insertTemperatureAverage'].fillna(Tmax)
     
-    # T6: use the same values as NSTAR
-#    Iddf = alldata[bcond]['dischargeCurrent']
-#    Tmax = 1191.6 * Iddf ** 0.0988 - 273.15
-#    alldata.loc[bcond,'insertTemperatureAverage'] = Tmax
+    # T6: use Richardson-Dushman law
     bcond = (alldata.cathode=='T6')
     phi_wf = lambda Tw: 1.67 + 2.87e-4 * Tw
     dc = np.unique(alldata[bcond].insertDiameter) * 1e-3
@@ -82,7 +65,7 @@ def assemble(empirical_pressure=False):
         alldata.loc[row[0],'insertTemperatureAverage'] = Temp
 
 
-    # Salhi, T6: average for a given geometry and gas
+    # Salhi, Siegfried: average for a given geometry and gas
     for name in ['Salhi-Ar-0.76','Salhi-Ar-1.21','Salhi-Xe','Siegfried-NG']:
         bcond = (alldata.cathode == name)
         
@@ -116,8 +99,7 @@ def assemble(empirical_pressure=False):
     pd_str = 'pressureDiameter = totalPressure * insertDiameter * 0.1'
     alldata.eval(pd_str, inplace=True)
 
-    ### CHANGE TO SI UNITS
-    # Gamma
+    ### Necessary constants    
     gam = 5/3
     
     constant_dict = {'pi':np.pi,
@@ -128,7 +110,7 @@ def assemble(empirical_pressure=False):
                      'Torr':cc.Torr,
                      'mu0':cc.mu0}
     
-    ### Necessary constants    
+    
     # Speed of sound
     sos_str = 'speedOfSound=(@gam*@kb/(gasMass*@amu)*(insertTemperatureAverage+273.15)*3)**(0.5)'
     alldata.eval(sos_str, local_dict=constant_dict, inplace=True)
@@ -175,6 +157,7 @@ def assemble(empirical_pressure=False):
                 
                 alldata.loc[row[0],'totalPressure'] = P
 
+    ### DERIVED QUANTITIES
     # Total pressure
     p_str = 'totalPressure_SI=totalPressure*@Torr'
     alldata.eval(p_str, local_dict=constant_dict, inplace=True)
@@ -202,11 +185,11 @@ def assemble(empirical_pressure=False):
     ### COMPUTE REYNOLDS NUMBER
     alldata = df_reynolds_number(alldata)
         
-    # Orifice entrance length
+    ### ORIFICE ENTRANCE LENGTH
     entrance_str = 'entranceLength = 0.06 * reynoldsNumber * orificeDiameter / orificeLength'
     alldata.eval(entrance_str,inplace=True)
     
-    # Orifice Knudsen number
+    ### ORIFICE KNUDSEN NUMBER
     knudsen_str = 'orificeKnudsenNumber = 1 / reynoldsNumber * (@gam * @pi/2)**(0.5)'
     alldata.eval(knudsen_str, local_dict=constant_dict, inplace=True)
     
