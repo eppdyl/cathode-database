@@ -99,12 +99,12 @@ def compute_erosion(dc0,dcmax,rho_emitter,evap,Id,TgK,mdot_sccm,Locm,Mamu,eps,do
     
         
 
-data_bao = np.genfromtxt("evaporation-bao.csv",
+data_bao = np.genfromtxt("emitter-evaporation-data/evaporation-bao.csv",
                          delimiter=',',
                          skip_header=1,
                          names=True)
 
-data_lab6 = np.genfromtxt("evaporation-lab6.csv",
+data_lab6 = np.genfromtxt("emitter-evaporation-data/evaporation-lab6.csv",
                          delimiter=',',
                          skip_header=1,
                          names=True)
