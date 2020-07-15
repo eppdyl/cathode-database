@@ -61,8 +61,8 @@ if args.pressureEmpirical:
     data = generate_dataframe_derived(empirical_pressure = 
             args.pressureEmpirical)
 elif args.piProduct:
-    print("INFO Database with both total pressure Pi products and derived\
-            quantities")
+    print("INFO Database with both total pressure Pi products and derived "\
+        "quantities")
     data = generate_dataframe_derived(pi_products = args.piProduct)
 elif args.derivedQuantity:
     print("INFO Database with derived quantities ONLY")
