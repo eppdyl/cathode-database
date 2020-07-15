@@ -68,7 +68,7 @@ def df_reynolds_number(alldata):
 
     return alldata
 
-def generate_dataframe_derived(empirical_pressure=False):        
+def generate_dataframe_derived(empirical_pressure=False, pi_products=False):        
     # Load all of the data
     alldata = generate_dataframe()
     
@@ -230,5 +230,45 @@ def generate_dataframe_derived(empirical_pressure=False):
     # Orifice knudsen number
     knudsen_str = 'orificeKnudsenNumber = 1 / reynoldsNumber * (@gam * @pi/2)**(0.5)'
     alldata.eval(knudsen_str, local_dict=constant_dict, inplace=True)
+
+    if pi_products:
+        alldata = compute_pi_products(data)
     
     return alldata
+
+def compute_pi_products(data):
+    '''
+    Calculate the Pi products that were defined in our 2018 JPC publication 
+    Taunay, Wordingham, Choueiri, "An empirical scaling relationship for the
+    total pressure in hollow cathodes," 2018, AIAA Propulsion and Energy Forum,
+    AIAA-2018-4428
+    '''
+    gam = 5/3
+
+    constant_dict = {'pi':np.pi,
+                     'q':cc.e,
+                     'amu':cc.atomic_mass,
+                     'gam':gam,
+                     'kb':cc.Boltzmann,
+                     'Torr':cc.Torr,
+                     'mu0':cc.mu0}
+
+
+    ### PI PRODUCTS
+    PI1_str = 'PI1 = totalPressure_SI / magneticPressure'
+    PI2_str = 'PI2 = orificeDiameter / insertDiameter'
+    PI3_str = 'PI3 = orificeDiameter / orificeLength'
+    PI4_str = 'PI4 = (massFlowRate_SI * @q / (gasMass * @amu * dischargeCurrent))**2 * (gasMass * @amu * orificeDiameter * 1e-3)/(@mu0 * @q**2)'
+    PI5_str = 'PI5 = gdPressure / magneticPressure'
+    PI6_str = 'PI6 = izPressure / magneticPressure * orificeLength / orificeDiameter'
+    PI7_str = 'PI7 = reynoldsNumber'
+
+    data.eval(PI1_str, local_dict=constant_dict, inplace=True)
+    data.eval(PI2_str, local_dict=constant_dict, inplace=True)
+    data.eval(PI3_str, local_dict=constant_dict, inplace=True)
+    data.eval(PI4_str, local_dict=constant_dict, inplace=True)
+    data.eval(PI5_str, local_dict=constant_dict, inplace=True)
+    data.eval(PI6_str, local_dict=constant_dict, inplace=True)
+    data.eval(PI7_str, local_dict=constant_dict, inplace=True)
+
+    return data
