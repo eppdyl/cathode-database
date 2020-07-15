@@ -43,12 +43,18 @@ The merged data is stored under the folder institution/cathode/data.csv
 
 ## Assembling the database
 The database is assembled with the scripts in the folder ''assemble_data''. 
-It creates a portable .hdf5 that can be loaded straight into Pandas. 
+It creates a portable .hdf5 that can be loaded straight into the Python Pandas library. 
 
 ## Data currently considered
 The data considered at this point is the total pressure, axial electron density, electron temperature, and potential. 
 The scripts that are scattered throughout the repository can be easily adapted to include other data, such as the
 voltage-current characteristic.
+
+## LICENSE
+The software, CSV files, and database are all licensed under the MIT license.
+
+## CITATION
+Please cite the repository if you are using any data from the database.
 
 ## CONTRIBUTE
 As of June 2020, the database has over 400 data entries with discharge currents
