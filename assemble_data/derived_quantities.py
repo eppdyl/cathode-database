@@ -1,3 +1,42 @@
+# MIT License
+# 
+# Copyright (c) 2019-2020 Pierre-Yves Taunay 
+# 
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+''' 
+File: derived_quantities.py
+Author: Pierre-Yves Taunay
+Date: 2019
+
+This file contains functions to populate the database with the following 
+derived quantities:
+    1. Reynolds number, Knudsen number, entrance length
+    2. Average insert wall temperature, if not specified
+    3. Magnetic pressure, gasdynamic pressure, ionization pressure
+    4. Total pressure in SI units
+    5. Total pressure *if not specified* as calculated with an empirical
+    correlation
+    6. Speed of sound
+    7. Pressure-diameter product
+'''
+
 import numpy as np
 from scipy.optimize import root
 
@@ -37,8 +76,6 @@ def assemble(empirical_pressure=False):
     alldata = compute_from_positional(alldata)
     
     # Temperature data
-
-    
     # Fill up AR3, EK6, SC012 by averaging AR3 and EK6
     bcond = (alldata.cathode=='AR3') | (alldata.cathode=='EK6')
     Tdf = np.array(alldata[bcond][['insertTemperatureAverage']])
@@ -95,9 +132,6 @@ def assemble(empirical_pressure=False):
         Temp = sol.x[0]-273.15
         alldata.loc[row[0],'insertTemperatureAverage'] = Temp
     
-    ### PRESSURE DIAMETER PRODUCT
-    pd_str = 'pressureDiameter = totalPressure * insertDiameter * 0.1'
-    alldata.eval(pd_str, inplace=True)
 
     ### Necessary constants    
     gam = 5/3
@@ -182,14 +216,18 @@ def assemble(empirical_pressure=False):
     rat_str = 'IdToMdot = dischargeCurrent / massFlowRate'
     alldata.eval(rat_str, local_dict=constant_dict, inplace=True)
 
-    ### COMPUTE REYNOLDS NUMBER
+    # Pressure diameter product
+    pd_str = 'pressureDiameter = totalPressure * insertDiameter * 0.1'
+    alldata.eval(pd_str, inplace=True)
+
+    # Reynolds number
     alldata = df_reynolds_number(alldata)
         
-    ### ORIFICE ENTRANCE LENGTH
+    # Orifice entrance length
     entrance_str = 'entranceLength = 0.06 * reynoldsNumber * orificeDiameter / orificeLength'
     alldata.eval(entrance_str,inplace=True)
     
-    ### ORIFICE KNUDSEN NUMBER
+    # Orifice knudsen number
     knudsen_str = 'orificeKnudsenNumber = 1 / reynoldsNumber * (@gam * @pi/2)**(0.5)'
     alldata.eval(knudsen_str, local_dict=constant_dict, inplace=True)
     
