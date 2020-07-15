@@ -28,6 +28,8 @@ Date: July 2020
 The script to make the HDF5 library.
 '''
 import argparse
+import h5py
+import datetime
 
 from derived_quantities import generate_dataframe_derived 
 from load_all_data import generate_dataframe
@@ -53,5 +55,17 @@ else:
     data = generate_dataframe()
 
 ### Dump to HDF5
-data.to_hdf(args.filename,'data',complib='zlib',complevel=9)
+fname = args.filename 
+f = h5py.File(fname,'w')
+f.create_group("data")
+
+# Get a timestamp
+ts = datetime.datetime.utcnow()
+ts = ts.strftime('%Y%m%d%H%M%S')
+ts = (int)(ts)
+
+f.create_dataset('timestamp',shape=(1,),data=ts,dtype=np.int64)
+f.close()
+
+data.to_hdf(fname,'data',complib='zlib',complevel=9)
 
