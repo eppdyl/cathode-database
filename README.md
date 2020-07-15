@@ -44,6 +44,16 @@ The merged data is stored under the folder institution/cathode/data.csv
 ## Assembling the database
 The database is assembled with the scripts in the folder ''assemble_data''. 
 It creates a portable .hdf5 that can be loaded straight into the Python Pandas library. 
+Default usage:
+```bash
+python3 make_hdf5_database.py 
+```
+The script comes with three flags:
+- -p: calculate the total pressure with an empirical correlation if the total pressure is *not* specified (implies "derived quantities")
+- -d: calculate the derived quantities (e.g. Reynolds number, Knudsen number, etc.)
+- -f: the filename in which to store the file
+
+Note that you *have* to use Pandas to read the data file once it is saved to disk.
 
 ## Data currently considered
 The data considered at this point is the total pressure, axial electron density, electron temperature, and potential. 
