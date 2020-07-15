@@ -7,11 +7,8 @@ import matplotlib.pyplot as plt
 from assemble import assemble
 
 from sklearn.decomposition import PCA
-
 from sklearn.manifold import locally_linear_embedding, TSNE
 
-from gplearn.genetic import SymbolicRegressor
-from gplearn.functions import make_function
 import scipy.stats as sst
 
 
