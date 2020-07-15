@@ -48,10 +48,12 @@ Default usage:
 ```bash
 python3 make_hdf5_database.py 
 ```
-The script comes with three flags:
-- -p: calculate the total pressure with an empirical correlation if the total pressure is *not* specified (implies "derived quantities")
+The script comes with four flags:
+- -pe: calculate the total pressure with an empirical correlation if the total pressure is *not* specified (implies "derived quantities")
+- -pp: calculate the Pi products for the empirical analysis of the total pressure in hollow cathodes
 - -d: calculate the derived quantities (e.g. Reynolds number, Knudsen number, etc.)
 - -f: the filename in which to store the file
+The flags "-pp" and "-pe" are mutually exclusive.
 
 Note that you *have* to use Pandas to read the data file once it is saved to disk.
 
