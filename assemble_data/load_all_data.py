@@ -94,7 +94,13 @@ def special_cases(df,cat):
         
         averagePressure = df.at[df[datacond].index[0],'totalPressure']
         df.loc[df[bcond].index,'totalPressure'] = averagePressure
-                
+     
+
+    elif (cat == 'AR3') or (cat == 'EK6'):
+        ### Consider the emitter temperature to be that of the orifice
+        bcond = df.cathode == cat          
+        df.loc[df[bcond].index,'insertTemperatureAverage'] = \
+        df.loc[df[bcond].index,'orificeTemperature']
         
     return df
 
