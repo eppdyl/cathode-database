@@ -78,7 +78,7 @@ def generate_dataframe_derived(empirical_pressure=False, pi_products=False):
     # Temperature data
     # Fill up AR3, EK6, SC012 by averaging AR3 and EK6
     bcond = (alldata.cathode=='AR3') | (alldata.cathode=='EK6')
-    Tdf = np.array(alldata[bcond][['insertTemperatureAverage']])
+    Tdf = np.array(alldata[bcond][['orificeTemperature']])
     Tave = np.nanmean(Tdf)
     
     bcondfill = (alldata.cathode=='AR3') | (alldata.cathode=='EK6') | (alldata.cathode=='SC012')
@@ -156,6 +156,7 @@ def generate_dataframe_derived(empirical_pressure=False, pi_products=False):
     ### Pressures
     # Use the empirical correlation if we want to add to the dataset 
     if empirical_pressure:
+        print("YES")
         def pressure_empirical(Id, TgK, mdot_sccm, Locm, Mamu, eps, dccm, docm):
             
             if Mamu == 131.293:
@@ -232,7 +233,7 @@ def generate_dataframe_derived(empirical_pressure=False, pi_products=False):
     alldata.eval(knudsen_str, local_dict=constant_dict, inplace=True)
 
     if pi_products:
-        alldata = compute_pi_products(data)
+        alldata = compute_pi_products(alldata)
     
     return alldata
 
