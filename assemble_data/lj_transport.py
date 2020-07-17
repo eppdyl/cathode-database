@@ -49,6 +49,7 @@ def transport_properties(sig_lj,kbeps,M,Tvec):
         - Tvec: a vector of temperatures for which we compute the transport
         properties, K
     '''
+    Mkg = M * cc.atomic_mass # Mass, kg
     collision_file = cres.__path__[0] + '/collision-integrals-lj.csv'
     data = np.genfromtxt(collision_file,delimiter=',',names=True)
     
@@ -63,9 +64,9 @@ def transport_properties(sig_lj,kbeps,M,Tvec):
     omega_hs23 = omega_hs(2,3)
     omega_hs24 = omega_hs(2,4)
         
-    omega22 = np.sqrt(cc.Boltzmann*Tvec/(np.pi*M))*splev(Tvec/kbeps,omega22_data) * omega_hs22
-    omega23 = np.sqrt(cc.Boltzmann*Tvec/(np.pi*M))*splev(Tvec/kbeps,omega23_data) * omega_hs23
-    omega24 = np.sqrt(cc.Boltzmann*Tvec/(np.pi*M))*splev(Tvec/kbeps,omega24_data) * omega_hs24
+    omega22 = np.sqrt(cc.Boltzmann*Tvec/(np.pi*Mkg))*splev(Tvec/kbeps,omega22_data) * omega_hs22
+    omega23 = np.sqrt(cc.Boltzmann*Tvec/(np.pi*Mkg))*splev(Tvec/kbeps,omega23_data) * omega_hs23
+    omega24 = np.sqrt(cc.Boltzmann*Tvec/(np.pi*Mkg))*splev(Tvec/kbeps,omega24_data) * omega_hs24
     
     b11 = 4.* omega22
     b12 = 7.*omega22 - 2*omega23
