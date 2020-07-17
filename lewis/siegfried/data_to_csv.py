@@ -103,7 +103,7 @@ xe_pdata = np.genfromtxt(root + 'xenon_do-0.76mm_mdot-92mA.csv', delimiter=',', 
 
 mdot = 92 # mA
 mdot_A = mdot * 1e-3 # eqA
-P = Pcorr(mdot,do,xe_pdata['Id'],'Ar')
+P = Pcorr(mdot,do,xe_pdata['Id'],'Xe')
 
 dischargeCurrent = np.append(dischargeCurrent,xe_pdata['Id'])
 massFlow_eqA = np.append(massFlow_eqA,mdot_A*np.ones_like(xe_pdata['Id']))
