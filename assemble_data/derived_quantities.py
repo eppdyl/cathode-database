@@ -146,14 +146,13 @@ def generate_dataframe_derived(empirical_pressure=False, pi_products=False):
     
     
     # Speed of sound
-    sos_str = 'speedOfSound=(@gam*@kb/(gasMass*@amu)*(insertTemperatureAverage+273.15)*3)**(0.5)'
+    sos_str = 'speedOfSound=(@gam*@kb/(gasMass*@amu)*(insertTemperatureAverage+273.15)*3.0)**(0.5)'
     alldata.eval(sos_str, local_dict=constant_dict, inplace=True)
     
 
     ### Pressures
     # Use the empirical correlation if we want to add to the dataset 
     if empirical_pressure:
-        print("YES")
         def pressure_empirical(Id, TgK, mdot_sccm, Locm, Mamu, eps, dccm, docm):
             
             if Mamu == 131.293:
