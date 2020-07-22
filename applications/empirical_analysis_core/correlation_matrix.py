@@ -30,7 +30,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def plot_correlation_matrix(pidata):
+    plt.figure()
     plt.imshow(np.abs(pidata.corr()), cmap='hot', interpolation='nearest')
+    plt.title("Pi-to-pi correlation matrix")
     plt.show()
 
     # Commented code allows to output the colors for tikz
