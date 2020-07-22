@@ -76,6 +76,6 @@ ranging from 1 to 307 A, mass flow rates from 1 sccm to 200 sccm, and
 mercury, xenon, and argon propellants. 
 
 More data is always welcome! 
-You can send me data or (preferably) create a pull request to push more data to the database.
+You can send me data or create a pull request to push more data to the database.
 
 Pierre-Yves Taunay, 2020
