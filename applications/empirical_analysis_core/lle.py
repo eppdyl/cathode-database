@@ -41,8 +41,10 @@ def plot_lle(pidata, nneigh=14):
                                              method = 'standard')
     
     print("Done. Reconstruction error: %g" % err)
+    plt.figure()
     plt.scatter(X_r[:, 0], X_r[:, 1], s=5, 
             c=np.log10(np.array(pidata[['PI4']]))) 
+    plt.title("Local linear embedding")
     
     ### COMMENTED CODE IS JUSTT ATTEMPTS AT DIFFERENT COLORINGS AND EMBEDDINGS
 #    plt.scatter(X_r[:, 0], X_r[:, 1], s=5, c=np.log(lle_data[:,3])) 

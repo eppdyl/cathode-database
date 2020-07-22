@@ -35,10 +35,10 @@ def plot_pca(pidata):
     ### PCA
     # Based on PI2 through PI7
     # Use log10 to decrease variation (e.g. PI4 ~ 1e14 vs. PI7 ~ 1e0)
-    if plot_pca:
-        X_train = np.array(np.log10(pidata))[:,1::]
-        pca = PCA(n_components=6)
-        pca.fit(X_train)
-        cumsum = np.cumsum(pca.explained_variance_ratio_)
-        plt.figure()
-        plt.plot(np.arange(1,7,1),cumsum,'ko')
+    X_train = np.array(np.log10(pidata))[:,1::]
+    pca = PCA(n_components=6)
+    pca.fit(X_train)
+    cumsum = np.cumsum(pca.explained_variance_ratio_)
+    plt.figure()
+    plt.plot(np.arange(1,7,1),cumsum,'ko')
+    plt.title("Principal Component Analysis")
