@@ -14,3 +14,8 @@ RSI| Review of Scientific Instruments|
 thesis| M.Sc. or Ph.D. thesis/dissertation  |
 book| A book|
 
+### Where are the figures?
+Because of the uncertainty in the figure copyrights, I have chosen to remove
+them from the repository before releasing it publicly. 
+
+Pierre-Yves Taunay, 2020 
