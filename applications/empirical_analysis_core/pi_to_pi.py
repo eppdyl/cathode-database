@@ -41,3 +41,22 @@ def plot_pi_to_pi(data):
                 PIj_str = 'PI' + str(idxj+1)
                 
                 ax[idxi][idxj].plot(data[[PIj_str]],data[[PIi_str]],'ko')
+
+    ax[0,0].set_ylabel("Pi1")
+    ax[1,0].set_ylabel("Pi2")
+    ax[2,0].set_ylabel("Pi3")
+    ax[3,0].set_ylabel("Pi4")
+    ax[4,0].set_ylabel("Pi5")
+    ax[5,0].set_ylabel("Pi6")
+    ax[6,0].set_ylabel("Pi7")
+
+    ax[6,0].set_xlabel("Pi1")
+    ax[6,1].set_xlabel("Pi2")
+    ax[6,2].set_xlabel("Pi3")
+    ax[6,3].set_xlabel("Pi4")
+    ax[6,4].set_xlabel("Pi5")
+    ax[6,5].set_xlabel("Pi6")
+    ax[6,6].set_xlabel("Pi7")
+
+
+
