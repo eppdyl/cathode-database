@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/95235124.svg)](https://zenodo.org/badge/latestdoi/95235124)
 # Cathode data
 This repository contains the dimensions and digitized data of hollow cathodes.
 
@@ -69,6 +70,7 @@ The software, CSV files, and database are all licensed under the MIT license.
 
 ## CITATION
 Please cite the repository if you are using any data from the database.
+
 
 ## CONTRIBUTE
 As of June 2020, the database has over 400 data entries with discharge currents
