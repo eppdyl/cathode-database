@@ -103,31 +103,31 @@ pidata = data[['PI1','PI2','PI3','PI4','PI5','PI6','PI7']].dropna()
 
 
 ### PLOT ALL PI PRODUCTS AGAINST ONE ANOTHER
-plot_pp_all = False
-plot_correlation = False
-plot_pca = False 
-plot_lle = False
-plot_pi_correlation = False 
-randomization = False
-plot_theory_correlation = False
+bplot_pp_all = False
+bplot_correlation = False
+bplot_pca = False 
+bplot_lle = False
+bplot_pi_correlation = False 
+brandomization = False
+bplot_theory_correlation = False
 
-if plot_pp_all:
+if bplot_pp_all:
     plot_pi_to_pi(data)
                 
-if plot_correlation:
+if bplot_correlation:
     plot_correlation_matrix(pidata)
 
-if plot_pca:
+if bplot_pca:
     plot_pca(pidata)
 
-if plot_lle:
+if bplot_lle:
     plot_lle(pidata)
 
-if plot_pi_correlation:
+if bplot_pi_correlation:
     power_law_analysis(data,pidata)
 
     
-if randomization:
+if brandomization:
     print('Pi-product randomized Correlation')
 
     PI1 = np.array(pidata['PI1'])
@@ -327,7 +327,7 @@ if randomization:
     
     print("reference",R2,ave_err)
             
-if plot_theory_correlation:
+if bplot_theory_correlation:
     gam = 5/3
     Tgmin = 2000 # K
     Tgmax = 4000 # K
