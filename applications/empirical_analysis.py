@@ -108,8 +108,8 @@ bplot_correlation = False
 bplot_pca = False 
 bplot_lle = False
 bplot_pi_correlation = False 
-brandomization = False
-bplot_theory_correlation = False
+brandomization = True
+bplot_theory_correlation = True
 
 if bplot_pp_all:
     plot_pi_to_pi(data)
@@ -153,3 +153,6 @@ if bplot_theory_correlation:
     plt.ylim([0.5,1e5])    
     plt.loglog(corr,pidata[['PI1']],'ko')
 
+    plt.xlabel("1/4 - ln(PI2) + C PI5")
+    plt.ylabel("Pi1")
+    plt.title("Pi correlation from theory")
