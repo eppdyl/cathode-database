@@ -61,14 +61,6 @@ def power_law_analysis(data,pidata):
     b_vec_poiseuille = np.array([np.log10(C_poiseuille),
                                  0.0,-0.5,0.0,1.0,0.0,-0.5])
     
-#    P_xp = np.array(data[['totalPressure_SI']].dropna())[:,0]
-#    P_model_poiseuille = data[['totalPressure_SI','magneticPressure']].dropna()
-#    P_model_poiseuille = np.array(P_model_poiseuille[['magneticPressure']])[:,0]
-    
-#    P_model_poiseuille *=  C_poiseuille *np.prod(X**b_vec_poiseuille,axis=1) 
-#    vec_err_poiseuille =  np.abs((P_xp-P_model_poiseuille)/P_xp)* 100
-#    ave_err_poiseuille = np.average(vec_err_poiseuille) 
-
     R2.append(r_squared(Y, X_sum, b_vec_poiseuille))
     err, _ = dimensional_error(data,C_poiseuille,X,b_vec_poiseuille)
     ave_err.append(err)
@@ -82,31 +74,6 @@ def power_law_analysis(data,pidata):
     err, _ = dimensional_error(data,C_iso,X,b_vec_iso)
     ave_err.append(err)
 
-#    P_xp = np.array(data[['totalPressure_SI']].dropna())[:,0]
-#    P_model_iso = data[['totalPressure_SI','magneticPressure']].dropna()
-#    P_model_iso = np.array(P_model_iso[['magneticPressure']])[:,0]
-    
-#    P_model_iso *=  C_iso *np.prod(X**b_vec_iso,axis=1) 
-#    vec_err_iso =  np.abs((P_xp-P_model_iso)/P_xp)* 100
-#    ave_err_iso = np.average(vec_err_iso)     
-
-    ## R squared
-    # Same job for Poiseuille
-#    X_models = np.transpose(np.array([X1,X2,X3,X4,X5,X6]))
-#    rss_pois = np.sum( (Y- np.log10(C_poiseuille) - np.sum(X_models*b_vec_poiseuille,axis=1))**2)
-#    R2_pois = 1 - rss_pois/tss
-    
-    # Same job for isentropic
-#    rss_iso = np.sum( (Y - np.log10(C_iso) - np.sum(X_models*b_vec_iso,axis=1))**2)
-#    R2_iso = 1 - rss_iso/tss
- 
-    #    print(R2,ave_err)
-#    print("R^2,Average error (Poiseuille)")
-#    print(R2_pois,ave_err_poiseuille)
-#    print("R^2,Average error (isentropic)")
-#    print(R2_iso,ave_err_iso)
-
-    
     print("---------------")
     print("STATISTICS: R2 AND AVERAGE ERROR")
     print("Model\t R^2 \t Average error")
