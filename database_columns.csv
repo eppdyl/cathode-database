@@ -1,0 +1,71 @@
+########################################################
+VARIABLE NAME, DESCRIPTION, UNIT OR VARIABLE TYPE
+########################################################
+cathode, Name of the cathode, string
+### Operating conditions
+dischargeCurrent, Total (keeper + anode) discharge current, A
+dischargeVoltage, Discharge voltage, V
+massFlowRate, Mass flow rate in equivalent-amperes, eqA
+massFlowRate_sccm, Mass flow rate in SCCM, sccm
+massFlowRate_SI, Mass flow rate in kg/s, kg/s
+gas, Name of species of interest, string
+gasMass, Mass of the gas, amu
+ionizationPotential, Ionization potential of the gas, eV
+### Geometry
+orificeDiameter, Diameter of the orifice, mm
+orificeLength, Length of the orifice, mm
+insertDiameter, Inner diameter of the insert, mm
+insertLength, Length of the insert, mm
+upstreamPressurePoint, Distance from the cathode plasma to the pressure measuring point, mm
+### Materials
+workFunction, Work function of the insert, eV
+insertMaterial, Insert material, string
+### Temperature
+orificeTemperature, Temperature of the orifice, degC
+insertTemperatureAverage, Average temperature of the insert, degC
+insertTemperature, Temperature of the insert vs. position, degC and mm
+### Pressure
+totalPressure, Total pressure of the cathode, Torr
+totalPressureError_p, (positive) error in the total pressure measurement, Torr
+totalPressureError_m, (negative) error in the total pressure measurement, Torr
+totalPressure_SI, Total pressure in Pa, Pa
+magneticPressure, Magnetic pressure, Pa
+gdPressure, Gasdynamic pressure, Pa
+izPressure, Ionization energy density, Pa
+### Plasma quantities
+electronDensity, Electron density vs. position, 1/m3 and mm
+electronDensity_err, Measurement error in the electron density, 1/m3
+electronTemperature, Electron temperature vs. position, eV and mm
+electronTemperature_err, Measurement error in electron temperature, eV
+plasmaPotential, Plasma potential vs. position, V and mm
+plasmaPotential_err, Measurement error in plasma potential, V
+idxmin, Index to calculate the attachment length, integer
+idxmax, Index to calculate the attachment length, integer
+electronDensityMax, Maximum electron density, 1/m3
+electronDensityAverage, Average insert electron density, 1/m3
+electronDensityAverage_err, Error in average insert electron density, 1/m3
+electronTemperatureAverage, Average insert electron temperature, eV
+electronTemperatureAverage_err, Error in average insert electron temperature, eV
+plasmaPotentialAverage, Average insert plasma potential, V
+plasmaPotentialAverage_err, Error in average insert plasma potential, V
+attachmentLength, Attachment length (defined as density decay length scale and normalized by insert diameter), 1 
+attachmentLength_err, Attachment length error, 1 
+### Derived quantities
+speedOfSound, Speed of sound in gas, m/s
+totalToMagnetic, Ratio of total pressure to magnetic pressure, 1
+IdToMdot, Ratio of discharge current to mass flow rate, 1
+pressureDiameter, Total pressure - insert diameter product, Torr-cm
+reynoldsNumber, Reynolds number in the orifice, 1
+reynoldsNumberInsert, Reynolds number in the insert, 1
+entranceLength, Orifice entrance length as fraction of orifice length, 1
+orificeKnudsenNumber, Orifice Knudsen number, 1
+PI1, Pi product, 1
+PI2, Pi product, 1
+PI3, Pi product, 1
+PI4, Pi product, 1
+PI5, Pi product, 1
+PI6, Pi product, 1
+PI7, Pi product, 1
+### Other
+reference, Literature reference from where the data is taken, string 
+note, A note of interest about the record, string
