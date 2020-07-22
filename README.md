@@ -62,6 +62,8 @@ The data considered at this point is the total pressure, axial electron density,
 The scripts that are scattered throughout the repository can be easily adapted to include other data, such as the
 voltage-current characteristic.
 
+The database columns are defined in the file ''database_columns.csv''.
+
 ## LICENSE
 The software, CSV files, and database are all licensed under the MIT license.
 
