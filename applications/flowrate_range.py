@@ -19,6 +19,14 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+'''
+File: flowrate_range.py
+Author: Pierre-Yves Taunay
+Date: 2020
+
+Compute the allowed range of mass flow rates for a few cathodes, based on the
+empirical result that Pd ~ 3.7 Torr-cm and a pressure model that is isentropic.
+'''
 
 import cathode.constants as cc
 import numpy as np
