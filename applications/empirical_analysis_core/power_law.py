@@ -179,13 +179,14 @@ def plot_lsq_results(data,pidata,X,C,b_vec,vec_err):
 
 
     print("---------------")
+    print("PLOTS")
     plt.figure()
     plt.loglog(np.logspace(0,5),np.logspace(0,5),'k--')
     plt.xlim([0.5,1e5])
     plt.ylim([0.5,1e5])
     
     tmp_df = data[['totalPressure','massFlowRate','dischargeCurrent']].dropna()
-    carr = np.array(tmp_df['massFlowRate']/tmp_df['dischargeCurrent'])
+#    carr = np.array(tmp_df['massFlowRate']/tmp_df['dischargeCurrent'])
     plt.scatter(C *np.prod(X**b_vec[1:],axis=1) ,pidata[['PI1']],c=np.log10(np.array(pidata[['PI5']])))
     plt.title("Power law regression colored by PI5")
     plt.xlabel("G(Pi)")
@@ -201,9 +202,6 @@ def plot_lsq_results(data,pidata,X,C,b_vec,vec_err):
     plt.xlabel("G(Pi)")
     plt.ylabel("Pi1")
 
-#    df = pd.read_pickle(cathode.__path__[0] + '/experimental/files/datafile_index.pkl')
-    df = pd.read_pickle("../../assemble_data/old/datafile_index.pkl")
-    
     df_lsq = data[['cathode','totalPressure_SI','magneticPressure']].dropna() 
     model = C *np.prod(X**b_vec[1:],axis=1)
 
@@ -211,18 +209,10 @@ def plot_lsq_results(data,pidata,X,C,b_vec,vec_err):
     
     plt.figure()
     for name in np.unique(data[['cathode']]):
-#        print(name)
-        
-        try:
-            color = np.unique(df['colors_mf'][name])[0]
-        except:
-            color = 'k'
-        
         databycathode = data[['cathode','totalPressure']].dropna()
         lPI1 = pidata[['PI1']][databycathode.cathode==name]
         llsq = np.array(df_lsq[df_lsq.cathode==name][['model']])
         
-        style = color
         # Get the style
         if name == 'AR3':
             color = 'k'
@@ -247,7 +237,6 @@ def plot_lsq_results(data,pidata,X,C,b_vec,vec_err):
         elif name == 'PLHC':
             marker = 'o'
         elif name == 'Salhi-Ar-0.76' or name == 'Salhi-Ar-1.21':
-#            color = np.unique(df['colors_mf']['Salhi-Ar-0.76'])[0]
             color = 'tab:red'
             marker = 'o' 
         elif name == 'Salhi-Xe':
