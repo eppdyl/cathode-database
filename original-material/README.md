@@ -17,5 +17,7 @@ book| A book|
 ### Where are the figures?
 Because of the uncertainty in the figure copyrights, I have chosen to remove
 them from the repository before releasing it publicly. 
+This *also* includes files that are freely available online, such as IEPC
+proceedings and dissertations. 
 
 Pierre-Yves Taunay, 2020 
