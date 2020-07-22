@@ -49,11 +49,14 @@ import pandas as pd
 
 import matplotlib.pyplot as plt
 
-
 import scipy.stats as sst
 
-from empirical_analysis.pi_to_pi import plot_pi_to_pi
 
+from empirical_analysis_core.correlation_matrix import plot_correlation_matrix 
+from empirical_analysis_core.lle import plot_lle
+from empirical_analysis_core.pca import plot_pca 
+from empirical_analysis_core.power_law import power_law_analysis  
+#from empirical_analysis_core.randomization
 
 data = pd.read_hdf("cathode_database.h5",key="data")
 gam = 5/3
@@ -104,7 +107,6 @@ plot_pp_all = False
 plot_correlation = False
 plot_pca = False 
 plot_lle = False
-#plot_gp = False
 plot_pi_correlation = False 
 randomization = False
 plot_theory_correlation = False
@@ -122,6 +124,8 @@ if plot_lle:
     plot_lle(pidata)
 
 if plot_pi_correlation:
+    power_law_analysis(data,pidata)
+
     
 if randomization:
     print('Pi-product randomized Correlation')
