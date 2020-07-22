@@ -35,7 +35,7 @@ Possibly:
     - HC20
     - HC60
 
-The original material (i.e. plots, digitizer, csv files) is in the folder ''original-material''. 
+The original material (i.e. csv files) is in the folder ''original-material''. 
 Each subfolder has a title, and a README for the paper of origin. The name of the folder is author-publication-year.
 
 Multiple papers are merged to get the overall data for a single cathode.
@@ -53,8 +53,8 @@ The script comes with four flags:
 - -pp: calculate the Pi products for the empirical analysis of the total pressure in hollow cathodes
 - -d: calculate the derived quantities (e.g. Reynolds number, Knudsen number, etc.)
 - -f: the filename in which to store the file
-The flags "-pp" and "-pe" are mutually exclusive.
 
+The flags "-pp" and "-pe" are mutually exclusive.
 Note that you *have* to use Pandas to read the data file once it is saved to disk.
 
 ## Data currently considered
