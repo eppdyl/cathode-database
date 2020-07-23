@@ -29,10 +29,32 @@ This file contains functions to calculate transport properties assuming a
 Lennard-Jones 12-6 interatomic potential.
 '''
 
-import cathode.resources as cres
-import cathode.constants as cc
 import numpy as np
 import math
+
+try:
+    import cathode.constants as cc
+    import cathode.resources as cres
+except ImportError:
+    ### Ad-hoc solution if we don't have the cathode package
+    ### Just define the constants...
+    class cc:
+        class M:
+            Ar = 39.948
+            Xe = 131.293
+            Hg = 200.59
+
+        atomic_mass = 1.66053904e-27
+        Boltzmann = 1.38064852e-23
+        e = 1.6021766208e-19
+        kB = 1.38064852e-23
+        mu0 = 4 * np.pi * 1e-6
+        sccm2eqA = 0.07174496294893724
+        Torr = 133.32236842105263
+    
+    class cres:
+        __path__ = ['../original-material/hirschfelder-1954']
+    
 
 from scipy.interpolate import splrep,splev
 

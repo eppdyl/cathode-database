@@ -40,12 +40,105 @@ derived quantities:
 import numpy as np
 from scipy.optimize import root
 
-import cathode.constants as cc
-from cathode.models.flow import reynolds_number, viscosity
 from lj_transport import transport_properties
 
 from load_all_data import generate_dataframe
 from compute_from_positional import compute_from_positional
+
+try:
+    import cathode.constants as cc
+    from cathode.models.flow import reynolds_number, viscosity
+except ImportError:
+    ### Ad-hoc solution if we don't have the cathode package
+    ### Just define the constants...
+    class cc:
+        class M:
+            Ar = 39.948
+            Xe = 131.293
+            Hg = 200.59
+
+        atomic_mass = 1.66053904e-27
+        Boltzmann = 1.38064852e-23
+        e = 1.6021766208e-19
+        kB = 1.38064852e-23
+        mu0 = 4 * np.pi * 1e-6
+        sccm2eqA = 0.07174496294893724
+        Torr = 133.32236842105263
+
+    def reynolds_number(mdot,do,T,species,T_LJ = None, MU_LJ = None):
+        '''
+        Calculates the Reynolds number. The viscosity is either calculated with a
+        fit (e.g. for argon and xenon) or with collision integrals. 
+        The function can be called for multiple temperatures, but needs a single
+        mass flow rate and tube diameter.
+        Inputs:
+            - mdot: mass flow rate (kg/s)
+            - do: tube diameter (m)
+            - T: gas temperature (K)
+            - species: species of interest (Ar, Xe, Hg)
+        '''
+        # rho u D / mu
+        mu_l = viscosity(T, species, units='Pa-s', T_LJ = T_LJ, MU_LJ = MU_LJ)
+        rhou = mdot / (np.pi*(do/2)**2)
+        return (rhou * do/mu_l)
+        
+    def viscosity(T,species='Xe-Goebel',units='poise', T_LJ=None, MU_LJ=None):
+        """
+        Calculates the gas species viscosity in poises given the temperature in 
+        Kelvin and the species name.
+        Inputs:
+            temperature in Kelvin
+        Optional Inputs:
+            species - string with abbreviated identifier for each gas species
+                -defaults to Goebel's Xe fit
+            units - desired viscosity output unit
+                -defaults to poise
+        Output:
+            viscosity in chosen unit (default poise)
+            
+        Refs:
+            Goebel's 2008 Textbook for Xe-Goebel fit
+            Stiel and Thodos 1961 for remaining gases
+        """
+        if species == 'Hg':
+            mu = np.interp(T,T_LJ,MU_LJ)
+            
+            units_dict = {'poise' : 10.,
+                          'centipoise' : 1000.0,
+                          'Pa-s' : 1.0,
+                          'kg/(m-s)' : 1.0}
+    
+            mu *= units_dict[units]
+        else:
+            #species dictionary: [Tc,upsilon]
+            species_dict = {'Xe-Goebel' :   [289.7,None],
+                            'Xe'        :   [289.8,0.0151],
+                            'Ar'        :   [151.2,0.0276],
+                            'Kr'        :   [209.4,0.0184],
+                            'Ne'        :   [44.5,0.0466],
+                            'N2'        :   [126.2,0.0407]}
+            
+            #unpack species data
+            Tc, upsilon = species_dict[species]
+            Tr = T/Tc
+            
+            #apply the appropriate fit equation
+            if species == 'Xe-Goebel':
+                zeta = 2.3E-4*Tr**(0.71+0.29/Tr)
+            else:
+                zeta = (17.78E-5*(4.58*Tr-1.67)**(5.0/8.0))/(upsilon*100.0)
+                
+            #convert to chosen units
+            units_dict = {'poise' : 1.0,
+                          'centipoise' : 100.0,
+                          'Pa-s' : 0.1,
+                          'kg/(m-s)' : 0.1}
+    
+            mu = zeta*units_dict[units]
+        
+        return mu
+        
+        
 
 def df_reynolds_number(alldata):
     gam = 5/3    

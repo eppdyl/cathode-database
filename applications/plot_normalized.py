@@ -24,11 +24,31 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import cathode.constants as cc
 import pickle
 import itertools
 
 import scipy.stats
+
+
+try:
+    import cathode.constants as cc
+except ImportError:
+    ### Ad-hoc solution if we don't have the cathode package
+    ### Just define the constants...
+    class cc:
+        class M:
+            Ar = 39.948
+            Xe = 131.293
+            Hg = 200.59
+
+        atomic_mass = 1.66053904e-27
+        Boltzmann = 1.38064852e-23
+        e = 1.6021766208e-19
+        kB = 1.38064852e-23
+        mu0 = 4 * np.pi * 1e-6
+        sccm2eqA = 0.07174496294893724
+        Torr = 133.32236842105263
+
 
 from import_db import import_data
 from correlation import Lem, Te_insert

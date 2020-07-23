@@ -5,8 +5,18 @@ Date: June 2020
 '''
 import pandas as pd
 import numpy as np
-import cathode.constants as cc
-
+try:
+    import cathode.constants as cc
+except ImportError:
+    ### Ad-hoc solution if we don't have the cathode package
+    ### Just define the constants...
+    class cc:
+        class M:
+            Ar = 39.948
+            Xe = 131.293
+            Hg = 200.59
+            
+            
 def Pcorr(mdot,do,Id,species):
     if species == 'Ar':
         P = mdot/do**2 * (0.0056 + 0.0012*Id)

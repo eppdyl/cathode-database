@@ -4,7 +4,14 @@ Date: June 2020
 '''
 import pandas as pd
 import numpy as np
-import cathode.constants as cc
+try:
+    import cathode.constants as cc
+except ImportError:
+    ### Ad-hoc solution if we don't have the cathode package
+    ### Just define the constants...
+    class cc:
+        class M:
+            Xe = 131.293
 
 ### Geometry
 dc = 12.7 # mm

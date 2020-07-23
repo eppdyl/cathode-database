@@ -28,9 +28,27 @@ Compute the allowed range of mass flow rates for a few cathodes, based on the
 empirical result that Pd ~ 3.7 Torr-cm and a pressure model that is isentropic.
 '''
 
-import cathode.constants as cc
 import numpy as np
 import pandas as pd
+
+try:
+    import cathode.constants as cc
+except ImportError:
+    ### Ad-hoc solution if we don't have the cathode package
+    ### Just define the constants...
+    class cc:
+        class M:
+            Ar = 39.948
+            Xe = 131.293
+            Hg = 200.59
+
+        atomic_mass = 1.66053904e-27
+        Boltzmann = 1.38064852e-23
+        e = 1.6021766208e-19
+        kB = 1.38064852e-23
+        mu0 = 4 * np.pi * 1e-6
+        sccm2eqA = 0.07174496294893724
+        Torr = 133.32236842105263
 
 data = pd.read_hdf("cathode_database.h5",key="data")
 
