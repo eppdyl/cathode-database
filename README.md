@@ -69,7 +69,9 @@ The database columns are defined in the file ''database_columns.csv''.
 The software, CSV files, and database are all licensed under the MIT license.
 
 ## CITATION
-Please cite the repository if you are using any data from the database.
+For now, please cite the repository if you are using the database or associated files. 
+You can export the citation in a variety of formats through Zenodo.
+[![DOI](https://zenodo.org/badge/95235124.svg)](https://zenodo.org/badge/latestdoi/95235124)
 
 
 ## CONTRIBUTE
