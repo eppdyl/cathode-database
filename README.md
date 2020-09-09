@@ -69,9 +69,9 @@ The database columns are defined in the file ''database_columns.csv''.
 The software, CSV files, and database are all licensed under the MIT license.
 
 ## CITATION
-For now, please cite the repository if you are using the database or associated files. 
-You can export the citation in a variety of formats through Zenodo.
-[![DOI](https://zenodo.org/badge/95235124.svg)](https://zenodo.org/badge/latestdoi/95235124)
+Please cite our conference paper if you are using the database and/or repository:
+P-Y C R Taunay, C J Wordingham, and E Y Choueiri, "Open electric propulsion wnth an application to 
+thermionic orificed hollow cathodes," AIAA Propulsion and Energy Forum, 2020. AIAA-2020-3638
 
 
 ## CONTRIBUTE
