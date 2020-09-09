@@ -70,7 +70,7 @@ The software, CSV files, and database are all licensed under the MIT license.
 
 ## CITATION
 Please cite our conference paper if you are using the database and/or repository:
-P-Y C R Taunay, C J Wordingham, and E Y Choueiri, "Open electric propulsion wnth an application to 
+P-Y C R Taunay, C J Wordingham, and E Y Choueiri, "Open electric propulsion with an application to 
 thermionic orificed hollow cathodes," AIAA Propulsion and Energy Forum, 2020. AIAA-2020-3638
 
 
