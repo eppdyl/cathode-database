@@ -33,6 +33,7 @@ Each subfolder has a title, and a README for the paper of origin. The name of th
 Multiple papers are merged to get the overall data for a single cathode.
 The merged data is stored under the folder institution/cathode/data.csv
 
+---
 ## Assembling the database
 The database is assembled with the scripts in the folder ''assemble_data''. 
 It creates a portable HDF5 file that can be loaded straight into a Pandas dataframe. 
@@ -49,6 +50,7 @@ The script comes with four flags:
 The flags "-pp" and "-pe" are mutually exclusive.
 Note that you *have* to use Pandas to read the data file once it is saved to disk.
 
+---
 ## Data currently considered
 The data considered at this point is the total pressure, axial electron density, electron temperature, and potential. 
 The scripts that are scattered throughout the repository can be easily adapted to include other data, such as the
@@ -56,10 +58,12 @@ voltage-current characteristic.
 
 The database columns are defined in the file ''database_columns.csv''.
 
+---
 ## LICENSE
 * The software (.py, .pynb, .m, .sh) are licensed under the MIT license. See `LICENSE-MIT` for details.
 * The data (.csv, .mat, .pkl) are licensed under the CC-BY-4.0 license. See `LICENSE-CC-BY` for details.
 
+---
 ## CITATION
 Please cite our conference paper if you are using the database and/or repository:
 P-Y C R Taunay, C J Wordingham, and E Y Choueiri, "Open electric propulsion with an application to 
@@ -75,6 +79,7 @@ thermionic orificed hollow cathodes," AIAA Propulsion and Energy Forum, 2020. AI
 }
 ```
 
+---
 ## CONTRIBUTE
 As of June 2020, the database has over 400 data entries with discharge currents
 ranging from 1 to 307 A, mass flow rates from 1 sccm to 200 sccm, and 
@@ -83,4 +88,5 @@ mercury, xenon, and argon propellants.
 Data are always welcome! 
 You can send me data or create a pull request to push more data to the database.
 
+---
 Pierre-Yves Taunay, 2021
