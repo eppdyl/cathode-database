@@ -56,16 +56,16 @@ The insert thickness is also obtained as 0.295 mm, as opposed to 0.769 mm from S
 Goebel and Katz have some dimensions written down on various plots. 
 There are obviously more references to the NSTAR than the NEXIS, as the latter is more recent with respect to the publication date.
 
-- References to NSTAR:
-..p.258: Fig 6.6: 0.38 cm-insert diameter for the NSTAR
-..Fig 6.48: 0.38 cm-insert diameter for the NSTAR
-.. p.249: 0.38 cm-insert diameter for the NSTAR (so the 2004 paper from JPC is for the NSTAR). 
-.. p.274: 0.38 cm-insert diameter, orifice length is 0.75 mm for the NSTAR neutralizer
+* References to NSTAR:
+    * p.258: Fig 6.6: 0.38 cm-insert diameter for the NSTAR
+    * Fig 6.48: 0.38 cm-insert diameter for the NSTAR
+    * p.249: 0.38 cm-insert diameter for the NSTAR (so the 2004 paper from JPC is for the NSTAR). 
+    * p.274: 0.38 cm-insert diameter, orifice length is 0.75 mm for the NSTAR neutralizer
 
-- References to NEXIS
-.. p.246: NEXIS orifice diameter is 2.5 mm ; Goebel JAP 2005 paper suggests 2 to 3 mm, and shows results for 2 and 2.75 mm
-.. p.258: Fig 6.6: 1.27 cm-insert diameter for the NEXIS
-.. p.271: NEXIS orifice diameter is 2.5 mm
+* References to NEXIS
+    * p.246: NEXIS orifice diameter is 2.5 mm ; Goebel JAP 2005 paper suggests 2 to 3 mm, and shows results for 2 and 2.75 mm
+    * p.258: Fig 6.6: 1.27 cm-insert diameter for the NEXIS
+    * p.271: NEXIS orifice diameter is 2.5 mm
 
 #### Katz et al. (2003)
 - I. Katz, J. R. Anderson, J. E. Polk, and J. R. Brophy, “One-Dimensional Hollow Cathode Model,” J. Propuls. Power, vol. 19, no. 4, pp. 595–600, 2003.
@@ -92,8 +92,8 @@ Fig. 1 shows the basic dimensions of the NEXIS cathode.
 #### Mikellides et al. (2006)
 - I. G. Mikellides, I. Katz, D. M. Goebel, J. E. Polk, and K. K. Jameson, “Plasma processes inside dispenser hollow cathodes,” Phys. Plasmas, vol. 13, 2006.
 
-Mikellides has a table with dimensions (Table 1). The actual orifice of the ``larger'' cathode (read: NEXIS) is 2.79 mm.
-Note that different work has the NEXIS orifice size reported to be 2.0 mm, 2.75 mm, 3.0 mm, and ``between 2.0 and 3.0 mm...'' 
+Mikellides has a table with dimensions (Table 1). The actual orifice of the "larger" cathode (read: NEXIS) is 2.79 mm.
+Note that different work has the NEXIS orifice size reported to be 2.0 mm, 2.75 mm, 3.0 mm, and "between 2.0 and 3.0 mm..."
 The emitter length for the NEXIS is also taken to be 2.54 cm.
 
 The plots seem to suggest the following dimensions
@@ -117,47 +117,47 @@ p.3 last paragraph: the orifice diameter is 2.75 mm.
 #### Goebel et al (2007) 
 - D. Goebel, R. M. Watkins, K. K. Jameson, "LaB6 Hollow Cathodes for Ion and Hall Thrusters," Journal of Propulsion and Power, 23(3), 552-558, 2007
 
-- References to the "0.8 cm cathode"
-.. p.555, first col.: cathode tube outer diameter: 0.8 cm
-.. p.555, first col.: insert inner diameter: 0.38 cm
-.. p.555, first col.: orifice diameter is identical to the inner diameter (it's a tube cathode, essentially)
+* References to the "0.8 cm cathode"
+    * p.555, first col.: cathode tube outer diameter: 0.8 cm
+    * p.555, first col.: insert inner diameter: 0.38 cm
+    * p.555, first col.: orifice diameter is identical to the inner diameter (it's a tube cathode, essentially)
 
-- References to the "1.5 cm cathode" 
-.. p.554, second col.: cathode tube wall thickness: 0.1 cm => insert outer diameter is 1.3 cm
-.. p.554, second col.: insert wall thickness: 0.3 cm => insert inner diameter is 0.7 cm 
-.. p.554, second col.: insert length: 2.5 cm
-.. p.555, first col.: insert inner diameter (I.D.): 0.38 cm
+* References to the "1.5 cm cathode" 
+    * p.554, second col.: cathode tube wall thickness: 0.1 cm => insert outer diameter is 1.3 cm
+    * p.554, second col.: insert wall thickness: 0.3 cm => insert inner diameter is 0.7 cm 
+    * p.554, second col.: insert length: 2.5 cm
+    * p.555, first col.: insert inner diameter (I.D.): 0.38 cm
 
-- References to the "2.0 cm cathode"
-.. p.555, first col.: cathode (outer?) tube: 2.0 cm 
-.. p.555, first col.: "same tube wall and insert thicknesses as the 1.5 cm cathode" => insert outer diameter is 1.8 cm, and inner is 1.2 cm
+* References to the "2.0 cm cathode"
+    * p.555, first col.: cathode (outer?) tube: 2.0 cm 
+    * p.555, first col.: "same tube wall and insert thicknesses as the 1.5 cm cathode" => insert outer diameter is 1.8 cm, and inner is 1.2 cm
 
-- All cathodes
-.. p.555, first col.: orifice diameter of 0.38 cm and keeper oriﬁce diameters of 0.64 cm
+* All cathodes
+    * p.555, first col.: orifice diameter of 0.38 cm and keeper oriﬁce diameters of 0.64 cm
 
 #### Goebel and Watkins (2010)
 - D. M. Goebel and R. M. Watkins, "Compact lanthanum hexaboride hollow cathode," Review of Scientific Instruments, 81(2010), 1-7. https://doi.org/10.1063/1.3474921
 
 - References to the "0.8 cm cathode"
-.. p.3, second col: insert outer diameter: 0.64 cm
-.. p.3, second col: insert inner diameter: 0.38 cm 
-.. p.3, second col: insert length: 2.5 cm 
-.. p.3, second col: orifice diameter is the same as the insert inner diameter: 0.38 cm
+	* p.3, second col: insert outer diameter: 0.64 cm
+	* p.3, second col: insert inner diameter: 0.38 cm 
+	* p.3, second col: insert length: 2.5 cm 
+	* p.3, second col: orifice diameter is the same as the insert inner diameter: 0.38 cm
 
 - References to the "1.5 cm cathode"
-.. p.4, first col: cathode tube outer diameter: 1.5 cm 
-.. p.4, first col: insert inner diameter: 0.7 cm 
+	* p.4, first col: cathode tube outer diameter: 1.5 cm 
+	* p.4, first col: insert inner diameter: 0.7 cm 
 
 - References to the "2.0 cm cathode"
-.. p.4, first col: cathode tube outer diameter: 2.0 cm 
-.. p.4, first col: insert inner diameter: 1.2 cm  
+	* p.4, first col: cathode tube outer diameter: 2.0 cm 
+	* p.4, first col: insert inner diameter: 1.2 cm  
 
 #### Goebel and Chu (2014)
 - D. M. Goebel and E. Chu, "High Current Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thrusters," Journal of Propulsion and Power, 30(1), 2014. https://doi.org/10.2514/1.B34870
 
 - References to the "2.0 cm cathode"
-.. p.36, second col.: insert inner diameter: 1.27 cm 
-.. p.36, second col.: insert length: 5 cm
+	* p.36, second col.: insert inner diameter: 1.27 cm 
+	* p.36, second col.: insert length: 5 cm
 
 The orifice diameter is changed from the original 3.8 mm to 4.8 mm (3/16") and then 6.4 mm (1/4").
 I believe that the latter diameter is used for every reference thereafter.
@@ -166,9 +166,9 @@ I believe that the latter diameter is used for every reference thereafter.
 - D. M. Goebel, G. Becatti, S. Reilly, K. Tilley, and S. J. Hall, "High Current Lanthanum Hexaboride Hollow for 20-200 kW Hall Thrusters," 35th International Electric Propulsion Conference, 2017. IEPC-2017-303
 
 - References to the "2.0 cm cathode"
-.. p.3: insert outer diameter: 2.0 cm
-.. p.3: insert inner diameter: 1.3 cm
-.. p.3: insert length: 5.0 cm 
+    * p.3: insert outer diameter: 2.0 cm
+    * p.3: insert inner diameter: 1.3 cm
+    * p.3: insert length: 5.0 cm 
 
 ### Becatti et al (2017)
 - G. Becatti, D. M. Goebel, J. Polk, and P. Guerrero, "Life Evaluation of a Lanthanum Hexaboride Hollow Cathode for High-Power Hall Thruster," Journal of Propulsion and Power, 34(4), 893-900 (2017) https://doi.org/10.2514/1.b36659
@@ -176,9 +176,9 @@ I believe that the latter diameter is used for every reference thereafter.
 The cathode used in this study is the 1.5 cm cathode, but two other orifice diameters were tested: 3 mm and 5 mm.
 
 - References to the "1.5 cm cathode"
-.. p.894, second col.: orifice diameter: 3 and 5 mm 
-.. p.894, second col.: insert inner diameter: 0.63 cm 
-.. p.894, second col.: insert length: 2.54 cm 
+    * p.894, second col.: orifice diameter: 3 and 5 mm 
+    * p.894, second col.: insert inner diameter: 0.63 cm 
+    * p.894, second col.: insert length: 2.54 cm 
 
 ### Becatti et al (2019)
 - G. Becatti, D. M. Goebel, C. V. Yoke, A. L. Ortega, I. G. Mikellides, "High Current Hollow Cathode for the X3 100-kW Class Nested Hall Thruster," 36th International Electric Propulsion Conference, 2019. IEPC-2019-371
