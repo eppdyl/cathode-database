@@ -159,6 +159,9 @@ p.3 last paragraph: the orifice diameter is 2.75 mm.
 .. p.36, second col.: insert inner diameter: 1.27 cm 
 .. p.36, second col.: insert length: 5 cm
 
+The orifice diameter is changed from the original 3.8 mm to 4.8 mm (3/16") and then 6.4 mm (1/4").
+I believe that the latter diameter is used for every reference thereafter.
+
 ### Goebel et al (2017)
 - D. M. Goebel, G. Becatti, S. Reilly, K. Tilley, and S. J. Hall, "High Current Lanthanum Hexaboride Hollow for 20-200 kW Hall Thrusters," 35th International Electric Propulsion Conference, 2017. IEPC-2017-303
 
@@ -176,6 +179,20 @@ The cathode used in this study is the 1.5 cm cathode, but two other orifice diam
 .. p.894, second col.: orifice diameter: 3 and 5 mm 
 .. p.894, second col.: insert inner diameter: 0.63 cm 
 .. p.894, second col.: insert length: 2.54 cm 
+
+### Becatti et al (2019)
+- G. Becatti, D. M. Goebel, C. V. Yoke, A. L. Ortega, I. G. Mikellides, "High Current Hollow Cathode for the X3 100-kW Class Nested Hall Thruster," 36th International Electric Propulsion Conference, 2019. IEPC-2019-371
+
+The cathode used in this study is the 2.0 cm cathode. The dimensions are nominally the same as the
+2017 IEPC cathode (IEPC-2017-303).
+While the original cathode used a 3.8 mm diameter orifice, the "enlarged orifice plate" now 
+seemingly feature a larger orifice diameter as well. The orifice inner diameter is not explicitly 
+given but can be deduced (approximately).
+I have used GIMP to measure the length in pixels of both the outer plate diameter and orifice diameter
+from Figure 4c and obtained 7.0 mm. Using Engauge on the results from the 2D model (Figure 15) 
+I got 3.3 mm for the orifice radius. 
+Both those values are close to the 6.4 mm (1/4") given in Goebel and Chu 2014. 
+
 
 ---
 ## Average cathodes
@@ -251,9 +268,10 @@ Thickness of cathode wall is 0.1 cm
 ##### 2.0 cm
 | Reference | Orifice diameter (mm) | Orifice length (mm) | Insert inner diameter (cm) | Insert outer diameter (cm) | Insert thickness (cm) | Insert length (cm) | Cathode outer diameter (cm) | 
 |:---------:|:---------------------:|:-------------------:|:--------------------------:|:--------------------------:|:---------------------:|:------------------:|:---------------------------:|
-Goebel et al. (JPP 2007)        | 3.8 | | 1.2  | 1.8 | 0.3 | 2.5 | 2.0 |
-Goebel et al. (Rev. Sci. 2010)  | 3.8 | | 1.2  | 2.0 |     | 2.5 | 2.0 |
-Goebel and Chu (JPP 2014)       |     | | 1.27 | 2.0 |     | 5.0 | 2.0 | 
-Goebel et al. (IEPC 2017)       |     | | 1.3  | 2.0 |     | 5.0 | 2.0 |
+Goebel et al. (JPP 2007)        | 3.8     | | 1.2  | 1.8 | 0.3 | 2.5 | 2.0 |
+Goebel et al. (Rev. Sci. 2010)  | 3.8     | | 1.2  | 2.0 |     | 2.5 | 2.0 |
+Goebel and Chu (JPP 2014)       | 4.3-6.4 | | 1.27 | 2.0 |     | 5.0 | 2.0 | 
+Goebel et al. (IEPC 2017)       |         | | 1.3  | 2.0 |     | 5.0 | 2.0 |
+Becatti et al. (IEPC 2019)      | 6.4?    | |      |     |     |     |     |
 
 Thickness of cathode wall is 0.1 cm
